@@ -28,21 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.log = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
+            // 
+            // log
+            // 
+            this.log.Location = new System.Drawing.Point(12, 203);
+            this.log.Name = "log";
+            this.log.ReadOnly = true;
+            this.log.Size = new System.Drawing.Size(776, 199);
+            this.log.TabIndex = 0;
+            this.log.Text = "";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.log);
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.Text = "Configurator";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.RichTextBox log;
     }
 }
 

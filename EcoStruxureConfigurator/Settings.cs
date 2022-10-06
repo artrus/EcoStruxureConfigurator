@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace EcoStruxureConfigurator
 {
-    internal class Settings
+    public class Settings
     {
         public enum TYPE_PARAM { ROWS }
-        public Dictionary<string, string> DictionaryTypesModules { get; set; }
+        public Dictionary<string, ModuleInfo> DictionaryTypesModules { get; set; }
         public Dictionary<string, string> DictionaryTypesIO { get; set; }
 
         public int ROW_MODULE_NAME;
@@ -19,11 +19,15 @@ namespace EcoStruxureConfigurator
         public int ROW_MODULE_ID;
 
         public int ROW_IO_ID;
-        public int ROW_IO_TYPE;
+        public int ROW_IO_NAME_MODULE;
+        public int ROW_IO_TYPE_MODULE;
+        public int ROW_IO_CHANNEL;
         public int ROW_IO_NAME;
         public int ROW_IO_DESCR;
         public int ROW_IO_SYSTEM;
 
+        public string NAME_LIST_IO;
+        public string NAME_LIST_MODULES;
 
         private IniFile iniFile;
         private const string NAMESECTIONROWS = "ROWS";
@@ -32,6 +36,13 @@ namespace EcoStruxureConfigurator
         public void ReadSetting(string path)
         {
             openINI(path);
+            DictionaryTypesModules = setDefaultTypesModules();
+            DictionaryTypesIO = setDefaultTypesIO();
+        }
+
+        public ModuleInfo getModuleInfoByType(string type)
+        {
+            return DictionaryTypesModules[type];
         }
 
         private void openINI(string path)
@@ -43,7 +54,7 @@ namespace EcoStruxureConfigurator
                 {
                     File.Create(path).Close();
                     iniFile = new IniFile(path);
-                    setDefault();
+                    setDefaultConfig();
                     saveDefault();
                 }
                 catch (Exception ex)
@@ -74,11 +85,15 @@ namespace EcoStruxureConfigurator
 
         private void readParams(IniFile iniFile)
         {
+            NAME_LIST_MODULES = iniFile.ReadINI(NAMESECTIONROWS, "NAME_LIST_MODULES");
+            NAME_LIST_IO = iniFile.ReadINI(NAMESECTIONROWS, "NAME_LIST_IO");
             ROW_MODULE_NAME = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_MODULE_NAME"));
             ROW_MODULE_TYPE = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_MODULE_TYPE"));
             ROW_MODULE_ID = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_MODULE_ID"));
             ROW_IO_ID = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_ID"));
-            ROW_IO_TYPE = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_TYPE"));
+            ROW_IO_NAME_MODULE = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_NAME_MODULE"));
+            ROW_IO_TYPE_MODULE = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_TYPE_MODULE"));
+            ROW_IO_CHANNEL = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_CHANNEL"));
             ROW_IO_NAME = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_NAME"));
             ROW_IO_DESCR = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_DESCR"));
             ROW_IO_SYSTEM = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_SYSTEM"));
@@ -86,35 +101,39 @@ namespace EcoStruxureConfigurator
 
         private void saveDefault()
         {
+            iniFile.Write(NAMESECTIONROWS, "NAME_LIST_MODULES", NAME_LIST_MODULES);
+            iniFile.Write(NAMESECTIONROWS, "NAME_LIST_IO", NAME_LIST_IO);
             iniFile.Write(NAMESECTIONROWS, "ROW_MODULE_NAME", ROW_MODULE_NAME.ToString());
             iniFile.Write(NAMESECTIONROWS, "ROW_MODULE_TYPE", ROW_MODULE_TYPE.ToString());
             iniFile.Write(NAMESECTIONROWS, "ROW_MODULE_ID", ROW_MODULE_ID.ToString());
             iniFile.Write(NAMESECTIONROWS, "ROW_IO_ID", ROW_IO_ID.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_TYPE", ROW_IO_TYPE.ToString());
+            iniFile.Write(NAMESECTIONROWS, "ROW_IO_NAME_MODULE", ROW_IO_NAME_MODULE.ToString());
+            iniFile.Write(NAMESECTIONROWS, "ROW_IO_TYPE_MODULE", ROW_IO_TYPE_MODULE.ToString());
+            iniFile.Write(NAMESECTIONROWS, "ROW_IO_CHANNEL", ROW_IO_CHANNEL.ToString());
             iniFile.Write(NAMESECTIONROWS, "ROW_IO_NAME", ROW_IO_NAME.ToString());
             iniFile.Write(NAMESECTIONROWS, "ROW_IO_DESCR", ROW_IO_DESCR.ToString());
             iniFile.Write(NAMESECTIONROWS, "ROW_IO_SYSTEM", ROW_IO_SYSTEM.ToString());
+
+
         }
 
-        private void setDefault()
+        private void setDefaultConfig()
         {
-            DictionaryTypesModules = setDefaultTypesModules();
-            DictionaryTypesIO = setDefaultTypesIO();
             setDefaultRows();
         }
 
-        private Dictionary<string, string> setDefaultTypesModules()
+        private Dictionary<string, ModuleInfo> setDefaultTypesModules()
         {
-            return new Dictionary<string, string>() { { "AO-8", "io.AO8" },
-                                                      { "AO-V-8", "io.AO8" },
-                                                      { "DI-16", "io.DI16" },
-                                                      { "DO-FA-12", "io.DOFA12" },
-                                                      { "DO-FC-8", "io.DOFC8" },
-                                                      { "RTD-DI-16", "io.RTDDI16" },
-                                                      { "UI-8.AO-4", "io.UI8AO4" },
-                                                      { "UI-8.AO-V-4", "io.UI8AO4" },
-                                                      { "UI-8.DO-FC-4", "io.UI8DOFC4" },
-                                                      { "UI-16", "io.UI16" },
+            return new Dictionary<string, ModuleInfo>() { { "AO-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.typeChannels.NONE, ModuleInfo.typeChannels.REAL)},
+                                                      { "AO-V-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.typeChannels.NONE, ModuleInfo.typeChannels.REAL) },
+                                                      { "DI-16", new ModuleInfo("io.DI16", 16, 0, ModuleInfo.typeChannels.BOOL, ModuleInfo.typeChannels.NONE) },
+                                                      { "DO-FA-12", new ModuleInfo("io.DOFA12", 0, 12, ModuleInfo.typeChannels.NONE, ModuleInfo.typeChannels.BOOL) },
+                                                      { "DO-FC-8", new ModuleInfo("io.DOFC8", 0, 8, ModuleInfo.typeChannels.NONE, ModuleInfo.typeChannels.BOOL) },
+                                                      { "RTD-DI-16", new ModuleInfo("io.RTDDI16", 16, 0, ModuleInfo.typeChannels.ALL, ModuleInfo.typeChannels.NONE) },
+                                                      { "UI-8.AO-4", new ModuleInfo("io.UI8AO4", 8, 4, ModuleInfo.typeChannels.ALL, ModuleInfo.typeChannels.REAL) },
+                                                      { "UI-8.AO-V-4", new ModuleInfo("io.UI8AO4", 8, 4, ModuleInfo.typeChannels.ALL, ModuleInfo.typeChannels.REAL) },
+                                                      { "UI-8.DO-FC-4", new ModuleInfo("io.UI8DOFC4", 8, 4, ModuleInfo.typeChannels.ALL, ModuleInfo.typeChannels.BOOL) },
+                                                      { "UI-16", new ModuleInfo("io.UI16", 16, 0, ModuleInfo.typeChannels.ALL, ModuleInfo.typeChannels.NONE) },
                                                     };
         }
 
@@ -142,14 +161,18 @@ namespace EcoStruxureConfigurator
 
         private void setDefaultRows()
         {
-            ROW_MODULE_NAME = 1;
-            ROW_MODULE_TYPE = 2;
-            ROW_MODULE_ID = 3;
-            ROW_IO_ID = 0;
-            ROW_IO_TYPE = 4;
-            ROW_IO_NAME = 6;
-            ROW_IO_DESCR = 7;
-            ROW_IO_SYSTEM = 8;
+            NAME_LIST_MODULES = "Modules";
+            NAME_LIST_IO = "IO";
+            ROW_MODULE_NAME = 2;
+            ROW_MODULE_TYPE = 3;
+            ROW_MODULE_ID = 4;
+            ROW_IO_ID = 1;
+            ROW_IO_NAME_MODULE = 2;
+            ROW_IO_TYPE_MODULE = 3;
+            ROW_IO_CHANNEL = 4;
+            ROW_IO_NAME = 7;
+            ROW_IO_DESCR = 8;
+            ROW_IO_SYSTEM = 9;
         }
 
     }

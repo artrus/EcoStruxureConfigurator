@@ -8,14 +8,14 @@ namespace EcoStruxureConfigurator
 {
     public class ModuleInfo
     {
-        public enum typeChannels {NONE, BOOL, INT, REAL, ALL}
+        public enum TypeChannels {NONE, BOOL, INT, REAL, ALL}
         public readonly string XMLType;
         public readonly int CntInputs;
         public readonly int CntOutputs;
-        public readonly typeChannels TypeInputs;
-        public readonly typeChannels TypeOutputs;
+        public readonly TypeChannels TypeInputs;
+        public readonly TypeChannels TypeOutputs;
 
-        public ModuleInfo(string xmlType, int cntInputs, int cntOutputs, typeChannels typeInputs, typeChannels typeOutputs)
+        public ModuleInfo(string xmlType, int cntInputs, int cntOutputs, TypeChannels typeInputs, TypeChannels typeOutputs)
         {
             XMLType = xmlType;
             CntInputs = cntInputs;

@@ -69,6 +69,9 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IniFile.cs" />
+    <Compile Include="Logger\LoggerToRichBox.cs" />
+    <Compile Include="Logger\ILogger.cs" />
+    <Compile Include="ParserTags.cs" />
     <Compile Include="Tags\Module.cs" />
     <Compile Include="Tags\ModuleInfo.cs" />
     <Compile Include="Program.cs" />
@@ -76,7 +79,10 @@
     <Compile Include="ReadIO.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tags\TagBase.cs" />
+    <Compile Include="Tags\TagIOInfo.cs" />
     <Compile Include="Tags\TagIO.cs" />
+    <Compile Include="XML\XML_classes.cs" />
+    <Compile Include="XML\XML_generator.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,7 +107,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Res\IO.xlsm" />
+    <None Include="_Res\IO.xlsm" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoStruxureConfigurator.Tags;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,13 @@ namespace EcoStruxureConfigurator
     {
         public readonly Module Module;
         public readonly int Channel;
+        public readonly TagIOInfo TagInfo;
 
-        public TagIO(string name, string description, Module module, int channel) : base(name, description)
+        public TagIO(string name, string description, Module module, int channel, TagIOInfo tagInfo) : base(name, description)
         {
             Module = module;
             Channel = channel;
+            TagInfo = tagInfo;
         }
     }
 }

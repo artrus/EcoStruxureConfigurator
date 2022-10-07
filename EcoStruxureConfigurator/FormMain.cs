@@ -1,30 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
+using EcoStruxureConfigurator.Logger;
+using EcoStruxureConfigurator.XML;
 
 namespace EcoStruxureConfigurator
 {
     public partial class FormMain : Form
     {
         private Settings settings;
-        private string inputExcelFile;
-        
+        ILogger logger;
+        private string pathIOFile;
+
+        private List<TagIO> tagsIO;
+        private List<Module> modules;        
+
         public FormMain()
         {
-            readSettings();
+            ReadSettings();
             InitializeComponent();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            createMenu();
-            createStatusBar();
-            Text = inputExcelFile = readLastFileIO();
-            if (Text != null)
-                readExcelIO(inputExcelFile);
+            CreateMenu();
+            CreateStatusBar();
+            logger = new LoggerToRichBox(log);
+
+            pathIOFile = ReadLastFileIO();
+            FileInfo fileInfo = new FileInfo(pathIOFile);
+            if (fileInfo.Exists)
+            {
+                ReadExcelIO();
+                Text = pathIOFile;
+            }
+            else
+            {
+                Text = "";
+            }
         }
 
-        private void createMenu()
+        private void CreateMenu()
         {
             MainMenu mainMenu = new MainMenu();
 
@@ -35,12 +52,12 @@ namespace EcoStruxureConfigurator
 
             menuItemFile.Text = "File";
             menuItemFileOpenIO.Text = "Open IO";
-            menuItemFileOpenIO.Click += new System.EventHandler(this.menuItemFileOpenIO_Click);
+            menuItemFileOpenIO.Click += new System.EventHandler(this.MenuItemFileOpenIO_Click);
             menuItemFile.MenuItems.Add(menuItemFileOpenIO);
 
             menuItemTools.Text = "Tools";
             menuItemToolsSettings.Text = "Settings";
-            menuItemToolsSettings.Click += new System.EventHandler(this.menuItemToolsSettings_Click);
+            menuItemToolsSettings.Click += new System.EventHandler(this.MenuItemToolsSettings_Click);
             menuItemTools.MenuItems.Add(menuItemToolsSettings);
 
             mainMenu.MenuItems.Add(menuItemFile);
@@ -49,24 +66,26 @@ namespace EcoStruxureConfigurator
             Menu = mainMenu;
         }
 
-        private void menuItemFileOpenIO_Click(object sender, System.EventArgs e)
+        private void MenuItemFileOpenIO_Click(object sender, System.EventArgs e)
         {
             try
             {
-                OpenFileDialog openExcelFileDialog = new OpenFileDialog();
-                openExcelFileDialog.FileName = "IO.xls";
-                openExcelFileDialog.Filter = "Excel files|*.xls;*.xlsx;*.xlsm";
-                openExcelFileDialog.FilterIndex = 0;
-                openExcelFileDialog.RestoreDirectory = true;
+                OpenFileDialog openExcelFileDialog = new OpenFileDialog
+                {
+                    FileName = "IO.xls",
+                    Filter = "Excel files|*.xls;*.xlsx;*.xlsm",
+                    FilterIndex = 0,
+                    RestoreDirectory = true
+                };
                 DialogResult dialogResult = openExcelFileDialog.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    inputExcelFile = openExcelFileDialog.FileName;
-                    Text = inputExcelFile;
-                    Properties.Settings.Default.LastFileIO = inputExcelFile;
+                    pathIOFile = openExcelFileDialog.FileName;
+                    Text = pathIOFile;
+                    Properties.Settings.Default.LastFileIO = pathIOFile;
                     Properties.Settings.Default.Save();
 
-                    readExcelIO(inputExcelFile);
+                    ReadExcelIO();
 
                 }
                 else
@@ -80,12 +99,12 @@ namespace EcoStruxureConfigurator
             }
         }
 
-        private void menuItemToolsSettings_Click(object sender, System.EventArgs e)
+        private void MenuItemToolsSettings_Click(object sender, System.EventArgs e)
         {
             MessageBox.Show("Open");
         }
 
-        private void createStatusBar ()
+        private void CreateStatusBar ()
         {
             StatusBar mainStatusBar = new StatusBar();
 
@@ -113,7 +132,7 @@ namespace EcoStruxureConfigurator
             Controls.Add(mainStatusBar);
         }
         
-        private void readSettings()
+        private void ReadSettings()
         {
             Settings settings = new Settings();
             try
@@ -127,18 +146,39 @@ namespace EcoStruxureConfigurator
             }
         }
 
-        private string readLastFileIO()
+        private string ReadLastFileIO()
         {
             return Properties.Settings.Default.LastFileIO;
         }
 
-        private void readExcelIO (string path)
+        private void ReadExcelIO ()
         {
-            log.Clear();
+            logger.Clear();
+            logger.WriteLine("Начинается чтение файла IO");
             ReadIO readerIO = new ReadIO(settings);
-            List<TagIO> tagsIO = readerIO.OpenIO(inputExcelFile);
+            tagsIO = readerIO.OpenIO(pathIOFile);
             if (tagsIO.Count != 0)
-                log.AppendText("Файл с IO прочитан успешно! Найдено тэгов: " + tagsIO.Count);
+            {
+                logger.WriteLine("Файл с IO прочитан успешно! Найдено тэгов: " + tagsIO.Count);
+
+                modules = ParserTags.GetModules(tagsIO);
+
+                logger.WriteLine("Найдено модулей: " + modules.Count);
+
+                foreach (var module in modules)
+                {
+                    logger.WriteLine("ID=" + module.ID + "   " + "Name=" + module.Name + "   " + "Type=" + module.Type);
+                }
+            }
+        }
+
+        private void BtnGenIO_Click(object sender, EventArgs e)
+        {
+            string dir = Path.GetDirectoryName(pathIOFile);
+            string fileName = Path.GetFileNameWithoutExtension(pathIOFile);
+
+            XML_generator generator = new XML_generator(settings);
+            generator.CreateIO(dir + @"\" + fileName + @"---IO.xml", tagsIO, modules);
         }
     }
 }

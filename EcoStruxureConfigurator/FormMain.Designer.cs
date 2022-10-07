@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.log = new System.Windows.Forms.RichTextBox();
+            this.btnGenIO = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // log
@@ -40,11 +41,22 @@
             this.log.TabIndex = 0;
             this.log.Text = "";
             // 
+            // btnGenIO
+            // 
+            this.btnGenIO.Location = new System.Drawing.Point(259, 46);
+            this.btnGenIO.Name = "btnGenIO";
+            this.btnGenIO.Size = new System.Drawing.Size(75, 23);
+            this.btnGenIO.TabIndex = 1;
+            this.btnGenIO.Text = "GenIO";
+            this.btnGenIO.UseVisualStyleBackColor = true;
+            this.btnGenIO.Click += new System.EventHandler(this.BtnGenIO_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnGenIO);
             this.Controls.Add(this.log);
             this.Name = "FormMain";
             this.Text = "Configurator";
@@ -56,6 +68,7 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox log;
+        private System.Windows.Forms.Button btnGenIO;
     }
 }
 

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjectSet ExportMode="Special" Note="TypesFirst" Version="3.2.3.59">
+  <MetaInformation>
+    <ExportMode Value="Special" />
+    <RuntimeVersion Value="3.2.3.59" />
+    <SourceVersion Value="3.2.3.59" />
+    <ServerFullPath Value="/SHAUOV1" />
+  </MetaInformation>
+  <ExportedObjects>
+    <OI NAME="A4" TYPE="io.AO8">
+      <PI Name="ModuleID" Value="3" />
+      <PI Name="ContentType">
+        <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/IO AO-V-8" Retransmit="0" TransferRate="10" />
+      </PI>
+      <OI NAME="Управление производительностью вентилятора ВТ-1.4Е" DESCR="0..100%" TYPE="io.point.VoltageOutput">
+        <PI Name="OutputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Управление производительностью вентилятора ВТ-1.5Е" DESCR="0..100%" TYPE="io.point.VoltageOutput">
+        <PI Name="OutputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Управление производительностью вентилятора В-1.4Е" DESCR="0..100%" TYPE="io.point.VoltageOutput">
+        <PI Name="OutputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Управление производительностью вентилятора В-1.5Е" DESCR="0..100%" TYPE="io.point.VoltageOutput">
+        <PI Name="OutputChannelNumber" Value="4" />
+      </OI>
+      <OI NAME="Управление производительностью вентилятора В-1.8Е" DESCR="0..100%" TYPE="io.point.VoltageOutput">
+        <PI Name="OutputChannelNumber" Value="5" />
+      </OI>
+      <OI NAME="Управление производительностью вентилятора ВТ-1.6С" DESCR="0..100%" TYPE="io.point.VoltageOutput">
+        <PI Name="OutputChannelNumber" Value="6" />
+      </OI>
+      <OI NAME="Резерв AO-V-8 A4:7" DESCR="-" TYPE="io.point.VoltageOutput">
+        <PI Name="OutputChannelNumber" Value="7" />
+      </OI>
+      <OI NAME="Резерв AO-V-8 A4:8" DESCR="-" TYPE="io.point.VoltageOutput">
+        <PI Name="OutputChannelNumber" Value="8" />
+      </OI>
+    </OI>
+    <OI NAME="A5" TYPE="io.UI16">
+      <PI Name="ModuleID" Value="4" />
+      <PI Name="ContentType">
+        <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/IO UI-16" Retransmit="0" TransferRate="10" />
+      </PI>
+      <OI NAME="Контроль электропитания Ввод 1 (фазность)" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Контроль электропитания Ввод 2 (фазность)" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Сигнал Пожар" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Автоматический режим работы вентилятора В-1.8Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="4" />
+      </OI>
+      <OI NAME="Контроль пускателя вентилятора В-1.8Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="5" />
+      </OI>
+      <OI NAME="Перепад давления на вентиляторе В-1.8Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="6" />
+      </OI>
+      <OI NAME="Автоматический режим работы вентилятора ВТ-1.6С" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="7" />
+      </OI>
+      <OI NAME="Контроль пускателя вентилятора ВТ-1.6С" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="8" />
+      </OI>
+      <OI NAME="Перепад давления на вентиляторе ВТ-1.6С" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="9" />
+      </OI>
+      <OI NAME="Резерв UI-16 A5:10" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="10" />
+      </OI>
+      <OI NAME="Резерв UI-16 A5:11" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="11" />
+      </OI>
+      <OI NAME="Резерв UI-16 A5:12" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="12" />
+      </OI>
+      <OI NAME="Резерв UI-16 A5:13" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="13" />
+      </OI>
+      <OI NAME="Резерв UI-16 A5:14" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="14" />
+      </OI>
+      <OI NAME="Резерв UI-16 A5:15" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="15" />
+      </OI>
+      <OI NAME="Резерв UI-16 A5:16" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="16" />
+      </OI>
+    </OI>
+    <OI NAME="A6" TYPE="io.DI16">
+      <PI Name="ModuleID" Value="5" />
+      <PI Name="ContentType">
+        <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/IO DI-16" Retransmit="0" TransferRate="10" />
+      </PI>
+      <OI NAME="Автоматический режим работы вентилятора ВТ-1.4Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Контроль пускателя вентилятора ВТ-1.4Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Перепад давления на вентиляторе ВТ-1.4Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Автоматический режим работы вентилятора ВТ-1.5Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="4" />
+      </OI>
+      <OI NAME="Контроль пускателя вентилятора ВТ-1.5Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="5" />
+      </OI>
+      <OI NAME="Перепад давления на вентиляторе ВТ-1.5Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="6" />
+      </OI>
+      <OI NAME="Автоматический режим работы вентилятора В-1.4Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="7" />
+      </OI>
+      <OI NAME="Контроль пускателя вентилятора В-1.4Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="8" />
+      </OI>
+      <OI NAME="Перепад давления на фильтре В-1.4Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="9" />
+      </OI>
+      <OI NAME="Перепад давления на вентиляторе В-1.4Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="10" />
+      </OI>
+      <OI NAME="Автоматический режим работы вентилятора В-1.5Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="11" />
+      </OI>
+      <OI NAME="Контроль пускателя вентилятора В-1.5Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="12" />
+      </OI>
+      <OI NAME="Перепад давления на фильтре В-1.5Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="13" />
+      </OI>
+      <OI NAME="Перепад давления на вентиляторе В-1.5Е" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="14" />
+      </OI>
+      <OI NAME="Резерв DI-16 A6:15" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="15" />
+      </OI>
+      <OI NAME="Резерв DI-16 A6:16" DESCR="-" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="16" />
+      </OI>
+    </OI>
+    <OI NAME="A7" TYPE="io.DOFA12">
+      <PI Name="ModuleID" Value="6" />
+      <PI Name="ContentType">
+        <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/IO DO-FA-12" Retransmit="0" TransferRate="10" />
+      </PI>
+      <OI NAME="Управление вентиляторов ВТ-1.4Е" DESCR="Пуск" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Управление вентиляторов ВТ-1.5Е" DESCR="Пуск" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Управление вентиляторов В-1.4Е" DESCR="Пуск" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Управление вентиляторов В-1.5Е" DESCR="Пуск" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="4" />
+      </OI>
+      <OI NAME="Управление вентиляторов В-1.8Е" DESCR="Пуск" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="5" />
+      </OI>
+      <OI NAME="Управление вентиляторов ВТ-1.6С" DESCR="Пуск" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="6" />
+      </OI>
+      <OI NAME="Резерв DO-FA-12 A7:7" DESCR="-" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="7" />
+      </OI>
+      <OI NAME="Резерв DO-FA-12 A7:8" DESCR="-" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="8" />
+      </OI>
+      <OI NAME="Резерв DO-FA-12 A7:9" DESCR="-" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="9" />
+      </OI>
+      <OI NAME="Резерв DO-FA-12 A7:10" DESCR="-" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="10" />
+      </OI>
+      <OI NAME="Резерв DO-FA-12 A7:11" DESCR="-" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="11" />
+      </OI>
+      <OI NAME="Лампа общей аварии" DESCR="При аварии" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="12" />
+      </OI>
+    </OI>
+    <OI NAME="A8" TYPE="io.UI16">
+      <PI Name="ModuleID" Value="7" />
+      <PI Name="ContentType">
+        <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/IO UI-16" Retransmit="0" TransferRate="10" />
+      </PI>
+      <OI NAME="Модуль А8 канал 1" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Модуль А8 канал 2" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Модуль А8 канал 3" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Модуль А8 канал 4" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="4" />
+      </OI>
+      <OI NAME="Модуль А8 канал 5" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="5" />
+      </OI>
+      <OI NAME="Модуль А8 канал 6" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="6" />
+      </OI>
+      <OI NAME="Модуль А8 канал 7" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="7" />
+      </OI>
+      <OI NAME="Модуль А8 канал 8" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="8" />
+      </OI>
+      <OI NAME="Модуль А8 канал 9" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="9" />
+      </OI>
+      <OI NAME="Модуль А8 канал 10" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="10" />
+      </OI>
+      <OI NAME="Модуль А8 канал 11" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="11" />
+      </OI>
+      <OI NAME="Модуль А8 канал 12" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="12" />
+      </OI>
+      <OI NAME="Модуль А8 канал 13" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="13" />
+      </OI>
+      <OI NAME="Модуль А8 канал 14" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="14" />
+      </OI>
+      <OI NAME="Модуль А8 канал 15" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="15" />
+      </OI>
+      <OI NAME="Модуль А8 канал 16" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="16" />
+      </OI>
+    </OI>
+    <OI NAME="A9" TYPE="io.UI16">
+      <PI Name="ModuleID" Value="8" />
+      <PI Name="ContentType">
+        <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/IO UI-16" Retransmit="0" TransferRate="10" />
+      </PI>
+      <OI NAME="Модуль А9 канал 1" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Модуль А9 канал 2" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Модуль А9 канал 3" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Модуль А9 канал 4" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="4" />
+      </OI>
+      <OI NAME="Модуль А9 канал 5" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="5" />
+      </OI>
+      <OI NAME="Модуль А9 канал 6" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="6" />
+      </OI>
+      <OI NAME="Модуль А9 канал 7" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="7" />
+      </OI>
+      <OI NAME="Модуль А9 канал 8" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="8" />
+      </OI>
+      <OI NAME="Модуль А9 канал 9" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="9" />
+      </OI>
+      <OI NAME="Модуль А9 канал 10" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="10" />
+      </OI>
+      <OI NAME="Модуль А9 канал 11" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="11" />
+      </OI>
+      <OI NAME="Модуль А9 канал 12" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="12" />
+      </OI>
+      <OI NAME="Модуль А9 канал 13" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="13" />
+      </OI>
+      <OI NAME="Модуль А9 канал 14" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="14" />
+      </OI>
+      <OI NAME="Модуль А9 канал 15" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="15" />
+      </OI>
+      <OI NAME="Модуль А9 канал 16" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="16" />
+      </OI>
+    </OI>
+    <OI NAME="A10" TYPE="io.UI8AO4">
+      <PI Name="ModuleID" Value="9" />
+      <PI Name="ContentType">
+        <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/IO UI-8.AO-4" Retransmit="0" TransferRate="10" />
+      </PI>
+      <OI NAME="Модуль А10 входной канал 1" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 2" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 3" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 4" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="4" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 5" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="5" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 6" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="6" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 7" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="7" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 8" DESCR="+" TYPE="io.point.DigitalInput">
+        <PI Name="InputChannelNumber" Value="8" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 1" DESCR="+" TYPE="io.point.CurrentOutput">
+        <PI Name="OutputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 2" DESCR="+" TYPE="io.point.CurrentOutput">
+        <PI Name="OutputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 3" DESCR="+" TYPE="io.point.CurrentOutput">
+        <PI Name="OutputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Модуль А10 входной канал 4" DESCR="+" TYPE="io.point.CurrentOutput">
+        <PI Name="OutputChannelNumber" Value="4" />
+      </OI>
+    </OI>
+    <OI NAME="A11" TYPE="io.UI8DOFC4">
+      <PI Name="ModuleID" Value="10" />
+      <PI Name="ContentType">
+        <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/IO UI-8.DO-FC-4" Retransmit="0" TransferRate="10" />
+      </PI>
+      <OI NAME="Модуль А11 входной канал 1" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 2" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 3" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="3" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 4" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="4" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 5" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="5" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 6" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="6" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 7" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="7" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 8" DESCR="+" TYPE="io.point.TemperatureInput">
+        <PI Name="InputChannelNumber" Value="8" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 1" DESCR="+" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="1" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 2" DESCR="+" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="2" />
+      </OI>
+      <OI NAME="Модуль А11 входной канал 3" DESCR="+" TYPE="io.point.DigitalOutput">
+        <PI Name="OutputChannelNumber" Value="3" />
+      </OI>
+    </OI>
+  </ExportedObjects>
+</ObjectSet>

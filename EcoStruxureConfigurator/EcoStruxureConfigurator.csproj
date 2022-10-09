@@ -79,8 +79,11 @@
     <Compile Include="ReadIO.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tags\TagBase.cs" />
-    <Compile Include="Tags\TagIOInfo.cs" />
+    <Compile Include="Tags\TagInfoBase.cs" />
+    <Compile Include="Tags\TagInfoIO.cs" />
     <Compile Include="Tags\TagIO.cs" />
+    <Compile Include="Tags\TagModbus.cs" />
+    <Compile Include="Tags\TagInfoModbus.cs" />
     <Compile Include="XML\XML_classes.cs" />
     <Compile Include="XML\XML_generator.cs" />
     <EmbeddedResource Include="FormMain.resx">

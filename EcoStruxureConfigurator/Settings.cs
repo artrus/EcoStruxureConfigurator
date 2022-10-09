@@ -1,4 +1,4 @@
-﻿using EcoStruxureConfigurator.Tags;
+﻿using EcoStruxureConfigurator;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +13,8 @@ namespace EcoStruxureConfigurator
     {
         public enum TYPE_PARAM { ROWS }
         public Dictionary<string, ModuleInfo> DictionaryTypesModules { get; set; }
-        public Dictionary<string, TagIOInfo> DictionaryTypesIO { get; set; }
+        public Dictionary<string, TagInfoIO> DictionaryTypesIO { get; set; }
+        public Dictionary<string, TagInfoModbus> DictionaryTypesTagsModbus { get; set; }
 
         public int ROW_MODULE_NAME;
         public int ROW_MODULE_TYPE;
@@ -31,6 +32,8 @@ namespace EcoStruxureConfigurator
         public string NAME_LIST_IO;
         public string NAME_LIST_MODULES;
 
+        public int MODBUS_ADDR_BLOCK_IO; //Добавить в ini
+
         private IniFile iniFile;
         private const string NAMESECTIONROWS = "ROWS";
 
@@ -40,6 +43,7 @@ namespace EcoStruxureConfigurator
             OpenINI(path);
             DictionaryTypesModules = SetDefaultTypesModules();
             DictionaryTypesIO = SetDefaultTypesIO();
+            DictionaryTypesTagsModbus = SetDefaultTypesTagsModbus();
         }
 
         public ModuleInfo GetModuleInfoByType(string type)
@@ -47,9 +51,14 @@ namespace EcoStruxureConfigurator
             return DictionaryTypesModules[type];
         }
 
-        public TagIOInfo GetTagIOInfoByType(string type)
+        public TagInfoIO GetTagIOInfoByType(string type)
         {
             return DictionaryTypesIO[type];
+        }
+
+        public TagInfoModbus GetTagModbusInfoByTypeName(string type)
+        {
+            return DictionaryTypesTagsModbus[type];
         }
 
         private void OpenINI(string path)
@@ -132,38 +141,46 @@ namespace EcoStruxureConfigurator
         private Dictionary<string, ModuleInfo> SetDefaultTypesModules()
         {
             return new Dictionary<string, ModuleInfo>() { { "AO-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.REAL)},
-                                                      { "AO-V-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.REAL) },
-                                                      { "DI-16", new ModuleInfo("io.DI16", 16, 0, ModuleInfo.TypeChannels.BOOL, ModuleInfo.TypeChannels.NONE) },
-                                                      { "DO-FA-12", new ModuleInfo("io.DOFA12", 0, 12, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.BOOL) },
-                                                      { "DO-FC-8", new ModuleInfo("io.DOFC8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.BOOL) },
-                                                      { "RTD-DI-16", new ModuleInfo("io.RTDDI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
-                                                      { "UI-8.AO-4", new ModuleInfo("io.UI8AO4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.REAL) },
-                                                      { "UI-8.AO-V-4", new ModuleInfo("io.UI8AO4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.REAL) },
-                                                      { "UI-8.DO-FC-4", new ModuleInfo("io.UI8DOFC4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.BOOL) },
-                                                      { "UI-16", new ModuleInfo("io.UI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
+                                                          { "AO-V-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.REAL) },
+                                                          { "DI-16", new ModuleInfo("io.DI16", 16, 0, ModuleInfo.TypeChannels.BOOL, ModuleInfo.TypeChannels.NONE) },
+                                                          { "DO-FA-12", new ModuleInfo("io.DOFA12", 0, 12, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.BOOL) },
+                                                          { "DO-FC-8", new ModuleInfo("io.DOFC8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.BOOL) },
+                                                          { "RTD-DI-16", new ModuleInfo("io.RTDDI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
+                                                          { "UI-8.AO-4", new ModuleInfo("io.UI8AO4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.REAL) },
+                                                          { "UI-8.AO-V-4", new ModuleInfo("io.UI8AO4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.REAL) },
+                                                          { "UI-8.DO-FC-4", new ModuleInfo("io.UI8DOFC4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.BOOL) },
+                                                          { "UI-16", new ModuleInfo("io.UI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
                                                     };
         }
 
-        private Dictionary<string, TagIOInfo> SetDefaultTypesIO()
+        private Dictionary<string, TagInfoIO> SetDefaultTypesIO()
         {
-            return new Dictionary<string, TagIOInfo>() {  { "Вход цифровой", new TagIOInfo("io.point.DigitalInput") },
-                                                        { "Вход счётчик", new TagIOInfo("io.point.CounterInput") },
-                                                        { "Вход напряжения", new TagIOInfo("io.point.VoltageInput" )},
-                                                        { "Вход токовый", new TagIOInfo("io.point.CurrentInput") },
-                                                        { "Вход контролируемый", new TagIOInfo("io.point.SupervisedInput") },
-                                                        { "Вход резистивный", new TagIOInfo("io.point.ResistiveInput") },
-                                                        { "Вход температурный", new TagIOInfo("io.point.TemperatureInput") },
-                                                        { "Вход 2-проводной R", new TagIOInfo("io.point.2WireRTDResistiveInput") },
-                                                        { "Вход 2-проводной TE", new TagIOInfo("io.point.2WireRTDTemperatureInput") },
-                                                        { "Вход 3-проводной R", new TagIOInfo("io.point.3WireRTDResistiveInput") },
-                                                        { "Вход 3-проводной TE", new TagIOInfo("io.point.3WireRTDTemperatureInput" )},
-                                                        { "Выход цифровой", new TagIOInfo("io.point.DigitalOutput" )},
-                                                        { "Выход импульс", new TagIOInfo("io.point.DigitalPulsedOutput" )},
-                                                        { "Выход напряжения", new TagIOInfo("io.point.VoltageOutput" )},
-                                                        { "Выход токовый", new TagIOInfo("io.point.CurrentOutput" )},
-                                                        { "Выход 3 состояния", new TagIOInfo("io.point.TristateOutput" )},
-                                                        { "Выход импульс 3 состояний", new TagIOInfo("io.point.TristatePulsedOutput" )},
+            return new Dictionary<string, TagInfoIO>() {    { "Вход цифровой", new TagInfoIO("BOOL", "io.point.DigitalInput", TagInfoBase.BinaryAnalog.Binary) },
+                                                            { "Вход счётчик", new TagInfoIO("INT", "io.point.CounterInput", TagInfoBase.BinaryAnalog.Analog) },
+                                                            { "Вход напряжения", new TagInfoIO("REAL", "io.point.VoltageInput", TagInfoBase.BinaryAnalog.Analog )},
+                                                            { "Вход токовый", new TagInfoIO("REAL", "io.point.CurrentInput", TagInfoBase.BinaryAnalog.Analog) },
+                                                            { "Вход контролируемый", new TagInfoIO("REAL", "io.point.SupervisedInput", TagInfoBase.BinaryAnalog.Analog) },
+                                                            { "Вход резистивный", new TagInfoIO("REAL", "io.point.ResistiveInput", TagInfoBase.BinaryAnalog.Analog) },
+                                                            { "Вход температурный", new TagInfoIO("REAL", "io.point.TemperatureInput", TagInfoBase.BinaryAnalog.Analog) },
+                                                            { "Вход 2-проводной R", new TagInfoIO("REAL", "io.point.2WireRTDResistiveInput", TagInfoBase.BinaryAnalog.Analog) },
+                                                            { "Вход 2-проводной TE", new TagInfoIO("REAL", "io.point.2WireRTDTemperatureInput", TagInfoBase.BinaryAnalog.Analog) },
+                                                            { "Вход 3-проводной R", new TagInfoIO("REAL", "io.point.3WireRTDResistiveInput", TagInfoBase.BinaryAnalog.Analog) },
+                                                            { "Вход 3-проводной TE", new TagInfoIO("REAL", "io.point.3WireRTDTemperatureInput", TagInfoBase.BinaryAnalog.Analog )},
+                                                            { "Выход цифровой", new TagInfoIO("BOOL", "io.point.DigitalOutput", TagInfoBase.BinaryAnalog.Binary )},
+                                                            { "Выход импульс", new TagInfoIO("INT", "io.point.DigitalPulsedOutput", TagInfoBase.BinaryAnalog.Analog )},
+                                                            { "Выход напряжения", new TagInfoIO("REAL", "io.point.VoltageOutput", TagInfoBase.BinaryAnalog.Analog )},
+                                                            { "Выход токовый", new TagInfoIO("REAL", "io.point.CurrentOutput", TagInfoBase.BinaryAnalog.Analog )},
+                                                            { "Выход 3 состояния", new TagInfoIO("INT", "io.point.TristateOutput", TagInfoBase.BinaryAnalog.Analog )},
+                                                            { "Выход импульс 3 состояний", new TagInfoIO("INT", "io.point.TristatePulsedOutput", TagInfoBase.BinaryAnalog.Analog )},
                                                     };
+        }
+
+        private Dictionary<string, TagInfoModbus> SetDefaultTypesTagsModbus()
+        {
+            return new Dictionary<string, TagInfoModbus>() {    { "BOOL", new TagInfoModbus("BOOL", 1,  "modbus.point.BinaryValue", 1, TagInfoBase.BinaryAnalog.Binary) },
+                                                                { "INT", new TagInfoModbus("INT", 1, "modbus.point.AnalogValue", 1, TagInfoBase.BinaryAnalog.Analog) },
+                                                                { "REAL", new TagInfoModbus("REAL", 2, "modbus.point.AnalogValue", 7, TagInfoBase.BinaryAnalog.Analog )}
+                                                            };
         }
 
         private void SetDefaultRows()
@@ -181,6 +198,7 @@ namespace EcoStruxureConfigurator
             ROW_IO_NAME = 7;
             ROW_IO_DESCR = 8;
             ROW_IO_SYSTEM = 9;
+            MODBUS_ADDR_BLOCK_IO = 0;
         }
 
     }

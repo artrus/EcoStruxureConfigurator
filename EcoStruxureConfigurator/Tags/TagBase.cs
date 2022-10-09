@@ -1,4 +1,4 @@
-﻿using EcoStruxureConfigurator.Tags;
+﻿using EcoStruxureConfigurator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +11,24 @@ namespace EcoStruxureConfigurator
     {
         public readonly string Name;
         public readonly string Description;
-        
+        public readonly string System;
 
-        public TagBase(string name, string description)
+        public TagBase(string name, string description, string system)
         {
-            Name = name;
-            Description = description;
+            if (name == null)
+                Name = string.Empty;
+            else
+                Name = name;
+
+            if (description == null)
+                Description = string.Empty;
+            else
+                Description = description;
+
+            if (system == null)
+                System = string.Empty;
+            else
+                System = system;
         }
     }
 }

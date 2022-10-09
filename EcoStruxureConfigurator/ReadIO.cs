@@ -53,7 +53,7 @@ namespace EcoStruxureConfigurator
                 string name = worksheet.Cells[i, settings.ROW_IO_NAME].Value?.ToString();
                 string descr = worksheet.Cells[i, settings.ROW_IO_DESCR].Value?.ToString();
                 string channel = worksheet.Cells[i, settings.ROW_IO_CHANNEL].Value?.ToString();
-                //string system = worksheet.Cells[i, settings.ROW_IO_SYSTEM].Value?.ToString();
+                string system = worksheet.Cells[i, settings.ROW_IO_SYSTEM].Value?.ToString();
 
                 try
                 {
@@ -69,7 +69,7 @@ namespace EcoStruxureConfigurator
                     module = new Module(id, moduleName, moduleType, settings.GetModuleInfoByType(moduleType));
                 }
                 string tagType = worksheet.Cells[i, settings.ROW_IO_TYPE_IO].Value?.ToString();
-                tags.Add(new TagIO(name, descr, module, Int32.Parse(channel), settings.GetTagIOInfoByType(tagType)));
+                tags.Add(new TagIO(name, descr, system, module, Int32.Parse(channel), settings.GetTagIOInfoByType(tagType)));
             }
             return tags;
         }

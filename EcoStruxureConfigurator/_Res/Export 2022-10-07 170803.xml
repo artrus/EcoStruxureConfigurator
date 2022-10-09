@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ObjectSet ExportMode="Special" Note="TypesFirst" Version="3.2.3.59">
+  <MetaInformation>
+    <ExportMode Value="Special"/>
+    <RuntimeVersion Value="3.2.3.59"/>
+    <SourceVersion Value="3.2.3.59"/>
+    <ServerFullPath Value="/1ШАУОВ1"/>
+  </MetaInformation>
+<ExportedObjects>
+  <OI NAME="Интерфейс Modbus" TYPE="modbus.network.SlaveDevice">
+    <OI NAME="16 бит без знака" TYPE="modbus.point.AnalogValue">
+      <PI Name="RegisterNumber" Value="1"/>
+    </OI>
+    <OI NAME="32 реальное" TYPE="modbus.point.AnalogValue">
+      <PI Name="RegisterNumber" Value="5"/>
+      <PI Name="RegisterType" Value="7"/>
+    </OI>
+    <OI NAME="Значение множественных состояний Modbus" TYPE="modbus.point.IntegerValue">
+      <PI Name="RegisterNumber" Value="7"/>
+    </OI>
+    <OI NAME="Значение множественных состояний Modbus_2" TYPE="modbus.point.IntegerValue">
+      <PI Name="RegisterNumber" Value="9"/>
+      <PI Name="RegisterType" Value="3"/>
+    </OI>
+    <OI NAME="Цифровое значение Modbus" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="11"/>
+    </OI>
+    <OI NAME="Цифровое значение Modbus_2" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="13"/>
+    </OI>
+    <OI NAME="Цифровое значение Modbus_3" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="15"/>
+    </OI>
+    <OI NAME="32 бит без знака" TYPE="modbus.point.AnalogValue">
+      <PI Name="RegisterNumber" Value="3"/>
+      <PI Name="RegisterType" Value="3"/>
+    </OI>
+  </OI>
+</ExportedObjects>
+
+</ObjectSet>

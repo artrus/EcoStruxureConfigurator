@@ -9,7 +9,7 @@ namespace EcoStruxureConfigurator
 {
     public partial class FormMain : Form
     {
-        private Settings settings;
+        private Settings Settings;
         ILogger logger;
         private string pathIOFile;
 
@@ -36,9 +36,7 @@ namespace EcoStruxureConfigurator
                 Text = pathIOFile;
             }
             else
-            {
                 Text = "";
-            }
         }
 
         private void CreateMenu()
@@ -138,7 +136,7 @@ namespace EcoStruxureConfigurator
             try
             {
                 settings.ReadSetting(@"config.ini");
-                this.settings = settings;
+                this.Settings = settings;
             }
             catch
             {
@@ -155,7 +153,7 @@ namespace EcoStruxureConfigurator
         {
             logger.Clear();
             logger.WriteLine("Начинается чтение файла IO");
-            ReadIO readerIO = new ReadIO(settings);
+            ReadIO readerIO = new ReadIO(Settings);
             tagsIO = readerIO.OpenIO(pathIOFile);
             if (tagsIO.Count != 0)
             {
@@ -177,8 +175,22 @@ namespace EcoStruxureConfigurator
             string dir = Path.GetDirectoryName(pathIOFile);
             string fileName = Path.GetFileNameWithoutExtension(pathIOFile);
 
-            XML_generator generator = new XML_generator(settings);
+            XML_generator generator = new XML_generator(Settings);
             generator.CreateIO(dir + @"\" + fileName + @"---IO.xml", tagsIO, modules);
+        }
+
+        private void BtnGenIO_MB_Click(object sender, EventArgs e)
+        {
+            string dir = Path.GetDirectoryName(pathIOFile);
+            string fileName = Path.GetFileNameWithoutExtension(pathIOFile);
+
+            var tagsModbus = ParserTags.GetTagsIOModbus(tagsIO, Settings);
+
+            foreach (var tag in tagsModbus)
+                logger.WriteLine(tag.Name + " " + tag.Description + " " + tag.Register + " " + tag.TagInfo.TypeName);
+
+            XML_generator generator = new XML_generator(Settings);
+            generator.CreateIO(dir + @"\" + fileName + @"---ModbusIO.xml", tagsIO, modules);
         }
     }
 }

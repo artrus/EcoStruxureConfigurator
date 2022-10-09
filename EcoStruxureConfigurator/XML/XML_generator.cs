@@ -53,150 +53,152 @@ namespace EcoStruxureConfigurator.XML
             FinishXML(xml, filename);
         }
 
-        /* public void CreateMBIO(string filename, List<TagMB> tagsMB)
-         {
-             ObjectSet xml = new ObjectSet();
-             CreateHeader(xml);
-             List<OI> exportedObjects = new List<OI>();
-             xml.ExportedObjects = exportedObjects;
-             exportedObjects.Add(new OI("IO", "modbus.folder.SlaveFolder"));
-             List<OI> foldersInIO = new List<OI>();
-             foldersInIO.Add(new OI("Binary", "modbus.folder.SlaveFolder"));
-             foldersInIO.Add(new OI("Analog", "modbus.folder.SlaveFolder"));
-             exportedObjects[0].OIList = foldersInIO;
 
-             List<OI> regsIOBinary = new List<OI>();
-             List<OI> regsIOAnalog = new List<OI>();
-             foldersInIO[0].OIList = regsIOBinary;
-             foldersInIO[1].OIList = regsIOAnalog;
+        /*public void CreateModbusIO(string filename, List<TagMB> tagsMB)
+        {
+            ObjectSet xml = new ObjectSet();
+            CreateHeader(xml);
+            List<OI> exportedObjects = new List<OI>();
+            xml.ExportedObjects = exportedObjects;
+            exportedObjects.Add(new OI("IO", "modbus.folder.SlaveFolder"));
+            List<OI> foldersInIO = new List<OI>();
+            foldersInIO.Add(new OI("Binary", "modbus.folder.SlaveFolder"));
+            foldersInIO.Add(new OI("Analog", "modbus.folder.SlaveFolder"));
+            exportedObjects[0].OIList = foldersInIO;
 
-             {
-                 PI ContentType = new PI("ContentType");
-                 Reference reference = new Reference("~/System/Content Types/Modbus Regs", "0", "1", "0", "10");
-                 ContentType.reference = reference;
-                 foldersInIO[0].PIList = new List<PI>();
-                 foldersInIO[1].PIList = new List<PI>();
-                 foldersInIO[0].PIList.Add(ContentType);
-                 foldersInIO[1].PIList.Add(ContentType);
-             }
-             foreach (TagMB tagMB in tagsMB)
-             {
-                 if (tagMB.RegisterType == TagMB.REGTYPE.DEFAULT)
-                 {
-                     if (tagMB.IsReserve)
-                     {
-                         regsIOBinary.Add(new OI(tagMB.Name, tagMB.Type, tagMB.Descr));
-                         PI registerNumber = new PI("RegisterNumber", Convert.ToString(tagMB.RegisterNumber));
-                         List<PI> PIlist = new List<PI>();
-                         PIlist.Add(registerNumber);
-                         regsIOBinary[regsIOBinary.Count - 1].PIList = PIlist;
-                     }
-                     else
-                     {
-                         regsIOBinary.Add(new OI(tagMB.Name, tagMB.Type, tagMB.Descr));
-                         PI registerNumber = new PI("RegisterNumber", Convert.ToString(tagMB.RegisterNumber));
-                         PI value = new PI("Value");
-                         string obj = "../../../../../IO Bus/" + tagMB.Source + "/" + tagMB.Name;
-                         string property;
-                         if (tagMB.Dir == TagBase.DIR.In)
-                         {
-                             property = "Value";
-                         }
-                         else if (tagMB.Dir == TagBase.DIR.Out)
-                         {
-                             property = "RequestedValue";
-                         }
-                         else
-                         {
-                             property = "Value";
-                         }
-                         Reference reference = new Reference(obj, "0", locked: null, "0", "10", property);
-                         value.reference = reference;
-                         List<PI> PIlist = new List<PI>();
-                         PIlist.Add(registerNumber);
-                         PIlist.Add(value);
-                         regsIOBinary[regsIOBinary.Count - 1].PIList = PIlist;
-                     }
-                 }
-                 else
-                 {
-                     if (tagMB.IsReserve)
-                     {
-                         regsIOAnalog.Add(new OI(tagMB.Name, tagMB.Type, tagMB.Descr));
-                         PI registerNumber = new PI("RegisterNumber", Convert.ToString(tagMB.RegisterNumber));
-                         List<PI> PIlist = new List<PI>();
-                         PIlist.Add(registerNumber);
-                         regsIOAnalog[regsIOAnalog.Count - 1].PIList = PIlist;
-                     }
-                     else
-                     {
-                         regsIOAnalog.Add(new OI(tagMB.Name, tagMB.Type, tagMB.Descr));
-                         PI registerNumber = new PI("RegisterNumber", Convert.ToString(tagMB.RegisterNumber));
-                         PI value = new PI("Value");
-                         string obj = "../../../../../IO Bus/" + tagMB.Source + "/" + tagMB.Name;
-                         string property;
-                         if (tagMB.Dir == TagBase.DIR.In)
-                         {
-                             property = "Value";
-                         }
-                         else if (tagMB.Dir == TagBase.DIR.Out)
-                         {
-                             property = "RequestedValue";
-                         }
-                         else
-                         {
-                             property = "Value";
-                         }
-                         Reference reference = new Reference(obj, "0", locked: null, "0", "10", property);
-                         value.reference = reference;
-                         List<PI> PIlist = new List<PI>();
-                         PIlist.Add(registerNumber);
-                         PIlist.Add(value);
-                         regsIOAnalog[regsIOAnalog.Count - 1].PIList = PIlist;
-                     }
-                 }
-             }
-             FinishXML(xml, filename);
-         }
+            List<OI> regsIOBinary = new List<OI>();
+            List<OI> regsIOAnalog = new List<OI>();
+            foldersInIO[0].OIList = regsIOBinary;
+            foldersInIO[1].OIList = regsIOAnalog;
 
-         public void CreateConvertors(string filename, TagList tags)
-         {
-             ObjectSet xml = new ObjectSet();
-             CreateHeader(xml);
-             List<OI> exportedObjects = new List<OI>();
-             xml.ExportedObjects = exportedObjects;
-             exportedObjects.Add(new OI("Convertors", "system.base.Folder"));
-             List<OI> foldersInConvertors = new List<OI>();
-             exportedObjects[0].OIList = foldersInConvertors;
-             int cnt = 0;
-             foreach (TagIO tag in tags.TagsIO)
-             {
-                 if (tag.Descr.Contains("PT1000") || tag.Descr.Contains("pt1000") || tag.Descr.Contains("Pt1000"))
-                 {
-                     foldersInConvertors.Add(new OI("PT1000 " + tag.Name, "system.base.Folder"));
+            {
+                PI ContentType = new PI("ContentType");
+                Reference reference = new Reference("~/System/Content Types/Modbus Regs", "0", "1", "0", "10");
+                ContentType.reference = reference;
+                foldersInIO[0].PIList = new List<PI>();
+                foldersInIO[1].PIList = new List<PI>();
+                foldersInIO[0].PIList.Add(ContentType);
+                foldersInIO[1].PIList.Add(ContentType);
+            }
+            foreach (TagMB tagMB in tagsMB)
+            {
+                if (tagMB.RegisterType == TagMB.REGTYPE.DEFAULT)
+                {
+                    if (tagMB.IsReserve)
+                    {
+                        regsIOBinary.Add(new OI(tagMB.Name, tagMB.Type, tagMB.Descr));
+                        PI registerNumber = new PI("RegisterNumber", Convert.ToString(tagMB.RegisterNumber));
+                        List<PI> PIlist = new List<PI>();
+                        PIlist.Add(registerNumber);
+                        regsIOBinary[regsIOBinary.Count - 1].PIList = PIlist;
+                    }
+                    else
+                    {
+                        regsIOBinary.Add(new OI(tagMB.Name, tagMB.Type, tagMB.Descr));
+                        PI registerNumber = new PI("RegisterNumber", Convert.ToString(tagMB.RegisterNumber));
+                        PI value = new PI("Value");
+                        string obj = "../../../../../IO Bus/" + tagMB.Source + "/" + tagMB.Name;
+                        string property;
+                        if (tagMB.Dir == TagBase.DIR.In)
+                        {
+                            property = "Value";
+                        }
+                        else if (tagMB.Dir == TagBase.DIR.Out)
+                        {
+                            property = "RequestedValue";
+                        }
+                        else
+                        {
+                            property = "Value";
+                        }
+                        Reference reference = new Reference(obj, "0", locked: null, "0", "10", property);
+                        value.reference = reference;
+                        List<PI> PIlist = new List<PI>();
+                        PIlist.Add(registerNumber);
+                        PIlist.Add(value);
+                        regsIOBinary[regsIOBinary.Count - 1].PIList = PIlist;
+                    }
+                }
+                else
+                {
+                    if (tagMB.IsReserve)
+                    {
+                        regsIOAnalog.Add(new OI(tagMB.Name, tagMB.Type, tagMB.Descr));
+                        PI registerNumber = new PI("RegisterNumber", Convert.ToString(tagMB.RegisterNumber));
+                        List<PI> PIlist = new List<PI>();
+                        PIlist.Add(registerNumber);
+                        regsIOAnalog[regsIOAnalog.Count - 1].PIList = PIlist;
+                    }
+                    else
+                    {
+                        regsIOAnalog.Add(new OI(tagMB.Name, tagMB.Type, tagMB.Descr));
+                        PI registerNumber = new PI("RegisterNumber", Convert.ToString(tagMB.RegisterNumber));
+                        PI value = new PI("Value");
+                        string obj = "../../../../../IO Bus/" + tagMB.Source + "/" + tagMB.Name;
+                        string property;
+                        if (tagMB.Dir == TagBase.DIR.In)
+                        {
+                            property = "Value";
+                        }
+                        else if (tagMB.Dir == TagBase.DIR.Out)
+                        {
+                            property = "RequestedValue";
+                        }
+                        else
+                        {
+                            property = "Value";
+                        }
+                        Reference reference = new Reference(obj, "0", locked: null, "0", "10", property);
+                        value.reference = reference;
+                        List<PI> PIlist = new List<PI>();
+                        PIlist.Add(registerNumber);
+                        PIlist.Add(value);
+                        regsIOAnalog[regsIOAnalog.Count - 1].PIList = PIlist;
+                    }
+                }
+            }
+            FinishXML(xml, filename);
+        }*/
 
-                     List<OI> foldersInOut = new List<OI>();
-                     foldersInOut.Add(new OI("InOut", "system.base.Folder"));
 
-                     foldersInConvertors[foldersInConvertors.Count - 1].OIList = foldersInOut; ;
-                     List<OI> InOut = new List<OI>();
-                     foldersInOut[foldersInOut.Count - 1].OIList = InOut;
-                     InOut.Add(new OI("In", "server.point.AV", "Вход"));
-                     Reference reference = new Reference("../../../../IO Bus/" + tag.Module.Name + "/" + tag.Name, deltaFilter: "0", locked: null, retransmit: "0", transferRate: "10", property: "Value");
-                     PI pi = new PI("Value");
-                     pi.reference = reference;
-                     List<PI> piList = new List<PI>();
-                     piList.Add(pi);
-                     InOut[InOut.Count - 1].PIList = piList;
-                     InOut.Add(new OI("Out", "server.point.AV", "Выход"));
-                     cnt++;
-                 }
-             }
+        /*public void CreateConvertors(string filename, TagList tags)
+        {
+            ObjectSet xml = new ObjectSet();
+            CreateHeader(xml);
+            List<OI> exportedObjects = new List<OI>();
+            xml.ExportedObjects = exportedObjects;
+            exportedObjects.Add(new OI("Convertors", "system.base.Folder"));
+            List<OI> foldersInConvertors = new List<OI>();
+            exportedObjects[0].OIList = foldersInConvertors;
+            int cnt = 0;
+            foreach (TagIO tag in tags.TagsIO)
+            {
+                if (tag.Descr.Contains("PT1000") || tag.Descr.Contains("pt1000") || tag.Descr.Contains("Pt1000"))
+                {
+                    foldersInConvertors.Add(new OI("PT1000 " + tag.Name, "system.base.Folder"));
 
-             FinishXML(xml, filename);
+                    List<OI> foldersInOut = new List<OI>();
+                    foldersInOut.Add(new OI("InOut", "system.base.Folder"));
 
-         }
- */
+                    foldersInConvertors[foldersInConvertors.Count - 1].OIList = foldersInOut; ;
+                    List<OI> InOut = new List<OI>();
+                    foldersInOut[foldersInOut.Count - 1].OIList = InOut;
+                    InOut.Add(new OI("In", "server.point.AV", "Вход"));
+                    Reference reference = new Reference("../../../../IO Bus/" + tag.Module.Name + "/" + tag.Name, deltaFilter: "0", locked: null, retransmit: "0", transferRate: "10", property: "Value");
+                    PI pi = new PI("Value");
+                    pi.reference = reference;
+                    List<PI> piList = new List<PI>();
+                    piList.Add(pi);
+                    InOut[InOut.Count - 1].PIList = piList;
+                    InOut.Add(new OI("Out", "server.point.AV", "Выход"));
+                    cnt++;
+                }
+            }
+
+            FinishXML(xml, filename);
+
+        }
+*/
 
 
         private void CreateHeader(ObjectSet xml)

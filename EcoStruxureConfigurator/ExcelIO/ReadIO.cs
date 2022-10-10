@@ -48,7 +48,7 @@ namespace EcoStruxureConfigurator
             string moduleName;
             string moduleType;
             Module module = null; ;
-            for (int i = 2; i < rowCount; i++)
+            for (int i = 2; i <= rowCount; i++)
             {
                 string name = worksheet.Cells[i, settings.ROW_IO_NAME].Value?.ToString();
                 string descr = worksheet.Cells[i, settings.ROW_IO_DESCR].Value?.ToString();

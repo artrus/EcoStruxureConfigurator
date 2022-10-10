@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ObjectSet ExportMode="Special" Note="TypesFirst" Version="3.2.3.59">
+  <MetaInformation>
+    <ExportMode Value="Special"/>
+    <RuntimeVersion Value="3.2.3.59"/>
+    <SourceVersion Value="3.2.3.59"/>
+    <ServerFullPath Value="/1ШАУОВ1"/>
+  </MetaInformation>
+<ExportedObjects>
+  <OI NAME="Binary" TYPE="modbus.folder.SlaveFolder">
+    <PI Name="ContentType">
+      <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10"/>
+    </PI>
+    <OI NAME="Контроль электропитания Ввод 1 (фазность)" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="0"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Контроль электропитания Ввод 2 (фазность)" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="1"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Сигнал Пожар" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="2"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Автоматический режим работы вентилятора В-1.8Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="3"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Контроль пускателя вентилятора В-1.8Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="4"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Перепад давления на вентиляторе В-1.8Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="5"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Автоматический режим работы вентилятора ВТ-1.6С" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="6"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Контроль пускателя вентилятора ВТ-1.6С" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="7"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Перепад давления на вентиляторе ВТ-1.6С" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="8"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв UI-16 A5:10" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="9"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв UI-16 A5:11" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="10"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв UI-16 A5:12" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="11"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв UI-16 A5:13" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="12"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв UI-16 A5:14" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="13"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв UI-16 A5:15" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="14"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв UI-16 A5:16" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="15"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Автоматический режим работы вентилятора ВТ-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="16"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Контроль пускателя вентилятора ВТ-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="17"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Перепад давления на вентиляторе ВТ-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="18"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Автоматический режим работы вентилятора ВТ-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="19"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Контроль пускателя вентилятора ВТ-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="20"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Перепад давления на вентиляторе ВТ-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="21"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Автоматический режим работы вентилятора В-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="22"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Контроль пускателя вентилятора В-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="23"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Перепад давления на фильтре В-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="24"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Перепад давления на вентиляторе В-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="25"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Автоматический режим работы вентилятора В-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="26"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Контроль пускателя вентилятора В-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="27"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Перепад давления на фильтре В-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="28"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Перепад давления на вентиляторе В-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="29"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв DI-16 A6:15" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="30"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв DI-16 A6:16" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="31"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Управление вентиляторов ВТ-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="32"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Управление вентиляторов ВТ-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="33"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Управление вентиляторов В-1.4Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="34"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Управление вентиляторов В-1.5Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="35"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Управление вентиляторов В-1.8Е" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="36"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Управление вентиляторов ВТ-1.6С" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="37"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв DO-FA-12 A7:7" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="38"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв DO-FA-12 A7:8" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="39"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв DO-FA-12 A7:9" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="40"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв DO-FA-12 A7:10" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="41"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв DO-FA-12 A7:11" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="42"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Лампа общей аварии" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="43"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А8 канал 1" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="44"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А8 канал 2" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="45"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:3" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="46"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:4" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="47"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А8 канал 5" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="48"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А8 канал 6" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="49"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:7" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="50"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:8" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="51"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:9" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="52"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:10" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="53"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А8 канал 11" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="54"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А8 канал 12" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="55"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:13" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="56"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:14" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="57"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:15" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="58"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A8:16" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="59"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:1" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="60"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:2" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="61"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:3" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="62"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:4" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="63"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:5" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="64"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:6" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="65"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:7" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="66"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:8" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="67"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:9" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="68"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:10" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="69"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:11" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="70"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:12" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="71"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:13" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="72"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:14" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="73"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:15" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="74"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-16 A9:16" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="75"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А10 входной канал 1" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="76"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А10 входной канал 2" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="77"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А10 входной канал 3" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="78"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А10 входной канал 4" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="79"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А10 входной канал 5" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="80"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А10 входной канал 6" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="81"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А10 входной канал 7" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="82"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А10 входной канал 8" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="83"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-8.DO-FC-4 A11:1" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="84"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-8.DO-FC-4 A11:2" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="85"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-8.DO-FC-4 A11:3" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="86"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-8.DO-FC-4 A11:4" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="87"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-8.DO-FC-4 A11:5" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="88"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-8.DO-FC-4 A11:6" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="89"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-8.DO-FC-4 A11:7" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="90"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Резерв вход UI-8.DO-FC-4 A11:8" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="91"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А11 выходной канал 1" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="92"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А11 выходной канал 2" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="93"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А11 выходной канал 3" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="94"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+    <OI NAME="Модуль А11 выходной канал 4" TYPE="modbus.point.BinaryValue">
+      <PI Name="RegisterNumber" Value="95"/>
+      <PI Name="RegisterType" Value="1"/>
+    </OI>
+  </OI>
+</ExportedObjects>
+
+</ObjectSet>

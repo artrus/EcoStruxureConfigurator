@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ObjectSet ExportMode="Special" Note="TypesFirst" Version="3.2.3.59">
+  <MetaInformation>
+    <ExportMode Value="Special"/>
+    <RuntimeVersion Value="3.2.3.59"/>
+    <SourceVersion Value="3.2.3.59"/>
+    <ServerFullPath Value="/1ШАУОВ1"/>
+  </MetaInformation>
+<ExportedObjects>
+  <OI NAME="Управление производительностью вентилятора ВТ-1.4Е" TYPE="modbus.point.AnalogValue">
+    <PI Name="RegisterNumber" Value="0"/>
+    <PI Name="RegisterType" Value="7"/>
+  </OI>
+</ExportedObjects>
+
+</ObjectSet>

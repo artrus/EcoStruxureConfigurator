@@ -10,11 +10,12 @@ namespace EcoStruxureConfigurator
     public partial class FormMain : Form
     {
         private Settings Settings;
-        ILogger logger;
-        private string pathIOFile;
+        ILogger Logger;
+        private string PathIOFile;
 
-        private List<TagIO> tagsIO;
-        private List<Module> modules;        
+        private List<TagIO> TagsIO;
+        private List<TagModbus> TagsModbus;
+        private List<Module> Modules;        
 
         public FormMain()
         {
@@ -26,14 +27,14 @@ namespace EcoStruxureConfigurator
         {
             CreateMenu();
             CreateStatusBar();
-            logger = new LoggerToRichBox(log);
+            Logger = new LoggerToRichBox(log);
 
-            pathIOFile = ReadLastFileIO();
-            FileInfo fileInfo = new FileInfo(pathIOFile);
+            PathIOFile = ReadLastFileIO();
+            FileInfo fileInfo = new FileInfo(PathIOFile);
             if (fileInfo.Exists)
             {
                 ReadExcelIO();
-                Text = pathIOFile;
+                Text = PathIOFile;
             }
             else
                 Text = "";
@@ -78,9 +79,9 @@ namespace EcoStruxureConfigurator
                 DialogResult dialogResult = openExcelFileDialog.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    pathIOFile = openExcelFileDialog.FileName;
-                    Text = pathIOFile;
-                    Properties.Settings.Default.LastFileIO = pathIOFile;
+                    PathIOFile = openExcelFileDialog.FileName;
+                    Text = PathIOFile;
+                    Properties.Settings.Default.LastFileIO = PathIOFile;
                     Properties.Settings.Default.Save();
 
                     ReadExcelIO();
@@ -151,46 +152,48 @@ namespace EcoStruxureConfigurator
 
         private void ReadExcelIO ()
         {
-            logger.Clear();
-            logger.WriteLine("Начинается чтение файла IO");
+            Logger.Clear();
+            Logger.WriteLine("Начинается чтение файла IO");
             ReadIO readerIO = new ReadIO(Settings);
-            tagsIO = readerIO.OpenIO(pathIOFile);
-            if (tagsIO.Count != 0)
+            TagsIO = readerIO.OpenIO(PathIOFile);
+            TagsModbus = ParserTags.GetTagsIOModbus(TagsIO, Settings);
+            
+            if (TagsIO.Count != 0)
             {
-                logger.WriteLine("Файл с IO прочитан успешно! Найдено тэгов: " + tagsIO.Count);
+                Logger.WriteLine("Файл с IO прочитан успешно! Найдено тэгов: " + TagsIO.Count);
 
-                modules = ParserTags.GetModules(tagsIO);
+                Modules = ParserTags.GetModules(TagsIO);
 
-                logger.WriteLine("Найдено модулей: " + modules.Count);
+                Logger.WriteLine("Найдено модулей: " + Modules.Count);
 
-                foreach (var module in modules)
+                foreach (var module in Modules)
                 {
-                    logger.WriteLine("ID=" + module.ID + "   " + "Name=" + module.Name + "   " + "Type=" + module.Type);
+                    Logger.WriteLine("ID=" + module.ID + "   " + "Name=" + module.Name + "   " + "Type=" + module.Type);
                 }
             }
         }
 
         private void BtnGenIO_Click(object sender, EventArgs e)
         {
-            string dir = Path.GetDirectoryName(pathIOFile);
-            string fileName = Path.GetFileNameWithoutExtension(pathIOFile);
+            string dir = Path.GetDirectoryName(PathIOFile);
+            string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
 
             XML_generator generator = new XML_generator(Settings);
-            generator.CreateIO(dir + @"\" + fileName + @"---IO.xml", tagsIO, modules);
+            generator.CreateIO(dir + @"\" + fileName + @"---IO.xml", TagsIO, Modules);
         }
 
-        private void BtnGenIO_MB_Click(object sender, EventArgs e)
+        private void BtnGenModbus_Click(object sender, EventArgs e)
         {
-            string dir = Path.GetDirectoryName(pathIOFile);
-            string fileName = Path.GetFileNameWithoutExtension(pathIOFile);
+            string dir = Path.GetDirectoryName(PathIOFile);
+            string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
+           
+           // WriteIO.WriteExcel(Settings, dir + @"\" + fileName + @"---Modbus.xlsx", TagsModbus);
 
-            var tagsModbus = ParserTags.GetTagsIOModbus(tagsIO, Settings);
-
-            foreach (var tag in tagsModbus)
-                logger.WriteLine(tag.Name + " " + tag.Description + " " + tag.Register + " " + tag.TagInfo.TypeName);
+            /* foreach (var tag in tagsModbus)
+                 logger.WriteLine(tag.Name + " " + tag.Description + " " + tag.Register + " " + tag.TagInfo.TypeName);*/
 
             XML_generator generator = new XML_generator(Settings);
-            generator.CreateIO(dir + @"\" + fileName + @"---ModbusIO.xml", tagsIO, modules);
+            generator.CreateModbusIO(dir + @"\" + fileName + @"---ModbusIO.xml", TagsModbus);
         }
     }
 }

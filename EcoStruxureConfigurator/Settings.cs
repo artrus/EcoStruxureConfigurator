@@ -29,14 +29,27 @@ namespace EcoStruxureConfigurator
         public int ROW_IO_DESCR;
         public int ROW_IO_SYSTEM;
 
+        public int ROW_MODBUS_TYPE;
+        public int ROW_MODBUS_NAME;
+        public int ROW_MODBUS_DESCR;
+        public int ROW_MODBUS_SYSTEM;
+        public int ROW_MODBUS_ADDR;
+
         public string NAME_LIST_IO;
         public string NAME_LIST_MODULES;
+        public string NAME_LIST_MODBUS_BINARY;
+        public string NAME_LIST_MODBUS_ANALOG;
 
-        public int MODBUS_ADDR_BLOCK_IO; //Добавить в ini
+        public int MODBUS_ADDR_BLOCK_IO;
+        public int MODBUS_ADDR_BLOCK_STATUS;
+        public int MODBUS_ADDR_BLOCK_SP;
+
+        public bool MODBUS_ENABLE_LIGHT_REZERV;
 
         private IniFile iniFile;
-        private const string NAMESECTIONROWS = "ROWS";
-
+        private const string NAME_SECTION_ROWS_IO = "ROWS_IO";
+        private const string NAME_SECTION_ROWS_MODBUS = "ROWS_MODBUS";
+        private const string NAME_SECTION_GENERATOR = "GEN";
 
         public void ReadSetting(string path)
         {
@@ -101,36 +114,64 @@ namespace EcoStruxureConfigurator
 
         private void ReadParams(IniFile iniFile)
         {
-            NAME_LIST_MODULES = iniFile.ReadINI(NAMESECTIONROWS, "NAME_LIST_MODULES");
-            NAME_LIST_IO = iniFile.ReadINI(NAMESECTIONROWS, "NAME_LIST_IO");
-            ROW_MODULE_NAME = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_MODULE_NAME"));
-            ROW_MODULE_TYPE = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_MODULE_TYPE"));
-            ROW_MODULE_ID = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_MODULE_ID"));
-            ROW_IO_ID = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_ID"));
-            ROW_IO_NAME_MODULE = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_NAME_MODULE"));
-            ROW_IO_TYPE_MODULE = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_TYPE_MODULE"));
-            ROW_IO_CHANNEL = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_CHANNEL"));
-            ROW_IO_TYPE_IO = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_TYPE_IO"));
-            ROW_IO_NAME = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_NAME"));
-            ROW_IO_DESCR = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_DESCR"));
-            ROW_IO_SYSTEM = Int32.Parse(iniFile.ReadINI(NAMESECTIONROWS, "ROW_IO_SYSTEM"));
+            NAME_LIST_MODULES = iniFile.ReadINI(NAME_SECTION_ROWS_IO, "NAME_LIST_MODULES");
+            NAME_LIST_IO = iniFile.ReadINI(NAME_SECTION_ROWS_IO, "NAME_LIST_IO");
+            ROW_MODULE_NAME = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_MODULE_NAME"));
+            ROW_MODULE_TYPE = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_MODULE_TYPE"));
+            ROW_MODULE_ID = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_MODULE_ID"));
+            ROW_IO_ID = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_IO_ID"));
+            ROW_IO_NAME_MODULE = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_IO_NAME_MODULE"));
+            ROW_IO_TYPE_MODULE = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_IO_TYPE_MODULE"));
+            ROW_IO_CHANNEL = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_IO_CHANNEL"));
+            ROW_IO_TYPE_IO = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_IO_TYPE_IO"));
+            ROW_IO_NAME = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_IO_NAME"));
+            ROW_IO_DESCR = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_IO_DESCR"));
+            ROW_IO_SYSTEM = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_IO, "ROW_IO_SYSTEM"));
+
+            NAME_LIST_MODBUS_BINARY = iniFile.ReadINI(NAME_SECTION_ROWS_MODBUS, "NAME_LIST_MODBUS_BINARY");
+            NAME_LIST_MODBUS_ANALOG = iniFile.ReadINI(NAME_SECTION_ROWS_MODBUS, "NAME_LIST_MODBUS_ANALOG");
+            ROW_MODBUS_TYPE = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_TYPE"));
+            ROW_MODBUS_NAME = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_NAME"));
+            ROW_MODBUS_DESCR = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_DESCR"));
+            ROW_MODBUS_SYSTEM = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_SYSTEM"));
+            ROW_MODBUS_ADDR = Int32.Parse(iniFile.ReadINI(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_ADDR"));
+
+            MODBUS_ADDR_BLOCK_IO = Int32.Parse(iniFile.ReadINI(NAME_SECTION_GENERATOR, "MODBUS_ADDR_BLOCK_IO"));
+            MODBUS_ADDR_BLOCK_STATUS = Int32.Parse(iniFile.ReadINI(NAME_SECTION_GENERATOR, "MODBUS_ADDR_BLOCK_STATUS"));
+            MODBUS_ADDR_BLOCK_SP = Int32.Parse(iniFile.ReadINI(NAME_SECTION_GENERATOR, "MODBUS_ADDR_BLOCK_SP"));
+
+            MODBUS_ENABLE_LIGHT_REZERV = Boolean.Parse(iniFile.ReadINI(NAME_SECTION_GENERATOR, "MODBUS_ENABLE_LIGHT_REZERV"));
         }
 
         private void SaveDefault()
         {
-            iniFile.Write(NAMESECTIONROWS, "NAME_LIST_MODULES", NAME_LIST_MODULES);
-            iniFile.Write(NAMESECTIONROWS, "NAME_LIST_IO", NAME_LIST_IO);
-            iniFile.Write(NAMESECTIONROWS, "ROW_MODULE_NAME", ROW_MODULE_NAME.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_MODULE_TYPE", ROW_MODULE_TYPE.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_MODULE_ID", ROW_MODULE_ID.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_ID", ROW_IO_ID.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_NAME_MODULE", ROW_IO_NAME_MODULE.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_TYPE_MODULE", ROW_IO_TYPE_MODULE.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_CHANNEL", ROW_IO_CHANNEL.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_TYPE_IO", ROW_IO_TYPE_IO.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_NAME", ROW_IO_NAME.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_DESCR", ROW_IO_DESCR.ToString());
-            iniFile.Write(NAMESECTIONROWS, "ROW_IO_SYSTEM", ROW_IO_SYSTEM.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "NAME_LIST_MODULES", NAME_LIST_MODULES);
+            iniFile.Write(NAME_SECTION_ROWS_IO, "NAME_LIST_IO", NAME_LIST_IO);
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_MODULE_NAME", ROW_MODULE_NAME.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_MODULE_TYPE", ROW_MODULE_TYPE.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_MODULE_ID", ROW_MODULE_ID.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_IO_ID", ROW_IO_ID.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_IO_NAME_MODULE", ROW_IO_NAME_MODULE.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_IO_TYPE_MODULE", ROW_IO_TYPE_MODULE.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_IO_CHANNEL", ROW_IO_CHANNEL.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_IO_TYPE_IO", ROW_IO_TYPE_IO.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_IO_NAME", ROW_IO_NAME.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_IO_DESCR", ROW_IO_DESCR.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_IO, "ROW_IO_SYSTEM", ROW_IO_SYSTEM.ToString());
+
+            iniFile.Write(NAME_SECTION_ROWS_MODBUS, "NAME_LIST_MODBUS_BINARY", NAME_LIST_MODBUS_BINARY);
+            iniFile.Write(NAME_SECTION_ROWS_MODBUS, "NAME_LIST_MODBUS_ANALOG", NAME_LIST_MODBUS_ANALOG);
+            iniFile.Write(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_TYPE", ROW_MODBUS_TYPE.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_NAME", ROW_MODBUS_NAME.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_DESCR", ROW_MODBUS_DESCR.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_SYSTEM", ROW_MODBUS_SYSTEM.ToString());
+            iniFile.Write(NAME_SECTION_ROWS_MODBUS, "ROW_MODBUS_ADDR", ROW_MODBUS_ADDR.ToString());
+
+            iniFile.Write(NAME_SECTION_GENERATOR, "MODBUS_ADDR_BLOCK_IO", MODBUS_ADDR_BLOCK_IO.ToString());
+            iniFile.Write(NAME_SECTION_GENERATOR, "MODBUS_ADDR_BLOCK_STATUS", MODBUS_ADDR_BLOCK_STATUS.ToString());
+            iniFile.Write(NAME_SECTION_GENERATOR, "MODBUS_ADDR_BLOCK_SP", MODBUS_ADDR_BLOCK_SP.ToString());
+
+            iniFile.Write(NAME_SECTION_GENERATOR, "MODBUS_ENABLE_LIGHT_REZERV", MODBUS_ENABLE_LIGHT_REZERV.ToString());
         }
 
         private void SetDefaultConfig()
@@ -142,7 +183,7 @@ namespace EcoStruxureConfigurator
         {
             return new Dictionary<string, ModuleInfo>() { { "AO-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.REAL)},
                                                           { "AO-V-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.REAL) },
-                                                          { "DI-16", new ModuleInfo("io.DI16", 16, 0, ModuleInfo.TypeChannels.BOOL, ModuleInfo.TypeChannels.NONE) },
+                                                          { "DI-16", new ModuleInfo("io.DI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
                                                           { "DO-FA-12", new ModuleInfo("io.DOFA12", 0, 12, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.BOOL) },
                                                           { "DO-FC-8", new ModuleInfo("io.DOFC8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.BOOL) },
                                                           { "RTD-DI-16", new ModuleInfo("io.RTDDI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
@@ -177,9 +218,9 @@ namespace EcoStruxureConfigurator
 
         private Dictionary<string, TagInfoModbus> SetDefaultTypesTagsModbus()
         {
-            return new Dictionary<string, TagInfoModbus>() {    { "BOOL", new TagInfoModbus("BOOL", 1,  "modbus.point.BinaryValue", 1, TagInfoBase.BinaryAnalog.Binary) },
-                                                                { "INT", new TagInfoModbus("INT", 1, "modbus.point.AnalogValue", 1, TagInfoBase.BinaryAnalog.Analog) },
-                                                                { "REAL", new TagInfoModbus("REAL", 2, "modbus.point.AnalogValue", 7, TagInfoBase.BinaryAnalog.Analog )}
+            return new Dictionary<string, TagInfoModbus>() {    { "BOOL", new TagInfoModbus("BOOL", 1,  "modbus.point.BinaryValue", TagInfoModbus.RegType.DEFAULT, TagInfoBase.BinaryAnalog.Binary) },
+                                                                { "INT", new TagInfoModbus("INT", 1, "modbus.point.AnalogValue", TagInfoModbus.RegType.DEFAULT, TagInfoBase.BinaryAnalog.Analog) },
+                                                                { "REAL", new TagInfoModbus("REAL", 2, "modbus.point.AnalogValue", TagInfoModbus.RegType.REAL, TagInfoBase.BinaryAnalog.Analog )}
                                                             };
         }
 
@@ -198,8 +239,21 @@ namespace EcoStruxureConfigurator
             ROW_IO_NAME = 7;
             ROW_IO_DESCR = 8;
             ROW_IO_SYSTEM = 9;
+
+            NAME_LIST_MODBUS_BINARY = "Modbus Binary"; 
+            NAME_LIST_MODBUS_ANALOG = "Modbus Analog"; 
+            ROW_MODBUS_TYPE = 1;
+            ROW_MODBUS_NAME = 2;
+            ROW_MODBUS_DESCR = 3;
+            ROW_MODBUS_SYSTEM = 4;
+            ROW_MODBUS_ADDR = 5;
+
+            MODBUS_ENABLE_LIGHT_REZERV = true;
+
             MODBUS_ADDR_BLOCK_IO = 0;
-        }
+            MODBUS_ADDR_BLOCK_STATUS = 500;
+            MODBUS_ADDR_BLOCK_SP = 1000;
+    }
 
     }
 }

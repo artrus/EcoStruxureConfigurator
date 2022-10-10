@@ -48,7 +48,7 @@
             this.BtnGenIO.Name = "BtnGenIO";
             this.BtnGenIO.Size = new System.Drawing.Size(75, 23);
             this.BtnGenIO.TabIndex = 1;
-            this.BtnGenIO.Text = "GenIO";
+            this.BtnGenIO.Text = "Gen IO.xml";
             this.BtnGenIO.UseVisualStyleBackColor = true;
             this.BtnGenIO.Click += new System.EventHandler(this.BtnGenIO_Click);
             // 
@@ -58,9 +58,9 @@
             this.BtnGenIO_MB.Name = "BtnGenIO_MB";
             this.BtnGenIO_MB.Size = new System.Drawing.Size(75, 23);
             this.BtnGenIO_MB.TabIndex = 2;
-            this.BtnGenIO_MB.Text = "GenIO->MB";
+            this.BtnGenIO_MB.Text = "GenMB.xml";
             this.BtnGenIO_MB.UseVisualStyleBackColor = true;
-            this.BtnGenIO_MB.Click += new System.EventHandler(this.BtnGenIO_MB_Click);
+            this.BtnGenIO_MB.Click += new System.EventHandler(this.BtnGenModbus_Click);
             // 
             // FormMain
             // 

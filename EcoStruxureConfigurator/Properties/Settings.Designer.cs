@@ -34,5 +34,17 @@ namespace EcoStruxureConfigurator.Properties {
                 this["LastFileIO"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastFileObjects {
+            get {
+                return ((string)(this["LastFileObjects"]));
+            }
+            set {
+                this["LastFileObjects"] = value;
+            }
+        }
     }
 }

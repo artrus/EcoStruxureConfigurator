@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjectSet ExportMode="Special" Note="TypesFirst" Version="3.2.3.59">
+  <MetaInformation>
+    <ExportMode Value="Special" />
+    <RuntimeVersion Value="3.2.3.59" />
+    <SourceVersion Value="3.2.3.59" />
+    <ServerFullPath Value="/SHAUOV1" />
+  </MetaInformation>
+  <ExportedObjects>
+    <OI NAME="ВТ-1.4Е" TYPE="modbus.folder.SlaveFolder">
+      <OI NAME="Вытяжка" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Активировать систему" DESCR="SP_enSystem" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1000" />
+          </OI>
+          <OI NAME="Включение вентустановки оператором" DESCR="SP_manualRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1001" />
+          </OI>
+          <OI NAME="Включение от глобального расписания" DESCR="SP_raspGlobal" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1002" />
+          </OI>
+          <OI NAME="Сброс аварий" DESCR="SP_resetAvar" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1003" />
+          </OI>
+          <OI NAME="Сброс пожара" DESCR="SP_resetFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1004" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1005" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1006" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1007" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1008" />
+          </OI>
+          <OI NAME="Время включения(час)" DESCR="SP_HH_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1000" />
+          </OI>
+          <OI NAME="Время включения(минута)" DESCR="SP_MM_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1001" />
+          </OI>
+          <OI NAME="Время отключения(час)" DESCR="SP_HH_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1002" />
+          </OI>
+          <OI NAME="Время отключения(минута)" DESCR="SP_MM_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1003" />
+          </OI>
+          <OI NAME="Приоритет" DESCR="SP_priority" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1004" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1005" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1006" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="SP_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1007" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1009" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1011" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="500" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по пожару" DESCR="ST_avarBlockFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="501" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по питанию" DESCR="ST_avarBlockU" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="502" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="503" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="504" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="505" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="500" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="501" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="502" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="504" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+      <OI NAME="В1" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Принудительно вкл" DESCR="SP_forceEn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1009" />
+          </OI>
+          <OI NAME="Принудительно пуск" DESCR="SP_forceRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1010" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1011" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1012" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1013" />
+          </OI>
+          <OI NAME="Время пуска" DESCR="SP_ptRun" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1013" />
+          </OI>
+          <OI NAME="Время движения заслонки" DESCR="SP_ptMoveZasl" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1014" />
+          </OI>
+          <OI NAME="Задержка перепада давления" DESCR="SP_ptPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1015" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1016" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1017" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1018" />
+          </OI>
+          <OI NAME="Принудительно RPM" DESCR="SP_forceRPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1019" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Уставка RPM" DESCR="SP_RPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1021" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1023" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1025" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв10" DESCR="SP_rez10" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1027" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="506" />
+          </OI>
+          <OI NAME="Авария вентилятора. Сигнал авария" DESCR="ST_avarIn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="507" />
+          </OI>
+          <OI NAME="Авария вентилятора. Авария статуса" DESCR="ST_avarStatus" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="508" />
+          </OI>
+          <OI NAME="Авария вентилятора. Отсутствие перепада давления" DESCR="ST_avarPDS" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="509" />
+          </OI>
+          <OI NAME="Авария вентилятора. Перегрев обмоток" DESCR="ST_avarOverHeat" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="510" />
+          </OI>
+          <OI NAME="Авария заслонки. Авария статуса" DESCR="ST_avarZaslNotMove" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="511" />
+          </OI>
+          <OI NAME="Заблокирован для запуска в авто" DESCR="ST_blocked" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="512" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="513" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="514" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="515" />
+          </OI>
+          <OI NAME="Статус вентилятора" DESCR="ST_statusVent" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="506" />
+          </OI>
+          <OI NAME="Статус перепада давления" DESCR="ST_statusPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="507" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="508" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="509" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="510" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="511" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="ST_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="513" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="ST_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="515" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+    </OI>
+    <OI NAME="ВТ-1.5Е" TYPE="modbus.folder.SlaveFolder">
+      <OI NAME="Вытяжка" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Активировать систему" DESCR="SP_enSystem" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1014" />
+          </OI>
+          <OI NAME="Включение вентустановки оператором" DESCR="SP_manualRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1015" />
+          </OI>
+          <OI NAME="Включение от глобального расписания" DESCR="SP_raspGlobal" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1016" />
+          </OI>
+          <OI NAME="Сброс аварий" DESCR="SP_resetAvar" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1017" />
+          </OI>
+          <OI NAME="Сброс пожара" DESCR="SP_resetFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1018" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1019" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1020" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1021" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1022" />
+          </OI>
+          <OI NAME="Время включения(час)" DESCR="SP_HH_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1029" />
+          </OI>
+          <OI NAME="Время включения(минута)" DESCR="SP_MM_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1030" />
+          </OI>
+          <OI NAME="Время отключения(час)" DESCR="SP_HH_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1031" />
+          </OI>
+          <OI NAME="Время отключения(минута)" DESCR="SP_MM_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1032" />
+          </OI>
+          <OI NAME="Приоритет" DESCR="SP_priority" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1033" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1034" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1035" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="SP_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1036" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1038" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1040" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="516" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по пожару" DESCR="ST_avarBlockFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="517" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по питанию" DESCR="ST_avarBlockU" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="518" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="519" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="520" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="521" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="517" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="518" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="519" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="521" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+      <OI NAME="В1" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Принудительно вкл" DESCR="SP_forceEn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1023" />
+          </OI>
+          <OI NAME="Принудительно пуск" DESCR="SP_forceRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1024" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1025" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1026" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1027" />
+          </OI>
+          <OI NAME="Время пуска" DESCR="SP_ptRun" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1042" />
+          </OI>
+          <OI NAME="Время движения заслонки" DESCR="SP_ptMoveZasl" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1043" />
+          </OI>
+          <OI NAME="Задержка перепада давления" DESCR="SP_ptPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1044" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1045" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1046" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1047" />
+          </OI>
+          <OI NAME="Принудительно RPM" DESCR="SP_forceRPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1048" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Уставка RPM" DESCR="SP_RPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1050" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1052" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1054" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв10" DESCR="SP_rez10" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1056" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="522" />
+          </OI>
+          <OI NAME="Авария вентилятора. Сигнал авария" DESCR="ST_avarIn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="523" />
+          </OI>
+          <OI NAME="Авария вентилятора. Авария статуса" DESCR="ST_avarStatus" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="524" />
+          </OI>
+          <OI NAME="Авария вентилятора. Отсутствие перепада давления" DESCR="ST_avarPDS" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="525" />
+          </OI>
+          <OI NAME="Авария вентилятора. Перегрев обмоток" DESCR="ST_avarOverHeat" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="526" />
+          </OI>
+          <OI NAME="Авария заслонки. Авария статуса" DESCR="ST_avarZaslNotMove" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="527" />
+          </OI>
+          <OI NAME="Заблокирован для запуска в авто" DESCR="ST_blocked" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="528" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="529" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="530" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="531" />
+          </OI>
+          <OI NAME="Статус вентилятора" DESCR="ST_statusVent" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="523" />
+          </OI>
+          <OI NAME="Статус перепада давления" DESCR="ST_statusPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="524" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="525" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="526" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="527" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="528" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="ST_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="530" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="ST_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="532" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+    </OI>
+    <OI NAME="В-1.4Е" TYPE="modbus.folder.SlaveFolder">
+      <OI NAME="Вытяжка" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Активировать систему" DESCR="SP_enSystem" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1028" />
+          </OI>
+          <OI NAME="Включение вентустановки оператором" DESCR="SP_manualRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1029" />
+          </OI>
+          <OI NAME="Включение от глобального расписания" DESCR="SP_raspGlobal" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1030" />
+          </OI>
+          <OI NAME="Сброс аварий" DESCR="SP_resetAvar" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1031" />
+          </OI>
+          <OI NAME="Сброс пожара" DESCR="SP_resetFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1032" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1033" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1034" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1035" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1036" />
+          </OI>
+          <OI NAME="Время включения(час)" DESCR="SP_HH_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1058" />
+          </OI>
+          <OI NAME="Время включения(минута)" DESCR="SP_MM_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1059" />
+          </OI>
+          <OI NAME="Время отключения(час)" DESCR="SP_HH_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1060" />
+          </OI>
+          <OI NAME="Время отключения(минута)" DESCR="SP_MM_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1061" />
+          </OI>
+          <OI NAME="Приоритет" DESCR="SP_priority" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1062" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1063" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1064" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="SP_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1065" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1067" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1069" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="532" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по пожару" DESCR="ST_avarBlockFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="533" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по питанию" DESCR="ST_avarBlockU" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="534" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="535" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="536" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="537" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="534" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="535" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="536" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="538" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+      <OI NAME="В1" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Принудительно вкл" DESCR="SP_forceEn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1037" />
+          </OI>
+          <OI NAME="Принудительно пуск" DESCR="SP_forceRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1038" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1039" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1040" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1041" />
+          </OI>
+          <OI NAME="Время пуска" DESCR="SP_ptRun" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1071" />
+          </OI>
+          <OI NAME="Время движения заслонки" DESCR="SP_ptMoveZasl" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1072" />
+          </OI>
+          <OI NAME="Задержка перепада давления" DESCR="SP_ptPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1073" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1074" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1075" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1076" />
+          </OI>
+          <OI NAME="Принудительно RPM" DESCR="SP_forceRPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1077" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Уставка RPM" DESCR="SP_RPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1079" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1081" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1083" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв10" DESCR="SP_rez10" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1085" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="538" />
+          </OI>
+          <OI NAME="Авария вентилятора. Сигнал авария" DESCR="ST_avarIn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="539" />
+          </OI>
+          <OI NAME="Авария вентилятора. Авария статуса" DESCR="ST_avarStatus" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="540" />
+          </OI>
+          <OI NAME="Авария вентилятора. Отсутствие перепада давления" DESCR="ST_avarPDS" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="541" />
+          </OI>
+          <OI NAME="Авария вентилятора. Перегрев обмоток" DESCR="ST_avarOverHeat" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="542" />
+          </OI>
+          <OI NAME="Авария заслонки. Авария статуса" DESCR="ST_avarZaslNotMove" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="543" />
+          </OI>
+          <OI NAME="Заблокирован для запуска в авто" DESCR="ST_blocked" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="544" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="545" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="546" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="547" />
+          </OI>
+          <OI NAME="Статус вентилятора" DESCR="ST_statusVent" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="540" />
+          </OI>
+          <OI NAME="Статус перепада давления" DESCR="ST_statusPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="541" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="542" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="543" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="544" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="545" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="ST_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="547" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="ST_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="549" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+      <OI NAME="Ф1" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Задержка на срабатывание" DESCR="ptWait" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1087" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Статус фильтра" DESCR="outStatusCal" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="548" />
+          </OI>
+          <OI NAME="Общая авария" DESCR="avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="549" />
+          </OI>
+        </OI>
+      </OI>
+    </OI>
+    <OI NAME="В-1.5Е" TYPE="modbus.folder.SlaveFolder">
+      <OI NAME="Вытяжка" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Активировать систему" DESCR="SP_enSystem" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1042" />
+          </OI>
+          <OI NAME="Включение вентустановки оператором" DESCR="SP_manualRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1043" />
+          </OI>
+          <OI NAME="Включение от глобального расписания" DESCR="SP_raspGlobal" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1044" />
+          </OI>
+          <OI NAME="Сброс аварий" DESCR="SP_resetAvar" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1045" />
+          </OI>
+          <OI NAME="Сброс пожара" DESCR="SP_resetFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1046" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1047" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1048" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1049" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1050" />
+          </OI>
+          <OI NAME="Время включения(час)" DESCR="SP_HH_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1088" />
+          </OI>
+          <OI NAME="Время включения(минута)" DESCR="SP_MM_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1089" />
+          </OI>
+          <OI NAME="Время отключения(час)" DESCR="SP_HH_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1090" />
+          </OI>
+          <OI NAME="Время отключения(минута)" DESCR="SP_MM_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1091" />
+          </OI>
+          <OI NAME="Приоритет" DESCR="SP_priority" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1092" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1093" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1094" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="SP_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1095" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1097" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1099" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="550" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по пожару" DESCR="ST_avarBlockFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="551" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по питанию" DESCR="ST_avarBlockU" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="552" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="553" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="554" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="555" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="551" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="552" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="553" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="555" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+      <OI NAME="В1" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Принудительно вкл" DESCR="SP_forceEn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1051" />
+          </OI>
+          <OI NAME="Принудительно пуск" DESCR="SP_forceRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1052" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1053" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1054" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1055" />
+          </OI>
+          <OI NAME="Время пуска" DESCR="SP_ptRun" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1101" />
+          </OI>
+          <OI NAME="Время движения заслонки" DESCR="SP_ptMoveZasl" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1102" />
+          </OI>
+          <OI NAME="Задержка перепада давления" DESCR="SP_ptPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1103" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1104" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1105" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1106" />
+          </OI>
+          <OI NAME="Принудительно RPM" DESCR="SP_forceRPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1107" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Уставка RPM" DESCR="SP_RPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1109" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1111" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1113" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв10" DESCR="SP_rez10" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1115" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="556" />
+          </OI>
+          <OI NAME="Авария вентилятора. Сигнал авария" DESCR="ST_avarIn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="557" />
+          </OI>
+          <OI NAME="Авария вентилятора. Авария статуса" DESCR="ST_avarStatus" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="558" />
+          </OI>
+          <OI NAME="Авария вентилятора. Отсутствие перепада давления" DESCR="ST_avarPDS" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="559" />
+          </OI>
+          <OI NAME="Авария вентилятора. Перегрев обмоток" DESCR="ST_avarOverHeat" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="560" />
+          </OI>
+          <OI NAME="Авария заслонки. Авария статуса" DESCR="ST_avarZaslNotMove" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="561" />
+          </OI>
+          <OI NAME="Заблокирован для запуска в авто" DESCR="ST_blocked" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="562" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="563" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="564" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="565" />
+          </OI>
+          <OI NAME="Статус вентилятора" DESCR="ST_statusVent" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="557" />
+          </OI>
+          <OI NAME="Статус перепада давления" DESCR="ST_statusPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="558" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="559" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="560" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="561" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="562" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="ST_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="564" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="ST_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="566" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+      <OI NAME="Ф1" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Задержка на срабатывание" DESCR="ptWait" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1117" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Статус фильтра" DESCR="outStatusCal" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="566" />
+          </OI>
+          <OI NAME="Общая авария" DESCR="avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="567" />
+          </OI>
+        </OI>
+      </OI>
+    </OI>
+    <OI NAME="В-1.8Е" TYPE="modbus.folder.SlaveFolder">
+      <OI NAME="Вытяжка" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Активировать систему" DESCR="SP_enSystem" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1056" />
+          </OI>
+          <OI NAME="Включение вентустановки оператором" DESCR="SP_manualRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1057" />
+          </OI>
+          <OI NAME="Включение от глобального расписания" DESCR="SP_raspGlobal" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1058" />
+          </OI>
+          <OI NAME="Сброс аварий" DESCR="SP_resetAvar" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1059" />
+          </OI>
+          <OI NAME="Сброс пожара" DESCR="SP_resetFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1060" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1061" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1062" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1063" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1064" />
+          </OI>
+          <OI NAME="Время включения(час)" DESCR="SP_HH_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1118" />
+          </OI>
+          <OI NAME="Время включения(минута)" DESCR="SP_MM_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1119" />
+          </OI>
+          <OI NAME="Время отключения(час)" DESCR="SP_HH_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1120" />
+          </OI>
+          <OI NAME="Время отключения(минута)" DESCR="SP_MM_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1121" />
+          </OI>
+          <OI NAME="Приоритет" DESCR="SP_priority" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1122" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1123" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1124" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="SP_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1125" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1127" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1129" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="568" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по пожару" DESCR="ST_avarBlockFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="569" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по питанию" DESCR="ST_avarBlockU" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="570" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="571" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="572" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="573" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="568" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="569" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="570" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="572" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+      <OI NAME="В1" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Принудительно вкл" DESCR="SP_forceEn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1065" />
+          </OI>
+          <OI NAME="Принудительно пуск" DESCR="SP_forceRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1066" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1067" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1068" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1069" />
+          </OI>
+          <OI NAME="Время пуска" DESCR="SP_ptRun" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1131" />
+          </OI>
+          <OI NAME="Время движения заслонки" DESCR="SP_ptMoveZasl" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1132" />
+          </OI>
+          <OI NAME="Задержка перепада давления" DESCR="SP_ptPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1133" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1134" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1135" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1136" />
+          </OI>
+          <OI NAME="Принудительно RPM" DESCR="SP_forceRPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1137" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Уставка RPM" DESCR="SP_RPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1139" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1141" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1143" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв10" DESCR="SP_rez10" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1145" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="574" />
+          </OI>
+          <OI NAME="Авария вентилятора. Сигнал авария" DESCR="ST_avarIn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="575" />
+          </OI>
+          <OI NAME="Авария вентилятора. Авария статуса" DESCR="ST_avarStatus" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="576" />
+          </OI>
+          <OI NAME="Авария вентилятора. Отсутствие перепада давления" DESCR="ST_avarPDS" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="577" />
+          </OI>
+          <OI NAME="Авария вентилятора. Перегрев обмоток" DESCR="ST_avarOverHeat" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="578" />
+          </OI>
+          <OI NAME="Авария заслонки. Авария статуса" DESCR="ST_avarZaslNotMove" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="579" />
+          </OI>
+          <OI NAME="Заблокирован для запуска в авто" DESCR="ST_blocked" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="580" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="581" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="582" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="583" />
+          </OI>
+          <OI NAME="Статус вентилятора" DESCR="ST_statusVent" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="574" />
+          </OI>
+          <OI NAME="Статус перепада давления" DESCR="ST_statusPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="575" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="576" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="577" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="578" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="579" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="ST_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="581" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="ST_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="583" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+    </OI>
+    <OI NAME="ВТ-1.6С" TYPE="modbus.folder.SlaveFolder">
+      <OI NAME="Вытяжка" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Активировать систему" DESCR="SP_enSystem" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1070" />
+          </OI>
+          <OI NAME="Включение вентустановки оператором" DESCR="SP_manualRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1071" />
+          </OI>
+          <OI NAME="Включение от глобального расписания" DESCR="SP_raspGlobal" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1072" />
+          </OI>
+          <OI NAME="Сброс аварий" DESCR="SP_resetAvar" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1073" />
+          </OI>
+          <OI NAME="Сброс пожара" DESCR="SP_resetFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1074" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1075" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1076" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1077" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1078" />
+          </OI>
+          <OI NAME="Время включения(час)" DESCR="SP_HH_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1147" />
+          </OI>
+          <OI NAME="Время включения(минута)" DESCR="SP_MM_on" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1148" />
+          </OI>
+          <OI NAME="Время отключения(час)" DESCR="SP_HH_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1149" />
+          </OI>
+          <OI NAME="Время отключения(минута)" DESCR="SP_MM_off" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1150" />
+          </OI>
+          <OI NAME="Приоритет" DESCR="SP_priority" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1151" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1152" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1153" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="SP_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1154" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1156" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1158" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="584" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по пожару" DESCR="ST_avarBlockFire" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="585" />
+          </OI>
+          <OI NAME="Авария установки. Заблокировано по питанию" DESCR="ST_avarBlockU" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="586" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="587" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="588" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="589" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="585" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="586" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="587" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="589" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+      <OI NAME="В1" TYPE="modbus.folder.SlaveFolder">
+        <OI NAME="SP" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Принудительно вкл" DESCR="SP_forceEn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1079" />
+          </OI>
+          <OI NAME="Принудительно пуск" DESCR="SP_forceRun" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1080" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="SP_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1081" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="SP_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1082" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="SP_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="1083" />
+          </OI>
+          <OI NAME="Время пуска" DESCR="SP_ptRun" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1160" />
+          </OI>
+          <OI NAME="Время движения заслонки" DESCR="SP_ptMoveZasl" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1161" />
+          </OI>
+          <OI NAME="Задержка перепада давления" DESCR="SP_ptPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1162" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="SP_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1163" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="SP_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1164" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="SP_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1165" />
+          </OI>
+          <OI NAME="Принудительно RPM" DESCR="SP_forceRPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1166" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Уставка RPM" DESCR="SP_RPM" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1168" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="SP_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1170" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="SP_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1172" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв10" DESCR="SP_rez10" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="1174" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+        <OI NAME="ST" TYPE="modbus.folder.SlaveFolder">
+          <PI Name="ContentType">
+            <Reference DeltaFilter="0" Locked="1" Object="~/System/Content Types/Modbus Regs" Retransmit="0" TransferRate="10" />
+          </PI>
+          <OI NAME="Общая авария" DESCR="ST_avarCom" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="590" />
+          </OI>
+          <OI NAME="Авария вентилятора. Сигнал авария" DESCR="ST_avarIn" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="591" />
+          </OI>
+          <OI NAME="Авария вентилятора. Авария статуса" DESCR="ST_avarStatus" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="592" />
+          </OI>
+          <OI NAME="Авария вентилятора. Отсутствие перепада давления" DESCR="ST_avarPDS" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="593" />
+          </OI>
+          <OI NAME="Авария вентилятора. Перегрев обмоток" DESCR="ST_avarOverHeat" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="594" />
+          </OI>
+          <OI NAME="Авария заслонки. Авария статуса" DESCR="ST_avarZaslNotMove" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="595" />
+          </OI>
+          <OI NAME="Заблокирован для запуска в авто" DESCR="ST_blocked" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="596" />
+          </OI>
+          <OI NAME="Резерв1" DESCR="ST_rez1" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="597" />
+          </OI>
+          <OI NAME="Резерв2" DESCR="ST_rez2" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="598" />
+          </OI>
+          <OI NAME="Резерв3" DESCR="ST_rez3" TYPE="modbus.point.BinaryValue">
+            <PI Name="RegisterNumber" Value="599" />
+          </OI>
+          <OI NAME="Статус вентилятора" DESCR="ST_statusVent" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="591" />
+          </OI>
+          <OI NAME="Статус перепада давления" DESCR="ST_statusPDS" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="592" />
+          </OI>
+          <OI NAME="Резерв4" DESCR="ST_rez4" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="593" />
+          </OI>
+          <OI NAME="Резерв5" DESCR="ST_rez5" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="594" />
+          </OI>
+          <OI NAME="Резерв6" DESCR="ST_rez6" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="595" />
+          </OI>
+          <OI NAME="Резерв7" DESCR="ST_rez7" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="596" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв8" DESCR="ST_rez8" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="598" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+          <OI NAME="Резерв9" DESCR="ST_rez9" TYPE="modbus.point.AnalogValue">
+            <PI Name="RegisterNumber" Value="600" />
+            <PI Name="RegisterType" Value="7" />
+          </OI>
+        </OI>
+      </OI>
+    </OI>
+  </ExportedObjects>
+</ObjectSet>

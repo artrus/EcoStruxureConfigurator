@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoStruxureConfigurator.Object;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -74,6 +75,51 @@ namespace EcoStruxureConfigurator.XML
             FinishXML(xml, filename);
         }
 
+        //TODO : CreateModbusObjects
+        public void CreateModbusObjects(string filename, List<TagModbus> tags, List<ObjectMatch> matches)
+        {
+            ObjectSet xml = new ObjectSet();
+            CreateHeader(xml);
+            List<OI> exportedObjects = new List<OI>();
+            xml.ExportedObjects = exportedObjects;
+
+            var systems = GetUniqPath(tags, 0);
+
+            foreach (var system in systems)
+            {
+                addModbusFolder(exportedObjects, system);
+                List<OI> insideFolderSystem = new List<OI>();
+                exportedObjects[exportedObjects.Count - 1].OIList = insideFolderSystem;
+
+                var objects = GetUniqPath(tags.FindAll(x => x.Path[0] == system), 1);
+                foreach (var obj in objects)
+                {
+                    addModbusFolder(insideFolderSystem, obj);
+                    var insideFolderObject = new List<OI>();
+                    insideFolderSystem[insideFolderSystem.Count - 1].OIList = insideFolderObject;
+
+                    var SP = tags.FindAll(x => x.Path[0].Equals(system) && x.Path[1].Equals(obj) && x.Path[2].Equals("SP"));
+                    addFolderWithTag(insideFolderObject, "SP", SP);
+                    
+                    var ST = tags.FindAll(x => x.Path[0].Equals(system) && x.Path[1].Equals(obj) && x.Path[2].Equals("ST"));
+                    addFolderWithTag(insideFolderObject, "ST", ST);
+                }
+            }
+            FinishXML(xml, filename);
+        }
+
+
+        private List<string> GetUniqPath(List<TagModbus> tags, int level)
+        {
+            List<string> systems = new List<string>();
+            foreach (TagModbus tag in tags)
+            {
+                if (!systems.Exists(x => x.Equals(tag.Path[level])))
+                    systems.Add(tag.Path[level]);
+            }
+            return systems;
+        }
+
         private void CreateHeader(ObjectSet xml)
         {
             XML_MetaInformation meta = new XML_MetaInformation();
@@ -120,7 +166,7 @@ namespace EcoStruxureConfigurator.XML
             root[root.Count - 1].OIList = inside;
 
             foreach (var tag in tags)
-            {                
+            {
                 addModbusTag(inside, tag);
             }
         }
@@ -143,10 +189,9 @@ namespace EcoStruxureConfigurator.XML
             return ContentType;
         }
 
-        private PI addReferenceIO(string moduleName, string tagName)
+        private PI addReference(string path)
         {
             PI Ref = new PI("Value");
-            string path = "~/IO Bus/" + moduleName + "/" + tagName;
             Reference reference = new Reference(path, "0", "1", "0", "10", "Value");
             Ref.reference = reference;
             return Ref;
@@ -154,13 +199,13 @@ namespace EcoStruxureConfigurator.XML
 
         private void addModbusTag(List<OI> root, TagModbus tag)
         {
-            root.Add(new OI(tag.Name, tag.TagInfo.XML_Type));
+            root.Add(new OI(tag.Name, tag.TagInfo.XML_Type, tag.Description));
             List<PI> PIlist = new List<PI>();
             PI registerNumber = new PI("RegisterNumber", tag.Addr.ToString());
             PIlist.Add(registerNumber);
 
-            //PIlist.Add(addReference("../../../../../IO Bus/A5/Контроль пускателя вентилятора ВТ-1.6С"));
-            //PIlist.Add(addReferenceIO());
+            if (tag.TagReference != null)
+                PIlist.Add(addReference(tag.TagReference.Path));
 
             if (tag.TagInfo.XML_RegisterType != TagInfoModbus.RegType.DEFAULT)
             {
@@ -170,5 +215,6 @@ namespace EcoStruxureConfigurator.XML
 
             root[root.Count - 1].PIList = PIlist;
         }
+
     }
 }

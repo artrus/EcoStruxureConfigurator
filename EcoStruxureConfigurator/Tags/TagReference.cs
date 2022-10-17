@@ -10,6 +10,13 @@ namespace EcoStruxureConfigurator
     {
         public string Path = "~/";
 
+        public TagReference()
+        {
+        }
 
+        public void addReferenceByIO (string moduleName, string tagName)
+        {
+            Path += "IO Bus/" + moduleName + "/" + tagName;
+        }
     }
 }

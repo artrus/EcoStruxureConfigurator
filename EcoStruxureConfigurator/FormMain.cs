@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using EcoStruxureConfigurator.Excel;
 using EcoStruxureConfigurator.Logger;
+using EcoStruxureConfigurator.Object;
 using EcoStruxureConfigurator.XML;
 
 namespace EcoStruxureConfigurator
@@ -12,10 +14,13 @@ namespace EcoStruxureConfigurator
         private Settings Settings;
         ILogger Logger;
         private string PathIOFile;
+        private string PathObjectsFile;
 
         private List<TagIO> TagsIO;
-        private List<TagModbus> TagsModbus;
-        private List<Module> Modules;        
+        private List<TagModbus> TagsModbusIO;
+        private List<TagModbus> TagsModbusObjects;
+        private List<Module> Modules;
+        private List<ObjectMatch> ObjectMatches;
 
         public FormMain()
         {
@@ -28,16 +33,33 @@ namespace EcoStruxureConfigurator
             CreateMenu();
             CreateStatusBar();
             Logger = new LoggerToRichBox(log);
+            Logger.Clear();
+
+            PathObjectsFile = ReadLastFileObjects();
+            if (PathObjectsFile.Length != 0)
+            {
+                FileInfo fileInfoObjects = new FileInfo(PathObjectsFile);
+
+                if (fileInfoObjects.Exists)
+                {
+                    ReadExcelObjects();
+                    LblObjectFile.Text = fileInfoObjects.FullName;
+                }
+                else
+                    LblObjectFile.Text = "Необходимо выбрать файл Objects.xlsx";
+            }
 
             PathIOFile = ReadLastFileIO();
-            FileInfo fileInfo = new FileInfo(PathIOFile);
-            if (fileInfo.Exists)
+            FileInfo fileInfoIO = new FileInfo(PathIOFile);
+            if (fileInfoIO.Exists)
             {
                 ReadExcelIO();
                 Text = PathIOFile;
             }
             else
                 Text = "";
+
+
         }
 
         private void CreateMenu()
@@ -46,13 +68,17 @@ namespace EcoStruxureConfigurator
 
             MenuItem menuItemFile = new MenuItem();
             MenuItem menuItemFileOpenIO = new MenuItem();
+            MenuItem menuItemFileOpenObjects = new MenuItem();
             MenuItem menuItemTools = new MenuItem();
             MenuItem menuItemToolsSettings = new MenuItem();
 
             menuItemFile.Text = "File";
             menuItemFileOpenIO.Text = "Open IO";
             menuItemFileOpenIO.Click += new System.EventHandler(this.MenuItemFileOpenIO_Click);
+            menuItemFileOpenObjects.Text = "Open Objects";
+            menuItemFileOpenObjects.Click += new System.EventHandler(this.MenuItemFileOpenObjects_Click);
             menuItemFile.MenuItems.Add(menuItemFileOpenIO);
+            menuItemFile.MenuItems.Add(menuItemFileOpenObjects);
 
             menuItemTools.Text = "Tools";
             menuItemToolsSettings.Text = "Settings";
@@ -94,7 +120,40 @@ namespace EcoStruxureConfigurator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка открытия IO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MenuItemFileOpenObjects_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openExcelFileDialog = new OpenFileDialog
+                {
+                    FileName = "Objects.xls",
+                    Filter = "Excel files|*.xls;*.xlsx;*.xlsm",
+                    FilterIndex = 0,
+                    RestoreDirectory = true
+                };
+                DialogResult dialogResult = openExcelFileDialog.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    PathObjectsFile = openExcelFileDialog.FileName;
+                    Text = PathObjectsFile;
+                    Properties.Settings.Default.LastFileObjects = PathObjectsFile;
+                    Properties.Settings.Default.Save();
+
+                    ReadExcelObjects();
+
+                }
+                else
+                {
+                    //throw new Exception("Файл не выбран!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка открытия Objects!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -103,7 +162,7 @@ namespace EcoStruxureConfigurator
             MessageBox.Show("Open");
         }
 
-        private void CreateStatusBar ()
+        private void CreateStatusBar()
         {
             StatusBar mainStatusBar = new StatusBar();
 
@@ -130,7 +189,7 @@ namespace EcoStruxureConfigurator
             mainStatusBar.ShowPanels = true;
             Controls.Add(mainStatusBar);
         }
-        
+
         private void ReadSettings()
         {
             Settings settings = new Settings();
@@ -150,14 +209,33 @@ namespace EcoStruxureConfigurator
             return Properties.Settings.Default.LastFileIO;
         }
 
-        private void ReadExcelIO ()
+        private string ReadLastFileObjects()
         {
-            Logger.Clear();
+            return Properties.Settings.Default.LastFileObjects;
+        }
+
+        private void ReadExcelObjects()
+        {
+            Logger.WriteLine("Начинается чтение файла Objects");
+            ReadObjects readerObjects = new ReadObjects(Settings);
+            var objects = readerObjects.OpenObjects(PathObjectsFile);
+            if (objects.Count > 0)
+            {
+                Settings.AddObjects(objects);
+                Logger.WriteLine("Файл Objects прочитан, найдено " + objects.Count + " объектов");
+                foreach (var obj in objects)
+                    Logger.WriteLine("Объект " + obj.Type + "   Найдено SP=" + obj.GetAllSP().Count + " ST=" + obj.GetAllST().Count);
+                Logger.NewLine(); ;
+            }
+        }
+        
+        private void ReadExcelIO()
+        {
             Logger.WriteLine("Начинается чтение файла IO");
             ReadIO readerIO = new ReadIO(Settings);
             TagsIO = readerIO.OpenIO(PathIOFile);
-            TagsModbus = ParserTags.GetTagsIOModbus(TagsIO, Settings);
-            
+            TagsModbusIO = ParserTags.GetTagsIOModbus(TagsIO, Settings);
+
             if (TagsIO.Count != 0)
             {
                 Logger.WriteLine("Файл с IO прочитан успешно! Найдено тэгов: " + TagsIO.Count);
@@ -171,29 +249,31 @@ namespace EcoStruxureConfigurator
                     Logger.WriteLine("ID=" + module.ID + "   " + "Name=" + module.Name + "   " + "Type=" + module.Type);
                 }
             }
+
+            ObjectMatches = readerIO.ReadMatching(PathIOFile);
+            TagsModbusObjects = ParserTags.GetTagsModbusByObjects(ObjectMatches, Settings);
         }
 
-        private void BtnGenIO_Click(object sender, EventArgs e)
+        private void BtnGenXML_Click(object sender, EventArgs e)
         {
             string dir = Path.GetDirectoryName(PathIOFile);
             string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
 
             XML_generator generator = new XML_generator(Settings);
             generator.CreateIO(dir + @"\" + fileName + @"---IO.xml", TagsIO, Modules);
+            generator.CreateModbusIO(dir + @"\" + fileName + @"---ModbusIO.xml", TagsModbusIO);
+            generator.CreateModbusObjects(dir + @"\" + fileName + @"---ModbusObjects.xml", TagsModbusObjects, ObjectMatches);
         }
 
-        private void BtnGenModbus_Click(object sender, EventArgs e)
+        private void BtnGenExcel_Click(object sender, EventArgs e)
         {
             string dir = Path.GetDirectoryName(PathIOFile);
             string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
-           
-           // WriteIO.WriteExcel(Settings, dir + @"\" + fileName + @"---Modbus.xlsx", TagsModbus);
+            List<TagModbus> tagsModbus = new List<TagModbus>();
+            tagsModbus.AddRange(TagsModbusIO);
+            tagsModbus.AddRange(TagsModbusObjects);
+            WriteIO.WriteNewExcel(Settings, dir + @"\" + fileName + @"---Modbus.xlsx", tagsModbus);
 
-            /* foreach (var tag in tagsModbus)
-                 logger.WriteLine(tag.Name + " " + tag.Description + " " + tag.Register + " " + tag.TagInfo.TypeName);*/
-
-            XML_generator generator = new XML_generator(Settings);
-            generator.CreateModbusIO(dir + @"\" + fileName + @"---ModbusIO.xml", TagsModbus);
         }
     }
 }

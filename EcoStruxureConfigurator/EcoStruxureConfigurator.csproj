@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Excel\ReadObjects.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,14 +72,17 @@
     <Compile Include="IniFile.cs" />
     <Compile Include="Logger\LoggerToRichBox.cs" />
     <Compile Include="Logger\ILogger.cs" />
+    <Compile Include="Object\ObjectBase.cs" />
+    <Compile Include="Object\ObjectIO.cs" />
+    <Compile Include="Object\ObjectMatch.cs" />
     <Compile Include="ParserTags.cs" />
     <Compile Include="ReferenceLinker.cs" />
-    <Compile Include="TagReference.cs" />
+    <Compile Include="Tags\TagReference.cs" />
     <Compile Include="Tags\Module.cs" />
     <Compile Include="Tags\ModuleInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ExcelIO\ReadIO.cs" />
+    <Compile Include="Excel\ReadIO.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tags\TagBase.cs" />
     <Compile Include="Tags\TagInfoBase.cs" />
@@ -86,7 +90,7 @@
     <Compile Include="Tags\TagIO.cs" />
     <Compile Include="Tags\TagModbus.cs" />
     <Compile Include="Tags\TagInfoModbus.cs" />
-    <Compile Include="ExcelIO\WriteIO.cs" />
+    <Compile Include="Excel\WriteIO.cs" />
     <Compile Include="XML\XML_classes.cs" />
     <Compile Include="XML\XML_generator.cs" />
     <EmbeddedResource Include="FormMain.resx">
@@ -114,6 +118,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="_Res\IO.xlsm" />
+    <None Include="_Res\Objects.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

@@ -14,7 +14,7 @@ namespace EcoStruxureConfigurator
     {
         private static readonly string[] ROWS_NAMES = { "Тип", "Наименование", "Описание", "Система", "Адрес" };
 
-        public static void WriteExcel(Settings settings, string path, List<TagModbus> tags)
+        public static void WriteNewExcel(Settings settings, string path, List<TagModbus> tags)
         {
             FileInfo existingFile = new FileInfo(path);
             if (existingFile.Exists)
@@ -24,13 +24,21 @@ namespace EcoStruxureConfigurator
 
             try
             {
-                //get the first worksheet in the workbook
                 ExcelWorksheet wsBinary = package.Workbook.Worksheets.Add(settings.NAME_LIST_MODBUS_BINARY);
                 var tagsBinary = tags.FindAll(x => x.TagInfo.Type == TagInfoBase.BinaryAnalog.Binary);
+                tagsBinary.Sort(delegate (TagModbus m1, TagModbus m2)
+                                                                    {
+                                                                        return m1.Addr.CompareTo(m2.Addr);
+                                                                    });
                 WriteModbusTags(settings, wsBinary, tagsBinary);
+
 
                 ExcelWorksheet wsAnalog = package.Workbook.Worksheets.Add(settings.NAME_LIST_MODBUS_ANALOG);
                 var tagsAnalog = tags.FindAll(x => x.TagInfo.Type == TagInfoBase.BinaryAnalog.Analog);
+                tagsAnalog.Sort(delegate (TagModbus m1, TagModbus m2)
+                {
+                    return m1.Addr.CompareTo(m2.Addr);
+                });
                 WriteModbusTags(settings, wsAnalog, tagsAnalog);
 
                 package.Save();

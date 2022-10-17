@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoStruxureConfigurator.Object;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,7 +59,11 @@ namespace EcoStruxureConfigurator
                         if (tagsBinary.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Input)))
                         {
                             TagIO tag = tagsBinary.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
-                            tagsModbus.Add(new TagModbus(tag.Name, tag.Description, tag.System, addrReg, settings.GetTagModbusInfoByTypeName("BOOL")));
+                            TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, settings.GetTagModbusInfoByTypeName("BOOL"));
+                            TagReference reference = new TagReference();
+                            reference.addReferenceByIO(tag.Module.Name, tag.Name);
+                            tagModbus.TagReference = reference;
+                            tagsModbus.Add(tagModbus);
                         }
                         else
                         {
@@ -76,7 +81,11 @@ namespace EcoStruxureConfigurator
                         if (tagsBinary.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Output)))
                         {
                             TagIO tag = tagsBinary.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
-                            tagsModbus.Add(new TagModbus(tag.Name, tag.Description, tag.System, addrReg, settings.GetTagModbusInfoByTypeName("BOOL")));
+                            TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, settings.GetTagModbusInfoByTypeName("BOOL"));
+                            TagReference reference = new TagReference();
+                            reference.addReferenceByIO(tag.Module.Name, tag.Name);
+                            tagModbus.TagReference = reference;
+                            tagsModbus.Add(tagModbus);
                         }
                         else
                         {
@@ -109,7 +118,11 @@ namespace EcoStruxureConfigurator
                         if (tagsAnalog.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Input)))
                         {
                             TagIO tag = tagsAnalog.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
-                            tagsModbus.Add(new TagModbus(tag.Name, tag.Description, tag.System, addrReg, settings.GetTagModbusInfoByTypeName("REAL")));
+                            TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, settings.GetTagModbusInfoByTypeName("REAL"));
+                            TagReference reference = new TagReference();
+                            reference.addReferenceByIO(tag.Module.Name, tag.Name);
+                            tagModbus.TagReference = reference;
+                            tagsModbus.Add(tagModbus);
                         }
                         else
                         {
@@ -127,7 +140,11 @@ namespace EcoStruxureConfigurator
                         if (tagsAnalog.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Output)))
                         {
                             TagIO tag = tagsAnalog.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
-                            tagsModbus.Add(new TagModbus(tag.Name, tag.Description, tag.System, addrReg, settings.GetTagModbusInfoByTypeName("REAL")));
+                            TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, settings.GetTagModbusInfoByTypeName("REAL"));
+                            TagReference reference = new TagReference();
+                            reference.addReferenceByIO(tag.Module.Name, tag.Name);
+                            tagModbus.TagReference = reference;
+                            tagsModbus.Add(tagModbus);
                         }
                         else
                         {
@@ -135,6 +152,65 @@ namespace EcoStruxureConfigurator
                             tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, settings.GetTagModbusInfoByTypeName("REAL")));
                         }
                         addrReg += settings.GetTagModbusInfoByTypeName("REAL").Size;
+                    }
+                }
+            }
+            return tagsModbus;
+        }
+
+        public static List<TagModbus> GetTagsModbusByObjects(List<ObjectMatch> matches, Settings settings)
+        {
+            List<TagModbus> tagsModbus = new List<TagModbus>();
+            int addrBinaryST = settings.MODBUS_ADDR_BLOCK_ST;
+            int addrAnalogST = settings.MODBUS_ADDR_BLOCK_ST;
+            int addrBinarySP = settings.MODBUS_ADDR_BLOCK_SP;
+            int addrAnalogSP = settings.MODBUS_ADDR_BLOCK_SP;
+            foreach (var match in matches)
+            {
+                foreach (var obj in match.objects)
+                {
+                    var STBinary = obj.Value.GetAllST().FindAll(x => x.Type.ToUpper().Contains("BOOL"));
+                    foreach (var io in STBinary)
+                    {
+                        var tag = new TagModbus(io.Name, io.Descr, match.SystemName, addrBinaryST, settings.GetTagModbusInfoByTypeName(io.Type));
+                        tag.AddPath(match.SystemName);
+                        tag.AddPath(obj.Key);
+                        tag.AddPath("ST");
+                        tagsModbus.Add(tag);
+                        addrBinaryST++;
+                    }
+
+                    var STAnalog = obj.Value.GetAllST().FindAll(x => (x.Type.ToUpper().Contains("INT")) || ((x.Type.ToUpper().Contains("REAL"))));
+                    foreach (var io in STAnalog)
+                    {
+                        var tag = new TagModbus(io.Name, io.Descr, match.SystemName, addrAnalogST, settings.GetTagModbusInfoByTypeName(io.Type));
+                        tag.AddPath(match.SystemName);
+                        tag.AddPath(obj.Key);
+                        tag.AddPath("ST");
+                        tagsModbus.Add(tag);
+                        addrAnalogST = addrAnalogST + settings.GetTagModbusInfoByTypeName(io.Type).Size;
+                    }
+
+                    var SPBinary = obj.Value.GetAllSP().FindAll(x => x.Type.ToUpper().Contains("BOOL"));
+                    foreach (var io in SPBinary)
+                    {
+                        var tag = new TagModbus(io.Name, io.Descr, match.SystemName, addrBinarySP, settings.GetTagModbusInfoByTypeName(io.Type));
+                        tag.AddPath(match.SystemName);
+                        tag.AddPath(obj.Key);
+                        tag.AddPath("SP");
+                        tagsModbus.Add(tag);
+                        addrBinarySP++;
+                    }
+
+                    var SPAnalog = obj.Value.GetAllSP().FindAll(x => (x.Type.ToUpper().Contains("INT")) || ((x.Type.ToUpper().Contains("REAL"))));
+                    foreach (var io in SPAnalog)
+                    {
+                        var tag = new TagModbus(io.Name, io.Descr, match.SystemName, addrAnalogSP, settings.GetTagModbusInfoByTypeName(io.Type));
+                        tag.AddPath(match.SystemName);
+                        tag.AddPath(obj.Key);
+                        tag.AddPath("SP");
+                        tagsModbus.Add(tag);
+                        addrAnalogSP = addrAnalogSP + settings.GetTagModbusInfoByTypeName(io.Type).Size;
                     }
                 }
             }

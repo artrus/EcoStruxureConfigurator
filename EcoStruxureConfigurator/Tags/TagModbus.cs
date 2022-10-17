@@ -10,11 +10,18 @@ namespace EcoStruxureConfigurator
     {
         public readonly int Addr;
         public readonly TagInfoModbus TagInfo;
+        public List<string> Path = new List<string>();
+        
 
-        public TagModbus(string name, string description, string system, int register, TagInfoModbus tagInfo) : base(name, description, system)
+        public TagModbus(string name, string description, string system, int addr, TagInfoModbus tagInfo) : base(name, description, system)
         {
-            Addr = register;
+            Addr = addr;
             TagInfo = tagInfo;
+        }
+
+        public void AddPath(string path)
+        {
+            Path.Add(path);
         }
     }
 }

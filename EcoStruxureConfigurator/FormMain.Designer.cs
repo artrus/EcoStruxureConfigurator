@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.log = new System.Windows.Forms.RichTextBox();
-            this.BtnGenIO = new System.Windows.Forms.Button();
-            this.BtnGenIO_MB = new System.Windows.Forms.Button();
+            this.BtnGenXML = new System.Windows.Forms.Button();
+            this.BtnGenExcel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.LblObjectFile = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // log
@@ -42,46 +44,70 @@
             this.log.TabIndex = 0;
             this.log.Text = "";
             // 
-            // BtnGenIO
+            // BtnGenXML
             // 
-            this.BtnGenIO.Location = new System.Drawing.Point(259, 46);
-            this.BtnGenIO.Name = "BtnGenIO";
-            this.BtnGenIO.Size = new System.Drawing.Size(75, 23);
-            this.BtnGenIO.TabIndex = 1;
-            this.BtnGenIO.Text = "Gen IO.xml";
-            this.BtnGenIO.UseVisualStyleBackColor = true;
-            this.BtnGenIO.Click += new System.EventHandler(this.BtnGenIO_Click);
+            this.BtnGenXML.Location = new System.Drawing.Point(12, 32);
+            this.BtnGenXML.Name = "BtnGenXML";
+            this.BtnGenXML.Size = new System.Drawing.Size(75, 23);
+            this.BtnGenXML.TabIndex = 1;
+            this.BtnGenXML.Text = "Gen XML";
+            this.BtnGenXML.UseVisualStyleBackColor = true;
+            this.BtnGenXML.Click += new System.EventHandler(this.BtnGenXML_Click);
             // 
-            // BtnGenIO_MB
+            // BtnGenExcel
             // 
-            this.BtnGenIO_MB.Location = new System.Drawing.Point(259, 88);
-            this.BtnGenIO_MB.Name = "BtnGenIO_MB";
-            this.BtnGenIO_MB.Size = new System.Drawing.Size(75, 23);
-            this.BtnGenIO_MB.TabIndex = 2;
-            this.BtnGenIO_MB.Text = "GenMB.xml";
-            this.BtnGenIO_MB.UseVisualStyleBackColor = true;
-            this.BtnGenIO_MB.Click += new System.EventHandler(this.BtnGenModbus_Click);
+            this.BtnGenExcel.Location = new System.Drawing.Point(12, 61);
+            this.BtnGenExcel.Name = "BtnGenExcel";
+            this.BtnGenExcel.Size = new System.Drawing.Size(75, 23);
+            this.BtnGenExcel.TabIndex = 3;
+            this.BtnGenExcel.Text = "Gen Excel";
+            this.BtnGenExcel.UseVisualStyleBackColor = true;
+            this.BtnGenExcel.Click += new System.EventHandler(this.BtnGenExcel_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Object file:";
+            // 
+            // LblObjectFile
+            // 
+            this.LblObjectFile.AutoSize = true;
+            this.LblObjectFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LblObjectFile.Location = new System.Drawing.Point(62, 7);
+            this.LblObjectFile.Name = "LblObjectFile";
+            this.LblObjectFile.Size = new System.Drawing.Size(65, 13);
+            this.LblObjectFile.TabIndex = 5;
+            this.LblObjectFile.Text = "Object file";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.BtnGenIO_MB);
-            this.Controls.Add(this.BtnGenIO);
+            this.Controls.Add(this.LblObjectFile);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.BtnGenExcel);
+            this.Controls.Add(this.BtnGenXML);
             this.Controls.Add(this.log);
             this.Name = "FormMain";
             this.Text = "Configurator";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.RichTextBox log;
-        private System.Windows.Forms.Button BtnGenIO;
-        private System.Windows.Forms.Button BtnGenIO_MB;
+        private System.Windows.Forms.Button BtnGenXML;
+        private System.Windows.Forms.Button BtnGenExcel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblObjectFile;
     }
 }
 

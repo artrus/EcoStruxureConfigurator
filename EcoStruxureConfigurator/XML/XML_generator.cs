@@ -76,7 +76,7 @@ namespace EcoStruxureConfigurator.XML
         }
 
         //TODO : CreateModbusObjects
-        public void CreateModbusObjects(string filename, List<TagModbus> tags, List<ObjectMatch> matches)
+        public void CreateModbusObjects(string filename, List<TagModbus> tags)
         {
             ObjectSet xml = new ObjectSet();
             CreateHeader(xml);

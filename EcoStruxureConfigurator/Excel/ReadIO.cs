@@ -104,14 +104,15 @@ namespace EcoStruxureConfigurator
             for (int row = 2; row < rowCount; row++)
             {
                 string name = worksheet.Cells[row, 1].Value?.ToString();
+                string psevdoName = worksheet.Cells[row, 2].Value?.ToString();
                 if (string.IsNullOrEmpty(name))
                     continue;
 
-                var objMatch = new ObjectMatch(name);
+                var objMatch = new ObjectMatch(name, psevdoName);
                 
                 int columnCount = worksheet.Dimension.End.Column;     
 
-                for (int column = 2; column < columnCount; column = column + 2)
+                for (int column = 3; column < columnCount; column = column + 2)
                 {
                     string type = worksheet.Cells[row, column].Value?.ToString();
                     string descr = worksheet.Cells[row, column+1].Value?.ToString();

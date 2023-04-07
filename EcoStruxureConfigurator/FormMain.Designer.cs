@@ -33,6 +33,8 @@
             this.BtnGenExcel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LblObjectFile = new System.Windows.Forms.Label();
+            this.BtnGenWeintek = new System.Windows.Forms.Button();
+            this.chListSysGen = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // log
@@ -43,12 +45,13 @@
             this.log.Size = new System.Drawing.Size(776, 199);
             this.log.TabIndex = 0;
             this.log.Text = "";
+            this.log.TextChanged += new System.EventHandler(this.log_TextChanged);
             // 
             // BtnGenXML
             // 
             this.BtnGenXML.Location = new System.Drawing.Point(12, 32);
             this.BtnGenXML.Name = "BtnGenXML";
-            this.BtnGenXML.Size = new System.Drawing.Size(75, 23);
+            this.BtnGenXML.Size = new System.Drawing.Size(97, 23);
             this.BtnGenXML.TabIndex = 1;
             this.BtnGenXML.Text = "Gen XML";
             this.BtnGenXML.UseVisualStyleBackColor = true;
@@ -58,7 +61,7 @@
             // 
             this.BtnGenExcel.Location = new System.Drawing.Point(12, 61);
             this.BtnGenExcel.Name = "BtnGenExcel";
-            this.BtnGenExcel.Size = new System.Drawing.Size(75, 23);
+            this.BtnGenExcel.Size = new System.Drawing.Size(97, 23);
             this.BtnGenExcel.TabIndex = 3;
             this.BtnGenExcel.Text = "Gen Excel";
             this.BtnGenExcel.UseVisualStyleBackColor = true;
@@ -83,11 +86,31 @@
             this.LblObjectFile.TabIndex = 5;
             this.LblObjectFile.Text = "Object file";
             // 
+            // BtnGenWeintek
+            // 
+            this.BtnGenWeintek.Location = new System.Drawing.Point(12, 90);
+            this.BtnGenWeintek.Name = "BtnGenWeintek";
+            this.BtnGenWeintek.Size = new System.Drawing.Size(97, 23);
+            this.BtnGenWeintek.TabIndex = 6;
+            this.BtnGenWeintek.Text = "Gen Weintek";
+            this.BtnGenWeintek.UseVisualStyleBackColor = true;
+            this.BtnGenWeintek.Click += new System.EventHandler(this.BtnGenWeintek_Click);
+            // 
+            // chListSysGen
+            // 
+            this.chListSysGen.FormattingEnabled = true;
+            this.chListSysGen.Location = new System.Drawing.Point(467, 12);
+            this.chListSysGen.Name = "chListSysGen";
+            this.chListSysGen.Size = new System.Drawing.Size(176, 184);
+            this.chListSysGen.TabIndex = 7;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chListSysGen);
+            this.Controls.Add(this.BtnGenWeintek);
             this.Controls.Add(this.LblObjectFile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnGenExcel);
@@ -108,6 +131,8 @@
         private System.Windows.Forms.Button BtnGenExcel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LblObjectFile;
+        private System.Windows.Forms.Button BtnGenWeintek;
+        private System.Windows.Forms.CheckedListBox chListSysGen;
     }
 }
 

@@ -10,7 +10,7 @@ namespace EcoStruxureConfigurator
     public class ObjectBase
     {
         public string Type { get; set; }
-
+        public string PsevdoName { get; set; }
         private List<ObjectIO> IO;
 
         public ObjectBase()

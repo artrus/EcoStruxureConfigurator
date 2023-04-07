@@ -91,6 +91,7 @@
     <Compile Include="Tags\TagModbus.cs" />
     <Compile Include="Tags\TagInfoModbus.cs" />
     <Compile Include="Excel\WriteIO.cs" />
+    <Compile Include="WeintekGen.cs" />
     <Compile Include="XML\XML_classes.cs" />
     <Compile Include="XML\XML_generator.cs" />
     <EmbeddedResource Include="FormMain.resx">

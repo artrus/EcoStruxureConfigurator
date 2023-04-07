@@ -47,18 +47,24 @@ namespace EcoStruxureConfigurator
                 }
                 else
                     LblObjectFile.Text = "Необходимо выбрать файл Objects.xlsx";
+
+                PathIOFile = ReadLastFileIO();
+                bool fileExist = File.Exists(PathIOFile);
+                if (fileExist)
+                {
+                    FileInfo fileInfoIO = new FileInfo(PathIOFile);
+                    if (fileInfoIO.Exists)
+                    {
+                        ReadExcelIO();
+                        Text = PathIOFile;
+                    }
+                    else
+                        Text = "";
+
+                }
             }
 
-            PathIOFile = ReadLastFileIO();
-            FileInfo fileInfoIO = new FileInfo(PathIOFile);
-            if (fileInfoIO.Exists)
-            {
-                ReadExcelIO();
-                Text = PathIOFile;
-            }
-            else
-                Text = "";
-
+           
 
         }
 
@@ -90,7 +96,6 @@ namespace EcoStruxureConfigurator
 
             Menu = mainMenu;
         }
-
         private void MenuItemFileOpenIO_Click(object sender, System.EventArgs e)
         {
             try
@@ -251,6 +256,9 @@ namespace EcoStruxureConfigurator
             }
 
             ObjectMatches = readerIO.ReadMatching(PathIOFile);
+
+
+
             TagsModbusObjects = ParserTags.GetTagsModbusByObjects(ObjectMatches, Settings);
         }
 
@@ -261,8 +269,8 @@ namespace EcoStruxureConfigurator
 
             XML_generator generator = new XML_generator(Settings);
             generator.CreateIO(dir + @"\" + fileName + @"---IO.xml", TagsIO, Modules);
-            generator.CreateModbusIO(dir + @"\" + fileName + @"---ModbusIO.xml", TagsModbusIO);
-            generator.CreateModbusObjects(dir + @"\" + fileName + @"---ModbusObjects.xml", TagsModbusObjects, ObjectMatches);
+            //generator.CreateModbusIO(dir + @"\" + fileName + @"---ModbusIO.xml", TagsModbusIO);
+            generator.CreateModbusObjects(dir + @"\" + fileName + @"---ModbusObjects.xml", TagsModbusObjects);
         }
 
         private void BtnGenExcel_Click(object sender, EventArgs e)
@@ -270,9 +278,24 @@ namespace EcoStruxureConfigurator
             string dir = Path.GetDirectoryName(PathIOFile);
             string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
             List<TagModbus> tagsModbus = new List<TagModbus>();
-            tagsModbus.AddRange(TagsModbusIO);
+            //tagsModbus.AddRange(TagsModbusIO);
             tagsModbus.AddRange(TagsModbusObjects);
             WriteIO.WriteNewExcel(Settings, dir + @"\" + fileName + @"---Modbus.xlsx", tagsModbus);
+
+        }
+
+        private void BtnGenWeintek_Click(object sender, EventArgs e)
+        {
+            string dir = Path.GetDirectoryName(PathIOFile);
+            string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
+            List<TagModbus> tagsModbus = new List<TagModbus>();
+            tagsModbus.AddRange(TagsModbusObjects);
+            WeintekGen.WriteNewExcel(Settings, dir + @"\" + fileName + @"---WeintekTags.xlsx", tagsModbus);
+
+        }
+
+        private void log_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

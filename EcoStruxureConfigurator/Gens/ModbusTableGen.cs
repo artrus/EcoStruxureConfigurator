@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace EcoStruxureConfigurator
 {
-    public class WriteIO
+    public class ModbusTableGen
     {
         private static readonly string[] ROWS_NAMES = { "Тип", "Наименование", "Описание", "Система", "Адрес" };
 
@@ -71,7 +71,7 @@ namespace EcoStruxureConfigurator
                 ws.Cells[i + 2, settings.ROW_MODBUS_DESCR].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells[i + 2, settings.ROW_MODBUS_DESCR].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
 
-                ws.Cells[i + 2, settings.ROW_MODBUS_SYSTEM].Value = tags[i].System;
+                ws.Cells[i + 2, settings.ROW_MODBUS_SYSTEM].Value = tags[i].SystemNameRus;
                 ws.Cells[i + 2, settings.ROW_MODBUS_SYSTEM].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells[i + 2, settings.ROW_MODBUS_SYSTEM].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells[i + 2, settings.ROW_MODBUS_SYSTEM].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;

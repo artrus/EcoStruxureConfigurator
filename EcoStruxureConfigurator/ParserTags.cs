@@ -24,7 +24,7 @@ namespace EcoStruxureConfigurator
             }
             return modules;
         }
-
+/*  delete IO
         public static List<TagModbus> GetTagsIOModbus(List<TagIO> tagsIO, Settings settings)
         {
             if (tagsIO == null || tagsIO.Count == 0)
@@ -157,7 +157,8 @@ namespace EcoStruxureConfigurator
             }
             return tagsModbus;
         }
-
+*/
+        
         public static List<TagModbus> GetTagsModbusByObjects(List<ObjectMatch> matches, Settings settings)
         {
             List<TagModbus> tagsModbus = new List<TagModbus>();
@@ -172,8 +173,8 @@ namespace EcoStruxureConfigurator
                     var STBinary = obj.Value.GetAllST().FindAll(x => x.Type.ToUpper().Contains("BOOL"));
                     foreach (var io in STBinary)
                     {
-                        var tag = new TagModbus(io.Name, io.Descr, match.SystemName, addrBinaryST, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName(io.Type));
-                        tag.AddPath(match.SystemName);
+                        var tag = new TagModbus(io.Name, io.Descr, match.SystemNameRus, match.PsevdoName, addrBinaryST, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName(io.Type));
+                        tag.AddPath(match.SystemNameRus);
                         tag.AddPath(obj.Key);
                         tag.AddPath("ST");
                         tag.AddPsevdoName(match.PsevdoName + "_" + obj.Key +  "_" + io.Descr);
@@ -184,8 +185,8 @@ namespace EcoStruxureConfigurator
                     var STAnalog = obj.Value.GetAllST().FindAll(x => (x.Type.ToUpper().Contains("INT")) || ((x.Type.ToUpper().Contains("REAL"))));
                     foreach (var io in STAnalog)
                     {
-                        var tag = new TagModbus(io.Name, io.Descr, match.SystemName, addrAnalogST, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName(io.Type));
-                        tag.AddPath(match.SystemName);
+                        var tag = new TagModbus(io.Name, io.Descr, match.SystemNameRus, match.PsevdoName, addrAnalogST, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName(io.Type));
+                        tag.AddPath(match.SystemNameRus);
                         tag.AddPath(obj.Key);
                         tag.AddPath("ST");
                         tag.AddPsevdoName(match.PsevdoName + "_" + obj.Key + "_" + io.Descr);
@@ -196,8 +197,8 @@ namespace EcoStruxureConfigurator
                     var SPBinary = obj.Value.GetAllSP().FindAll(x => x.Type.ToUpper().Contains("BOOL"));
                     foreach (var io in SPBinary)
                     {
-                        var tag = new TagModbus(io.Name, io.Descr, match.SystemName, addrBinarySP, TagModbus.ST_SP.SP, settings.GetTagModbusInfoByTypeName(io.Type));
-                        tag.AddPath(match.SystemName);
+                        var tag = new TagModbus(io.Name, io.Descr, match.SystemNameRus, match.PsevdoName, addrBinarySP, TagModbus.ST_SP.SP, settings.GetTagModbusInfoByTypeName(io.Type));
+                        tag.AddPath(match.SystemNameRus);
                         tag.AddPath(obj.Key);
                         tag.AddPath("SP");
                         tag.AddPsevdoName(match.PsevdoName + "_" + obj.Key + "_" + io.Descr);
@@ -208,8 +209,8 @@ namespace EcoStruxureConfigurator
                     var SPAnalog = obj.Value.GetAllSP().FindAll(x => (x.Type.ToUpper().Contains("INT")) || ((x.Type.ToUpper().Contains("REAL"))));
                     foreach (var io in SPAnalog)
                     {
-                        var tag = new TagModbus(io.Name, io.Descr, match.SystemName, addrAnalogSP, TagModbus.ST_SP.SP, settings.GetTagModbusInfoByTypeName(io.Type));
-                        tag.AddPath(match.SystemName);
+                        var tag = new TagModbus(io.Name, io.Descr, match.SystemNameRus, match.PsevdoName, addrAnalogSP, TagModbus.ST_SP.SP, settings.GetTagModbusInfoByTypeName(io.Type));
+                        tag.AddPath(match.SystemNameRus);
                         tag.AddPath(obj.Key);
                         tag.AddPath("SP");
                         tag.AddPsevdoName(match.PsevdoName + "_" + obj.Key + "_" + io.Descr);

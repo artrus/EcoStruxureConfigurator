@@ -54,6 +54,8 @@ namespace EcoStruxureConfigurator
         public bool MODBUS_ENABLE_LIGHT_REZERV;
         public bool CREATE_NEW_EXCEL_FILE;
 
+        public string SEPPrefix;
+
         private IniFile iniFile;
         private const string NAME_SECTION_ROWS_IO = "ROWS_IO";
         private const string NAME_SECTION_ROWS_OBJECTS = "ROWS_OBJECTS";
@@ -123,7 +125,8 @@ namespace EcoStruxureConfigurator
             {
                 try
                 {
-                    ReadParams(new IniFile(path));
+                    iniFile = new IniFile(path);
+                    ReadParams(iniFile);
                 }
                 catch
                 {
@@ -183,8 +186,14 @@ namespace EcoStruxureConfigurator
             MODBUS_ADDR_BLOCK_SP = Int32.Parse(iniFile.ReadINI(NAME_SECTION_GENERATOR, "MODBUS_ADDR_BLOCK_SP"));
 
             MODBUS_ENABLE_LIGHT_REZERV = Boolean.Parse(iniFile.ReadINI(NAME_SECTION_GENERATOR, "MODBUS_ENABLE_LIGHT_REZERV"));
+
+            SEPPrefix = iniFile.ReadINI(NAME_SECTION_GENERATOR, "SEPPrefix");
         }
 
+        public void SaveFile()
+        {
+            SaveDefault();
+        }
         private void SaveDefault()
         {
             iniFile.Write(NAME_SECTION_ROWS_IO, "NAME_LIST_MODULES", NAME_LIST_MODULES);
@@ -227,6 +236,7 @@ namespace EcoStruxureConfigurator
             iniFile.Write(NAME_SECTION_GENERATOR, "MODBUS_ADDR_BLOCK_SP", MODBUS_ADDR_BLOCK_SP.ToString());
 
             iniFile.Write(NAME_SECTION_GENERATOR, "MODBUS_ENABLE_LIGHT_REZERV", MODBUS_ENABLE_LIGHT_REZERV.ToString());
+            iniFile.Write(NAME_SECTION_GENERATOR, "SEPPrefix", SEPPrefix);
         }
 
         private void SetDefaultConfig()
@@ -247,6 +257,11 @@ namespace EcoStruxureConfigurator
                                                           { "UI-8.DO-FC-4", new ModuleInfo("io.UI8DOFC4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.BOOL) },
                                                           { "UI-16", new ModuleInfo("io.UI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
                                                     };
+        }
+
+        public void SetSEPPrefix(string text)
+        {
+            SEPPrefix = text;
         }
 
         private Dictionary<string, TagInfoIO> SetDefaultTypesIO()
@@ -319,6 +334,8 @@ namespace EcoStruxureConfigurator
 
             MODBUS_ENABLE_LIGHT_REZERV = true;
             CREATE_NEW_EXCEL_FILE = false;
+
+            SEPPrefix = "Prefix.";
 
             MODBUS_ADDR_BLOCK_IO = 0;
             MODBUS_ADDR_BLOCK_ST = 500;

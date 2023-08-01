@@ -15,7 +15,7 @@ namespace EcoStruxureConfigurator
         public List<string> Path = new List<string>();
         public string PsevdoName;
 
-        public TagModbus(string name, string description, string system, int addr, ST_SP dir, TagInfoModbus tagInfo) : base(name, description, system)
+        public TagModbus(string name, string description, string systemNameRus, string systemNameEng, int addr, ST_SP dir, TagInfoModbus tagInfo) : base(name, description, systemNameRus, systemNameEng)
         {
             Addr = addr;
             TagInfo = tagInfo;
@@ -32,5 +32,6 @@ namespace EcoStruxureConfigurator
         {
             PsevdoName = name;
         }
+
     }
 }

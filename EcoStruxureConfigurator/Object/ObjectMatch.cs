@@ -8,13 +8,13 @@ namespace EcoStruxureConfigurator.Object
 {
     public class ObjectMatch
     {
-        public string SystemName;
+        public string SystemNameRus;
         public string PsevdoName;
         public Dictionary<string, ObjectBase> objects = new Dictionary<string, ObjectBase>();
 
         public ObjectMatch(string systemName, string psevdoName)
         {
-            SystemName = systemName;
+            SystemNameRus = systemName;
             PsevdoName = psevdoName;
         }
 

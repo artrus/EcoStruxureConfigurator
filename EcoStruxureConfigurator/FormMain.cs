@@ -7,6 +7,7 @@ using EcoStruxureConfigurator.Logger;
 using EcoStruxureConfigurator.Object;
 using EcoStruxureConfigurator.XML;
 
+
 namespace EcoStruxureConfigurator
 {
     public partial class FormMain : Form
@@ -17,8 +18,8 @@ namespace EcoStruxureConfigurator
         private string PathObjectsFile;
 
         private List<TagIO> TagsIO;
-        private List<TagModbus> TagsModbusIO;
-        private List<TagModbus> TagsModbusObjects;
+        //private List<TagModbus> TagsModbusIO;
+        private List<TagModbus> TagsChangedModbusObjects, TagsAllModbusObjects;
         private List<Module> Modules;
         private List<ObjectMatch> ObjectMatches;
 
@@ -62,9 +63,11 @@ namespace EcoStruxureConfigurator
                         Text = "";
 
                 }
+
+                textBox_SEPPrefix.Text = Settings.SEPPrefix;
             }
 
-           
+
 
         }
 
@@ -233,13 +236,13 @@ namespace EcoStruxureConfigurator
                 Logger.NewLine(); ;
             }
         }
-        
+
         private void ReadExcelIO()
         {
             Logger.WriteLine("Начинается чтение файла IO");
             ReadIO readerIO = new ReadIO(Settings);
             TagsIO = readerIO.OpenIO(PathIOFile);
-            TagsModbusIO = ParserTags.GetTagsIOModbus(TagsIO, Settings);
+            //TagsModbusIO = ParserTags.GetTagsIOModbus(TagsIO, Settings);
 
             if (TagsIO.Count != 0)
             {
@@ -256,10 +259,15 @@ namespace EcoStruxureConfigurator
             }
 
             ObjectMatches = readerIO.ReadMatching(PathIOFile);
+            TagsAllModbusObjects = ParserTags.GetTagsModbusByObjects(ObjectMatches, Settings);
+            chListSysGen.Items.Clear();
 
+            foreach (var match in ObjectMatches)
+            {
+                chListSysGen.Items.Add(match.SystemNameRus);
+                chListSysGen.SetItemChecked(chListSysGen.Items.Count - 1, true);
+            }
 
-
-            TagsModbusObjects = ParserTags.GetTagsModbusByObjects(ObjectMatches, Settings);
         }
 
         private void BtnGenXML_Click(object sender, EventArgs e)
@@ -270,7 +278,26 @@ namespace EcoStruxureConfigurator
             XML_generator generator = new XML_generator(Settings);
             generator.CreateIO(dir + @"\" + fileName + @"---IO.xml", TagsIO, Modules);
             //generator.CreateModbusIO(dir + @"\" + fileName + @"---ModbusIO.xml", TagsModbusIO);
-            generator.CreateModbusObjects(dir + @"\" + fileName + @"---ModbusObjects.xml", TagsModbusObjects);
+
+            List<string> cheakedSystems = new List<string>();
+
+            for (int i = 0; i < chListSysGen.Items.Count; i++)
+            {
+                if (chListSysGen.GetItemChecked(i))
+                {
+                    cheakedSystems.Add((string)chListSysGen.Items[i]);
+                }
+            }
+
+            List<ObjectMatch> objectMatches = new List<ObjectMatch>();
+            foreach (var match in cheakedSystems)
+            {
+                if(ObjectMatches.Exists(x => x.SystemNameRus == match))
+                    objectMatches.Add(ObjectMatches.Find(x => x.SystemNameRus == match));
+            }
+            Logger.WriteLine("Выбрано " + objectMatches.Count + " объектов");
+            TagsChangedModbusObjects = ParserTags.GetTagsModbusByObjects(objectMatches, Settings);
+            generator.CreateModbusObjects(dir + @"\" + fileName + @"---ModbusObjects.xml", TagsChangedModbusObjects);
         }
 
         private void BtnGenExcel_Click(object sender, EventArgs e)
@@ -279,8 +306,8 @@ namespace EcoStruxureConfigurator
             string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
             List<TagModbus> tagsModbus = new List<TagModbus>();
             //tagsModbus.AddRange(TagsModbusIO);
-            tagsModbus.AddRange(TagsModbusObjects);
-            WriteIO.WriteNewExcel(Settings, dir + @"\" + fileName + @"---Modbus.xlsx", tagsModbus);
+            tagsModbus.AddRange(TagsAllModbusObjects);
+            ModbusTableGen.WriteNewExcel(Settings, dir + @"\" + fileName + @"---Modbus.xlsx", tagsModbus);
 
         }
 
@@ -289,9 +316,29 @@ namespace EcoStruxureConfigurator
             string dir = Path.GetDirectoryName(PathIOFile);
             string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
             List<TagModbus> tagsModbus = new List<TagModbus>();
-            tagsModbus.AddRange(TagsModbusObjects);
+            tagsModbus.AddRange(TagsAllModbusObjects);
             WeintekGen.WriteNewExcel(Settings, dir + @"\" + fileName + @"---WeintekTags.xlsx", tagsModbus);
 
+        }
+
+
+        private void BtnGenSEP_Click(object sender, EventArgs e)
+        {
+            string dir = Path.GetDirectoryName(PathIOFile);
+            string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
+            List<TagModbus> tagsModbus = new List<TagModbus>();
+            tagsModbus.AddRange(TagsAllModbusObjects);
+            SepGen.WriteNewExcel(Settings, dir + @"\" + fileName + @"---SepTags.xlsx", tagsModbus);
+        }
+
+        private void textBox_SEPPrefix_TextChanged(object sender, EventArgs e)
+        {
+            Settings.SetSEPPrefix(textBox_SEPPrefix.Text);
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Settings.SaveFile();
         }
 
         private void log_TextChanged(object sender, EventArgs e)

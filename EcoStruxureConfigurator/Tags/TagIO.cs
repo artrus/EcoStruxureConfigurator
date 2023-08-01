@@ -13,7 +13,7 @@ namespace EcoStruxureConfigurator
         public readonly int Channel;
         public readonly TagInfoIO TagInfo;
 
-        public TagIO(string name, string description, string system, Module module, int channel, TagInfoIO tagInfo) : base(name, description, system)
+        public TagIO(string name, string description, string systemNameRus, string systemNameEng, Module module, int channel, TagInfoIO tagInfo) : base(name, description, systemNameRus, systemNameEng)
         {
             Module = module;
             Channel = channel;

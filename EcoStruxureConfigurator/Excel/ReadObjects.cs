@@ -53,6 +53,8 @@ namespace EcoStruxureConfigurator.Excel
             {    
                 ObjectBase obj = new ObjectBase();
                 obj.Type = worksheet.Name;
+                if (obj.Type.Contains('!'))
+                    continue;
                 int rowCount = worksheet.Dimension.End.Row;     //get row count
 
                 for (int i = 4; i <= rowCount; i++)

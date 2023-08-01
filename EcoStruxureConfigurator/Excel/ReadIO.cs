@@ -70,7 +70,7 @@ namespace EcoStruxureConfigurator
                     module = new Module(id, moduleName, moduleType, Settings.GetModuleInfoByType(moduleType));
                 }
                 string tagType = worksheet.Cells[i, Settings.ROW_IO_TYPE_IO].Value?.ToString();
-                tags.Add(new TagIO(name, descr, system, module, Int32.Parse(channel), Settings.GetTagIOInfoByType(tagType)));
+                tags.Add(new TagIO(name, descr, system," ", module, Int32.Parse(channel), Settings.GetTagIOInfoByType(tagType)));
             }
             return tags;
         }

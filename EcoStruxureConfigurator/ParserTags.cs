@@ -24,141 +24,141 @@ namespace EcoStruxureConfigurator
             }
             return modules;
         }
-/*  delete IO
-        public static List<TagModbus> GetTagsIOModbus(List<TagIO> tagsIO, Settings settings)
-        {
-            if (tagsIO == null || tagsIO.Count == 0)
-                throw new Exception("Функция GetTagsIOModbus(List<TagIO> принимает либо null, либо Count = 0");
-
-            List<TagModbus> tagsBinary = GetTagsBinaryIOModbus(tagsIO, settings);
-            List<TagModbus> tagsAnalog = GetTagsAnalogIOModbus(tagsIO, settings);
-
-            List<TagModbus> tags = new List<TagModbus>();
-            tags.AddRange(tagsBinary);
-            tags.AddRange(tagsAnalog);
-
-            return tags;
-        }
-
-        public static List<TagModbus> GetTagsBinaryIOModbus(List<TagIO> tagsIO, Settings settings)
-        {
-            var modules = GetModules(tagsIO);
-            var tagsBinary = tagsIO.FindAll(x => x.TagInfo.Type == TagInfoBase.BinaryAnalog.Binary);
-
-            if (tagsBinary == null || tagsBinary.Count == 0 || modules.Count == 0)
-                return new List<TagModbus>();
-
-            var tagsModbus = new List<TagModbus>();
-            int addrReg = settings.MODBUS_ADDR_BLOCK_IO;
-            foreach (var module in modules)
-            {
-                if ((module.ModuleInfo.TypeInputs == ModuleInfo.TypeChannels.BOOL) || (module.ModuleInfo.TypeInputs == ModuleInfo.TypeChannels.ALL))
+        /*  delete IO
+                public static List<TagModbus> GetTagsIOModbus(List<TagIO> tagsIO, Settings settings)
                 {
-                    for (int i = 1; i <= module.ModuleInfo.CntInputs; i++)
-                    {
-                        if (tagsBinary.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Input)))
-                        {
-                            TagIO tag = tagsBinary.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
-                            TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("BOOL"));
-                            TagReference reference = new TagReference();
-                            reference.addReferenceByIO(tag.Module.Name, tag.Name);
-                            tagModbus.TagReference = reference;
-                            tagsModbus.Add(tagModbus);
-                        }
-                        else
-                        {
-                            string name = "Резерв вход " + module.Type + " " + module.Name + ":" + i;
-                            tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("BOOL")));
-                        }
-                        addrReg += settings.GetTagModbusInfoByTypeName("BOOL").Size;
-                    }
+                    if (tagsIO == null || tagsIO.Count == 0)
+                        throw new Exception("Функция GetTagsIOModbus(List<TagIO> принимает либо null, либо Count = 0");
+
+                    List<TagModbus> tagsBinary = GetTagsBinaryIOModbus(tagsIO, settings);
+                    List<TagModbus> tagsAnalog = GetTagsAnalogIOModbus(tagsIO, settings);
+
+                    List<TagModbus> tags = new List<TagModbus>();
+                    tags.AddRange(tagsBinary);
+                    tags.AddRange(tagsAnalog);
+
+                    return tags;
                 }
 
-                if ((module.ModuleInfo.TypeOutputs == ModuleInfo.TypeChannels.BOOL) || (module.ModuleInfo.TypeOutputs == ModuleInfo.TypeChannels.ALL))
+                public static List<TagModbus> GetTagsBinaryIOModbus(List<TagIO> tagsIO, Settings settings)
                 {
-                    for (int i = 1; i <= module.ModuleInfo.CntOutputs; i++)
+                    var modules = GetModules(tagsIO);
+                    var tagsBinary = tagsIO.FindAll(x => x.TagInfo.Type == TagInfoBase.BinaryAnalog.Binary);
+
+                    if (tagsBinary == null || tagsBinary.Count == 0 || modules.Count == 0)
+                        return new List<TagModbus>();
+
+                    var tagsModbus = new List<TagModbus>();
+                    int addrReg = settings.MODBUS_ADDR_BLOCK_IO;
+                    foreach (var module in modules)
                     {
-                        if (tagsBinary.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Output)))
+                        if ((module.ModuleInfo.TypeInputs == ModuleInfo.TypeChannels.BOOL) || (module.ModuleInfo.TypeInputs == ModuleInfo.TypeChannels.ALL))
                         {
-                            TagIO tag = tagsBinary.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
-                            TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("BOOL"));
-                            TagReference reference = new TagReference();
-                            reference.addReferenceByIO(tag.Module.Name, tag.Name);
-                            tagModbus.TagReference = reference;
-                            tagsModbus.Add(tagModbus);
+                            for (int i = 1; i <= module.ModuleInfo.CntInputs; i++)
+                            {
+                                if (tagsBinary.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Input)))
+                                {
+                                    TagIO tag = tagsBinary.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
+                                    TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("BOOL"));
+                                    TagReference reference = new TagReference();
+                                    reference.addReferenceByIO(tag.Module.Name, tag.Name);
+                                    tagModbus.TagReference = reference;
+                                    tagsModbus.Add(tagModbus);
+                                }
+                                else
+                                {
+                                    string name = "Резерв вход " + module.Type + " " + module.Name + ":" + i;
+                                    tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("BOOL")));
+                                }
+                                addrReg += settings.GetTagModbusInfoByTypeName("BOOL").Size;
+                            }
                         }
-                        else
+
+                        if ((module.ModuleInfo.TypeOutputs == ModuleInfo.TypeChannels.BOOL) || (module.ModuleInfo.TypeOutputs == ModuleInfo.TypeChannels.ALL))
                         {
-                            string name = "Резерв выход " + module.Type + " " + module.Name + ":" + i;
-                            tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("BOOL")));
+                            for (int i = 1; i <= module.ModuleInfo.CntOutputs; i++)
+                            {
+                                if (tagsBinary.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Output)))
+                                {
+                                    TagIO tag = tagsBinary.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
+                                    TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("BOOL"));
+                                    TagReference reference = new TagReference();
+                                    reference.addReferenceByIO(tag.Module.Name, tag.Name);
+                                    tagModbus.TagReference = reference;
+                                    tagsModbus.Add(tagModbus);
+                                }
+                                else
+                                {
+                                    string name = "Резерв выход " + module.Type + " " + module.Name + ":" + i;
+                                    tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("BOOL")));
+                                }
+                                addrReg += settings.GetTagModbusInfoByTypeName("BOOL").Size;
+                            }
                         }
-                        addrReg += settings.GetTagModbusInfoByTypeName("BOOL").Size;
                     }
+                    return tagsModbus;
                 }
-            }
-            return tagsModbus;
-        }
 
-        public static List<TagModbus> GetTagsAnalogIOModbus(List<TagIO> tagsIO, Settings settings)
-        {
-            var modules = GetModules(tagsIO);
-            var tagsAnalog = tagsIO.FindAll(x => x.TagInfo.Type == TagInfoBase.BinaryAnalog.Analog);
-
-            if (tagsAnalog == null || tagsAnalog.Count == 0 || modules.Count == 0)
-                return new List<TagModbus>();
-
-            var tagsModbus = new List<TagModbus>();
-            int addrReg = settings.MODBUS_ADDR_BLOCK_IO;
-            foreach (var module in modules)
-            {
-                if ((module.ModuleInfo.TypeInputs == ModuleInfo.TypeChannels.BOOL) || (module.ModuleInfo.TypeInputs == ModuleInfo.TypeChannels.ALL))
+                public static List<TagModbus> GetTagsAnalogIOModbus(List<TagIO> tagsIO, Settings settings)
                 {
-                    for (int i = 1; i <= module.ModuleInfo.CntInputs; i++)
-                    {
-                        if (tagsAnalog.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Input)))
-                        {
-                            TagIO tag = tagsAnalog.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
-                            TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("REAL"));
-                            TagReference reference = new TagReference();
-                            reference.addReferenceByIO(tag.Module.Name, tag.Name);
-                            tagModbus.TagReference = reference;
-                            tagsModbus.Add(tagModbus);
-                        }
-                        else
-                        {
-                            string name = "Резерв вход " + module.Type + " " + module.Name + ":" + i;
-                            tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("REAL")));
-                        }
-                        addrReg += settings.GetTagModbusInfoByTypeName("REAL").Size;
-                    }
-                }
+                    var modules = GetModules(tagsIO);
+                    var tagsAnalog = tagsIO.FindAll(x => x.TagInfo.Type == TagInfoBase.BinaryAnalog.Analog);
 
-                if ((module.ModuleInfo.TypeOutputs == ModuleInfo.TypeChannels.REAL) || (module.ModuleInfo.TypeOutputs == ModuleInfo.TypeChannels.ALL))
-                {
-                    for (int i = 1; i <= module.ModuleInfo.CntOutputs; i++)
+                    if (tagsAnalog == null || tagsAnalog.Count == 0 || modules.Count == 0)
+                        return new List<TagModbus>();
+
+                    var tagsModbus = new List<TagModbus>();
+                    int addrReg = settings.MODBUS_ADDR_BLOCK_IO;
+                    foreach (var module in modules)
                     {
-                        if (tagsAnalog.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Output)))
+                        if ((module.ModuleInfo.TypeInputs == ModuleInfo.TypeChannels.BOOL) || (module.ModuleInfo.TypeInputs == ModuleInfo.TypeChannels.ALL))
                         {
-                            TagIO tag = tagsAnalog.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
-                            TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("REAL"));
-                            TagReference reference = new TagReference();
-                            reference.addReferenceByIO(tag.Module.Name, tag.Name);
-                            tagModbus.TagReference = reference;
-                            tagsModbus.Add(tagModbus);
+                            for (int i = 1; i <= module.ModuleInfo.CntInputs; i++)
+                            {
+                                if (tagsAnalog.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Input)))
+                                {
+                                    TagIO tag = tagsAnalog.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
+                                    TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("REAL"));
+                                    TagReference reference = new TagReference();
+                                    reference.addReferenceByIO(tag.Module.Name, tag.Name);
+                                    tagModbus.TagReference = reference;
+                                    tagsModbus.Add(tagModbus);
+                                }
+                                else
+                                {
+                                    string name = "Резерв вход " + module.Type + " " + module.Name + ":" + i;
+                                    tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("REAL")));
+                                }
+                                addrReg += settings.GetTagModbusInfoByTypeName("REAL").Size;
+                            }
                         }
-                        else
+
+                        if ((module.ModuleInfo.TypeOutputs == ModuleInfo.TypeChannels.REAL) || (module.ModuleInfo.TypeOutputs == ModuleInfo.TypeChannels.ALL))
                         {
-                            string name = "Резерв выход " + module.Type + " " + module.Name + ":" + i;
-                            tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("REAL")));
+                            for (int i = 1; i <= module.ModuleInfo.CntOutputs; i++)
+                            {
+                                if (tagsAnalog.Exists(x => (x.Module.ID == module.ID) && (x.Channel == i) && (x.TagInfo.Dir == TagInfoIO.Direct.Output)))
+                                {
+                                    TagIO tag = tagsAnalog.Find(x => (x.Module.ID == module.ID) && (x.Channel == i));
+                                    TagModbus tagModbus = new TagModbus(tag.Name, tag.Description, tag.System, addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("REAL"));
+                                    TagReference reference = new TagReference();
+                                    reference.addReferenceByIO(tag.Module.Name, tag.Name);
+                                    tagModbus.TagReference = reference;
+                                    tagsModbus.Add(tagModbus);
+                                }
+                                else
+                                {
+                                    string name = "Резерв выход " + module.Type + " " + module.Name + ":" + i;
+                                    tagsModbus.Add(new TagModbus(name, "-", "Резервы", addrReg, TagModbus.ST_SP.ST, settings.GetTagModbusInfoByTypeName("REAL")));
+                                }
+                                addrReg += settings.GetTagModbusInfoByTypeName("REAL").Size;
+                            }
                         }
-                        addrReg += settings.GetTagModbusInfoByTypeName("REAL").Size;
                     }
+                    return tagsModbus;
                 }
-            }
-            return tagsModbus;
-        }
-*/
-        
+        */
+
         public static List<TagModbus> GetTagsModbusByObjects(List<ObjectMatch> matches, Settings settings)
         {
             List<TagModbus> tagsModbus = new List<TagModbus>();
@@ -177,7 +177,12 @@ namespace EcoStruxureConfigurator
                         tag.AddPath(match.SystemNameRus);
                         tag.AddPath(obj.Key);
                         tag.AddPath("ST");
-                        tag.AddPsevdoName(match.PsevdoName + "_" + obj.Key +  "_" + io.Descr);
+                        tag.AddPsevdoName(match.PsevdoName + "_" + obj.Key + "_" + io.Descr);
+                        if (io.Color != null)
+                        {
+                            string alarmDescr = match.SystemNameRus + ". " + obj.Value.RussianName + ". " + io.Name;
+                            tag.AddAlarm(alarmDescr, io.Color);
+                        }
                         tagsModbus.Add(tag);
                         addrBinaryST++;
                     }

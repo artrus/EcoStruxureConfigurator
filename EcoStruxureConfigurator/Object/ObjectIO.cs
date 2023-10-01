@@ -15,8 +15,8 @@ namespace EcoStruxureConfigurator.Object
         public string Type;
         //public TYPE Type;
         public CATEGORY Category;
-
-        public ObjectIO(string name, string descr, string type, CATEGORY category)
+        public string Color;
+        public ObjectIO(string name, string descr, string type, CATEGORY category, string color = null)
         {
             if ((descr == null) || (String.Equals(descr, "")))
                 throw new ArgumentException("ObjectIO не имеет Descr");
@@ -37,6 +37,7 @@ namespace EcoStruxureConfigurator.Object
                 throw new ArgumentException("В ObjectIO не найден Type");
 */
             Category = category;
+            Color = color;
         }
     }
 }

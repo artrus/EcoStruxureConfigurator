@@ -70,7 +70,7 @@ namespace EcoStruxureConfigurator
                     module = new Module(id, moduleName, moduleType, Settings.GetModuleInfoByType(moduleType));
                 }
                 string tagType = worksheet.Cells[i, Settings.ROW_IO_TYPE_IO].Value?.ToString();
-                tags.Add(new TagIO(name, descr, system," ", module, Int32.Parse(channel), Settings.GetTagIOInfoByType(tagType)));
+                tags.Add(new TagIO(name, descr, system, " ", module, Int32.Parse(channel), Settings.GetTagIOInfoByType(tagType)));
             }
             return tags;
         }
@@ -99,7 +99,7 @@ namespace EcoStruxureConfigurator
         private List<ObjectMatch> GetObjectMatching(ExcelWorksheet worksheet)
         {
             List<ObjectMatch> objectMatches = new List<ObjectMatch>();
-            int rowCount = worksheet.Dimension.End.Row;    
+            int rowCount = worksheet.Dimension.End.Row;
 
             for (int row = 2; row < rowCount; row++)
             {
@@ -109,16 +109,18 @@ namespace EcoStruxureConfigurator
                     continue;
 
                 var objMatch = new ObjectMatch(name, psevdoName);
-                
-                int columnCount = worksheet.Dimension.End.Column;     
 
-                for (int column = 3; column < columnCount; column = column + 2)
+                int columnCount = worksheet.Dimension.End.Column;
+
+                for (int column = 3; column < columnCount; column = column + 3)
                 {
                     string type = worksheet.Cells[row, column].Value?.ToString();
-                    string descr = worksheet.Cells[row, column+1].Value?.ToString();
+                    string descrEng = worksheet.Cells[row, column + 1].Value?.ToString();
+                    string descrRus = worksheet.Cells[row, column + 2].Value?.ToString();
                     if (string.IsNullOrEmpty(type))
                         continue;
-                    objMatch.AddObject(descr, Settings.GetObjectByName(type));
+                    ObjectBase objectBase = Settings.GetObjectByName(type);
+                    objMatch.AddObject(descrEng, descrRus, objectBase);
                 }
                 objectMatches.Add(objMatch);
 

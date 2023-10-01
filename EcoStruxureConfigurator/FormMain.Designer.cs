@@ -38,9 +38,11 @@
             this.BtnGenSEP = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.BtnGenWeintekAlarms = new System.Windows.Forms.Button();
             this.textBox_SEPPrefix = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnParseIO = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +55,6 @@
             this.log.Size = new System.Drawing.Size(1102, 218);
             this.log.TabIndex = 0;
             this.log.Text = "";
-            this.log.TextChanged += new System.EventHandler(this.log_TextChanged);
             // 
             // BtnGenXML
             // 
@@ -100,7 +101,7 @@
             this.BtnGenWeintek.Name = "BtnGenWeintek";
             this.BtnGenWeintek.Size = new System.Drawing.Size(129, 23);
             this.BtnGenWeintek.TabIndex = 6;
-            this.BtnGenWeintek.Text = "Weintek";
+            this.BtnGenWeintek.Text = "Weintek tags";
             this.BtnGenWeintek.UseVisualStyleBackColor = true;
             this.BtnGenWeintek.Click += new System.EventHandler(this.BtnGenWeintek_Click);
             // 
@@ -115,7 +116,7 @@
             // 
             // BtnGenSEP
             // 
-            this.BtnGenSEP.Location = new System.Drawing.Point(3, 113);
+            this.BtnGenSEP.Location = new System.Drawing.Point(3, 142);
             this.BtnGenSEP.Name = "BtnGenSEP";
             this.BtnGenSEP.Size = new System.Drawing.Size(129, 23);
             this.BtnGenSEP.TabIndex = 10;
@@ -130,12 +131,13 @@
             this.flowLayoutPanel1.Controls.Add(this.BtnGenXML);
             this.flowLayoutPanel1.Controls.Add(this.BtnGenExcel);
             this.flowLayoutPanel1.Controls.Add(this.BtnGenWeintek);
+            this.flowLayoutPanel1.Controls.Add(this.BtnGenWeintekAlarms);
             this.flowLayoutPanel1.Controls.Add(this.BtnGenSEP);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(299, 31);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(137, 146);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(137, 175);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
             // label2
@@ -146,6 +148,16 @@
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Generate";
+            // 
+            // BtnGenWeintekAlarms
+            // 
+            this.BtnGenWeintekAlarms.Location = new System.Drawing.Point(3, 113);
+            this.BtnGenWeintekAlarms.Name = "BtnGenWeintekAlarms";
+            this.BtnGenWeintekAlarms.Size = new System.Drawing.Size(129, 23);
+            this.BtnGenWeintekAlarms.TabIndex = 12;
+            this.BtnGenWeintekAlarms.Text = "Weintek alarms";
+            this.BtnGenWeintekAlarms.UseVisualStyleBackColor = true;
+            this.BtnGenWeintekAlarms.Click += new System.EventHandler(this.BtnGenWeintekAlarms_Click);
             // 
             // textBox_SEPPrefix
             // 
@@ -169,10 +181,20 @@
             this.flowLayoutPanel2.Controls.Add(this.label3);
             this.flowLayoutPanel2.Controls.Add(this.textBox_SEPPrefix);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(442, 131);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(442, 160);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(173, 46);
             this.flowLayoutPanel2.TabIndex = 15;
+            // 
+            // btnParseIO
+            // 
+            this.btnParseIO.Location = new System.Drawing.Point(448, 58);
+            this.btnParseIO.Name = "btnParseIO";
+            this.btnParseIO.Size = new System.Drawing.Size(129, 23);
+            this.btnParseIO.TabIndex = 13;
+            this.btnParseIO.Text = "Parse IO";
+            this.btnParseIO.UseVisualStyleBackColor = true;
+            this.btnParseIO.Click += new System.EventHandler(this.btnParseIO_Click);
             // 
             // FormMain
             // 
@@ -185,6 +207,7 @@
             this.Controls.Add(this.LblObjectFile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.log);
+            this.Controls.Add(this.btnParseIO);
             this.Name = "FormMain";
             this.Text = "Configurator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
@@ -213,6 +236,8 @@
         private System.Windows.Forms.TextBox textBox_SEPPrefix;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Button BtnGenWeintekAlarms;
+        private System.Windows.Forms.Button btnParseIO;
     }
 }
 

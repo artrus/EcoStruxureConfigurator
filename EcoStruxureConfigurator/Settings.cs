@@ -256,6 +256,9 @@ namespace EcoStruxureConfigurator
                                                           { "UI-8.AO-V-4", new ModuleInfo("io.UI8AO4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.REAL) },
                                                           { "UI-8.DO-FC-4", new ModuleInfo("io.UI8DOFC4", 8, 4, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.BOOL) },
                                                           { "UI-16", new ModuleInfo("io.UI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
+                                                          { "Ua", new ModuleInfo("io.UI16", 20, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },    //AS-B
+                                                          { "Ub", new ModuleInfo("io.UI16", 18, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },    //AS-B
+                                                          { "DO", new ModuleInfo("io.UI16", 8, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },    //AS-B
                                                     };
         }
 

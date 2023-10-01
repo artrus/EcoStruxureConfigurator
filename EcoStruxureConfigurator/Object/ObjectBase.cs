@@ -10,7 +10,9 @@ namespace EcoStruxureConfigurator
     public class ObjectBase
     {
         public string Type { get; set; }
-        public string PsevdoName { get; set; }
+        //public string PsevdoName { get; set; }
+        public string RussianName { get; set; }
+
         private List<ObjectIO> IO;
 
         public ObjectBase()
@@ -42,10 +44,10 @@ namespace EcoStruxureConfigurator
                 IO.Add(new ObjectIO(name, descr, type, ObjectIO.CATEGORY.CONTROL_OUTPUT));
         }
 
-        public void AddST(string name, string descr, string type)
+        public void AddST(string name, string descr, string type, string color)
         {
             if (CheakName(descr))
-                IO.Add(new ObjectIO(name, descr, type, ObjectIO.CATEGORY.ST));
+                IO.Add(new ObjectIO(name, descr, type, ObjectIO.CATEGORY.ST, color));
         }
 
         public void AddSP(string name, string descr, string type)

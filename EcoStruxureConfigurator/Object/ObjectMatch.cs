@@ -18,9 +18,10 @@ namespace EcoStruxureConfigurator.Object
             PsevdoName = psevdoName;
         }
 
-        public void AddObject(string descr, ObjectBase obj)
+        public void AddObject(string descrEng, string descrRus, ObjectBase obj)
         {
-            objects.Add(descr, obj);
+            obj.RussianName = descrRus;
+            objects.Add(descrEng, obj);
         }
     }
 }

@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gens\SepGen.cs" />
+    <Compile Include="Tags\TagAlarm.cs" />
     <Compile Include="XlsxToXls.cs" />
     <Compile Include="Excel\ReadObjects.cs" />
     <Compile Include="FormMain.cs">

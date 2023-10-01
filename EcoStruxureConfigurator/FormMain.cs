@@ -50,19 +50,6 @@ namespace EcoStruxureConfigurator
                     LblObjectFile.Text = "Необходимо выбрать файл Objects.xlsx";
 
                 PathIOFile = ReadLastFileIO();
-                bool fileExist = File.Exists(PathIOFile);
-                if (fileExist)
-                {
-                    FileInfo fileInfoIO = new FileInfo(PathIOFile);
-                    if (fileInfoIO.Exists)
-                    {
-                        ReadExcelIO();
-                        Text = PathIOFile;
-                    }
-                    else
-                        Text = "";
-
-                }
 
                 textBox_SEPPrefix.Text = Settings.SEPPrefix;
             }
@@ -258,15 +245,23 @@ namespace EcoStruxureConfigurator
                 }
             }
 
-            ObjectMatches = readerIO.ReadMatching(PathIOFile);
-            TagsAllModbusObjects = ParserTags.GetTagsModbusByObjects(ObjectMatches, Settings);
-            chListSysGen.Items.Clear();
-
-            foreach (var match in ObjectMatches)
+            try
             {
-                chListSysGen.Items.Add(match.SystemNameRus);
-                chListSysGen.SetItemChecked(chListSysGen.Items.Count - 1, true);
+                ObjectMatches = readerIO.ReadMatching(PathIOFile);
+                TagsAllModbusObjects = ParserTags.GetTagsModbusByObjects(ObjectMatches, Settings);
+                chListSysGen.Items.Clear();
+
+                foreach (var match in ObjectMatches)
+                {
+                    chListSysGen.Items.Add(match.SystemNameRus);
+                    chListSysGen.SetItemChecked(chListSysGen.Items.Count - 1, true);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Невозможно распознать файил IO\n\r" + ex.Message);
+            }
+
 
         }
 
@@ -292,7 +287,7 @@ namespace EcoStruxureConfigurator
             List<ObjectMatch> objectMatches = new List<ObjectMatch>();
             foreach (var match in cheakedSystems)
             {
-                if(ObjectMatches.Exists(x => x.SystemNameRus == match))
+                if (ObjectMatches.Exists(x => x.SystemNameRus == match))
                     objectMatches.Add(ObjectMatches.Find(x => x.SystemNameRus == match));
             }
             Logger.WriteLine("Выбрано " + objectMatches.Count + " объектов");
@@ -317,7 +312,17 @@ namespace EcoStruxureConfigurator
             string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
             List<TagModbus> tagsModbus = new List<TagModbus>();
             tagsModbus.AddRange(TagsAllModbusObjects);
-            WeintekGen.WriteNewExcel(Settings, dir + @"\" + fileName + @"---WeintekTags.xlsx", tagsModbus);
+            WeintekGen.WriteNewExcelTags(Settings, dir + @"\" + fileName + @"---WeintekTags.xlsx", tagsModbus);
+
+        }
+
+        private void BtnGenWeintekAlarms_Click(object sender, EventArgs e)
+        {
+            string dir = Path.GetDirectoryName(PathIOFile);
+            string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
+            List<TagModbus> tagsModbus = new List<TagModbus>();
+            tagsModbus.AddRange(TagsAllModbusObjects);
+            WeintekGen.WriteNewExcelAlarms(Settings, dir + @"\" + fileName + @"---WeintekAlarms.xlsx", tagsModbus);
 
         }
 
@@ -336,14 +341,29 @@ namespace EcoStruxureConfigurator
             Settings.SetSEPPrefix(textBox_SEPPrefix.Text);
         }
 
+        private void btnParseIO_Click(object sender, EventArgs e)
+        {
+            bool fileExist = File.Exists(PathIOFile);
+            if (fileExist)
+            {
+                FileInfo fileInfoIO = new FileInfo(PathIOFile);
+                if (fileInfoIO.Exists)
+                {
+                    ReadExcelIO();
+                    Text = PathIOFile;
+                }
+                else
+                    Text = "";
+
+            }
+
+
+        }
+
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Settings.SaveFile();
         }
 
-        private void log_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

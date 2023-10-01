@@ -64,7 +64,11 @@ namespace EcoStruxureConfigurator.Excel
                     string controlIn = worksheet.Cells[i, Settings.ROW_OBJECT_CONTROL_IN].Value?.ToString();
                     string controlOut = worksheet.Cells[i, Settings.ROW_OBJECT_CONTROL_OUT].Value?.ToString();
                     string SP = worksheet.Cells[i, Settings.ROW_OBJECT_SP].Value?.ToString();
+
                     string ST = worksheet.Cells[i, Settings.ROW_OBJECT_ST].Value?.ToString();
+                    var bc = worksheet.Cells[i, Settings.ROW_OBJECT_ST].Style.Fill.BackgroundColor;
+                    string ST_color = String.IsNullOrEmpty(bc.Rgb) ? null : bc.Rgb;
+
                     string nameIn = worksheet.Cells[i, Settings.ROW_OBJECT_DESCR_IN].Value?.ToString();
                     string nameOut = worksheet.Cells[i, Settings.ROW_OBJECT_DESCR_OUT].Value?.ToString();
                     string typeIn = worksheet.Cells[i, Settings.ROW_OBJECT_TYPE_IN].Value?.ToString();
@@ -74,7 +78,7 @@ namespace EcoStruxureConfigurator.Excel
                     obj.AddControlInput( nameIn, controlIn, typeIn);
                     obj.AddSP(nameIn, SP, typeIn);
                     obj.AddControlOutput(nameOut, controlOut, typeOut);
-                    obj.AddST(nameOut, ST, typeOut);
+                    obj.AddST(nameOut, ST, typeOut, ST_color);
                     obj.AddIOoutput(nameOut, IOoutput, typeOut);
                 }
                 objects.Add(obj);

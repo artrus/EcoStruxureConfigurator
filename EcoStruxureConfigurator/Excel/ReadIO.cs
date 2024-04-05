@@ -112,7 +112,7 @@ namespace EcoStruxureConfigurator
 
                 int columnCount = worksheet.Dimension.End.Column;
 
-                for (int column = 3; column < columnCount; column = column + 3)
+                for (int column = 3; column < columnCount; column += 3)
                 {
                     string type = worksheet.Cells[row, column].Value?.ToString();
                     string descrEng = worksheet.Cells[row, column + 1].Value?.ToString();

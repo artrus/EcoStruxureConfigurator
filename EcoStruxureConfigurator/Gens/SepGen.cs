@@ -12,8 +12,13 @@ namespace EcoStruxureConfigurator
 {
     public class SepGen
     {
-        private static readonly string[] ROWS_NAMES = { "Сигнал", "Описание", "Тип", "Привязка", "Сегмент", "Адрес", "Номер бита", "Номер записи в файле", "Метка времени", "Размер строки", "Категория данных" };
-        public static void WriteNewExcel(Settings settings, string path, List<TagModbus> tags)
+        public enum Language { RUS, ENG };
+        //TODO translate english header
+        private static readonly string[] ROWS_NAMES_RUS = { "Сигнал", "Описание", "Тип", "Привязка", "Сегмент", "Адрес", "Номер бита", "Номер записи в файле", "Метка времени", "Размер строки", "Категория данных" };
+        private static readonly string[] ROWS_NAMES_ENG = { "Item", "Description", "Type", "Linking", "Segment", "Address", "Bit number", "Record number in file", "Timestamp", "String size", "Data сategory" };
+        private static readonly string EXPLICIT_RUS = "непосредственно";
+        private static readonly string EXPLICIT_ENG = "explicit";
+        public static void WriteNewExcel(Settings settings, string path, List<TagModbus> tags, Language languauge)
         {
             FileInfo existingFile = new FileInfo(path);
             if (existingFile.Exists)
@@ -39,7 +44,7 @@ namespace EcoStruxureConfigurator
                 List<TagModbus> tagsModbus = new List<TagModbus>();
                 tagsModbus.AddRange(tagsBinary);
                 tagsModbus.AddRange(tagsAnalog);
-                WriteModbusTags(settings, ws, tagsModbus);
+                WriteModbusTags(settings, ws, tagsModbus, languauge);
 
                 package.Save();
             }
@@ -49,16 +54,16 @@ namespace EcoStruxureConfigurator
             }
         }
 
-        public static void WriteModbusTags(Settings settings, ExcelWorksheet ws, List<TagModbus> tags)
+        public static void WriteModbusTags(Settings settings, ExcelWorksheet ws, List<TagModbus> tags, Language languauge)
         {
-            CreateHeaderRow(ws);
+            CreateHeaderRow(ws, languauge);
             int indx = 2;
             for (int i = 0; i < tags.Count; i++)
             {
                 if (!(tags[i].Name.ToUpper().Contains("РЕЗЕРВ")))
                 {
                     string descr = tags[i].Description.Remove(0, 3);
-                    string tagName = settings.SEPPrefix + "." + tags[i].SystemNameEng.Replace('-','_') + "." + tags[i].Path[1] + "." + tags[i].Path[2] + "." + descr;
+                    string tagName = settings.SEPPrefix + "." + tags[i].SystemNameEng.Replace('-', '_') + "." + tags[i].Path[1] + "." + tags[i].Path[2] + "." + descr;
                     ws.Cells[indx, 1].Value = tagName;
 
                     ws.Cells[indx, 2].Value = tags[i].Name;
@@ -78,7 +83,14 @@ namespace EcoStruxureConfigurator
                     }
                     ws.Cells[indx, 3].Value = type;
 
-                    ws.Cells[indx, 4].Value = "непосредственно";
+                    if (languauge == Language.ENG)
+                    {
+                        ws.Cells[indx, 4].Value = EXPLICIT_ENG;
+                    } else if (languauge == Language.RUS)
+                    {
+                        ws.Cells[indx, 4].Value = EXPLICIT_RUS;
+                    }
+                    
 
                     string segment = "";
                     if (tags[i].TagInfo.Type == TagInfoBase.BinaryAnalog.Binary)
@@ -97,7 +109,7 @@ namespace EcoStruxureConfigurator
                     }
                     ws.Cells[indx, 5].Value = segment;
 
-                    ws.Cells[indx, 6].Value = tags[i].Addr-1;
+                    ws.Cells[indx, 6].Value = tags[i].Addr - 1;
 
                     indx++;
                 }
@@ -115,14 +127,25 @@ namespace EcoStruxureConfigurator
             ws.Column(5).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
         }
 
-        private static void CreateHeaderRow(ExcelWorksheet ws)
+        private static void CreateHeaderRow(ExcelWorksheet ws, Language languauge)
         {
             ws.Row(1).Style.Font.Bold = true;
             ws.Row(1).Style.Font.Size = 11;
-            //
-            for (int i = 0; i < ROWS_NAMES.Length; i++)
+
+            string[] row = null;
+            switch(languauge)
             {
-                ws.Cells[1, i + 1].Value = ROWS_NAMES[i];
+                case Language.RUS:
+                    row = ROWS_NAMES_RUS;
+                    break;
+                case Language.ENG:
+                    row = ROWS_NAMES_ENG;
+                    break;
+            }
+            //
+            for (int i = 0; i < row.Length; i++)
+            {
+                ws.Cells[1, i + 1].Value = row[i];
                 ws.Cells[1, i + 1].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
                 ws.Cells[1, i + 1].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                 ws.Cells[1, i + 1].Style.Fill.BackgroundColor.SetColor(Color.LightGreen);

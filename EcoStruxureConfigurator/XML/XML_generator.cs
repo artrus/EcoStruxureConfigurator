@@ -12,12 +12,6 @@ namespace EcoStruxureConfigurator.XML
 {
     public class XML_generator
     {
-        private readonly Settings Settings;
-
-        public XML_generator(Settings settings)
-        {
-            Settings = settings;
-        }
 
         public void CreateIO(string filename, List<TagIO> tags, List<Module> modules)
         {
@@ -35,9 +29,13 @@ namespace EcoStruxureConfigurator.XML
                 foreach (var tag in moduleTags)
                 {
                     IOPoints.Add(new OI(tag.Name, tag.TagInfo.XML_Type, tag.Description));
-                    PI ChannelNumber = new PI(tag.TagInfo.XML_Direct, Convert.ToString(tag.Channel));
                     IOPoints[IOPoints.Count - 1].PIList = new List<PI>();
+                    PI ChannelNumber = new PI(tag.TagInfo.XML_Direct, Convert.ToString(tag.Channel));
                     IOPoints[IOPoints.Count - 1].PIList.Add(ChannelNumber);
+                    if (tag.Module.Type.Contains("AO") && tag.TagInfo.Dir == TagInfoIO.Direct.Output)
+                        AddResolution(IOPoints);    //add engineir convert
+                    else if (tag.Module.Type.Contains("UI") && tag.TagInfo.XML_Type.Contains("TemperatureInput"))
+                        AddSensor(IOPoints);
                 }
                 exportedObjects[exportedObjects.Count - 1].OIList = IOPoints;
                 exportedObjects[exportedObjects.Count - 1].PIList = new List<PI>();
@@ -50,8 +48,27 @@ namespace EcoStruxureConfigurator.XML
                 ContentType.reference = reference;
                 exportedObjects[exportedObjects.Count - 1].PIList.Add(ContentType);
             }
-
             FinishXML(xml, filename);
+        }
+
+        private void AddResolution(List<OI> IOPoints)
+        {
+            PI ElecTopOfScale = new PI("ElecTopOfScale", "10");
+            PI EngTopOfScale = new PI("EngTopOfScale", "100");
+            PI Resolution = new PI("Resolution", "0.1");
+            IOPoints[IOPoints.Count - 1].PIList.Add(ElecTopOfScale);
+            IOPoints[IOPoints.Count - 1].PIList.Add(EngTopOfScale);
+            IOPoints[IOPoints.Count - 1].PIList.Add(Resolution);
+        }
+
+        private void AddSensor(List<OI> IOPoints)
+        {
+            PI LowerReliabilityLevel = new PI("LowerReliabilityLevel", "-50");
+            PI ThermistorType = new PI("ThermistorType", "2");
+            PI UpperReliabilityLevel = new PI("UpperReliabilityLevel", "100");
+            IOPoints[IOPoints.Count - 1].PIList.Add(LowerReliabilityLevel);
+            IOPoints[IOPoints.Count - 1].PIList.Add(ThermistorType);
+            IOPoints[IOPoints.Count - 1].PIList.Add(UpperReliabilityLevel);
         }
 
         public void CreateModbusIO(string filename, List<TagModbus> tags)
@@ -62,20 +79,19 @@ namespace EcoStruxureConfigurator.XML
             xml.ExportedObjects = exportedObjects;
 
             //create root "exportedObjects"
-            addModbusFolder(exportedObjects, "IO");
+            AddModbusFolder(exportedObjects, "IO");
             var insideFolderIO = new List<OI>();
             exportedObjects[0].OIList = insideFolderIO;
 
             var tagsBinary = tags.FindAll(x => x.TagInfo.Type == TagInfoBase.BinaryAnalog.Binary);
-            addFolderWithTag(insideFolderIO, "Binary", tagsBinary);
+            AddFolderWithTag(insideFolderIO, "Binary", tagsBinary);
 
             var tagsAnalog = tags.FindAll(x => x.TagInfo.Type == TagInfoBase.BinaryAnalog.Analog);
-            addFolderWithTag(insideFolderIO, "Analog", tagsAnalog);
+            AddFolderWithTag(insideFolderIO, "Analog", tagsAnalog);
 
             FinishXML(xml, filename);
         }
 
-        //TODO : CreateModbusObjects
         public void CreateModbusObjects(string filename, List<TagModbus> tags)
         {
             ObjectSet xml = new ObjectSet();
@@ -87,27 +103,26 @@ namespace EcoStruxureConfigurator.XML
 
             foreach (var system in systems)
             {
-                addModbusFolder(exportedObjects, system);
+                AddModbusFolder(exportedObjects, system);
                 List<OI> insideFolderSystem = new List<OI>();
                 exportedObjects[exportedObjects.Count - 1].OIList = insideFolderSystem;
 
                 var objects = GetUniqPath(tags.FindAll(x => x.Path[0] == system), 1);
                 foreach (var obj in objects)
                 {
-                    addModbusFolder(insideFolderSystem, obj);
+                    AddModbusFolder(insideFolderSystem, obj);
                     var insideFolderObject = new List<OI>();
                     insideFolderSystem[insideFolderSystem.Count - 1].OIList = insideFolderObject;
 
                     var SP = tags.FindAll(x => x.Path[0].Equals(system) && x.Path[1].Equals(obj) && x.Path[2].Equals("SP"));
-                    addFolderWithTag(insideFolderObject, "SP", SP);
-                    
+                    AddFolderWithTag(insideFolderObject, "SP", SP);
+
                     var ST = tags.FindAll(x => x.Path[0].Equals(system) && x.Path[1].Equals(obj) && x.Path[2].Equals("ST"));
-                    addFolderWithTag(insideFolderObject, "ST", ST);
+                    AddFolderWithTag(insideFolderObject, "ST", ST);
                 }
             }
             FinishXML(xml, filename);
         }
-
 
         private List<string> GetUniqPath(List<TagModbus> tags, int level)
         {
@@ -158,30 +173,32 @@ namespace EcoStruxureConfigurator.XML
             wr.Close();
         }
 
-        private void addFolderWithTag(List<OI> root, string folderName, List<TagModbus> tags)
+        private void AddFolderWithTag(List<OI> root, string folderName, List<TagModbus> tags)
         {
-            addModbusFolder(root, folderName, "Modbus Regs");
+            AddModbusFolder(root, folderName, "Modbus Regs");
 
             var inside = new List<OI>();
             root[root.Count - 1].OIList = inside;
 
             foreach (var tag in tags)
             {
-                addModbusTag(inside, tag);
+                AddModbusTag(inside, tag);
             }
         }
 
-        private void addModbusFolder(List<OI> root, string name, string contentName = null)
+        private void AddModbusFolder(List<OI> root, string name, string contentName = null)
         {
             root.Add(new OI(name, "modbus.folder.SlaveFolder"));
             if (contentName != null)
             {
-                root[root.Count - 1].PIList = new List<PI>();
-                root[root.Count - 1].PIList.Add(addContentType("Modbus Regs"));
+                root[root.Count - 1].PIList = new List<PI>
+                {
+                    AddContentType("Modbus Regs")
+                };
             }
         }
 
-        private PI addContentType(string type)
+        private PI AddContentType(string type)
         {
             PI ContentType = new PI("ContentType");
             Reference reference = new Reference("~/System/Content Types/" + type, "0", "1", "0", "10");
@@ -189,7 +206,7 @@ namespace EcoStruxureConfigurator.XML
             return ContentType;
         }
 
-        private PI addReference(string path)
+        private PI AddReference(string path)
         {
             PI Ref = new PI("Value");
             Reference reference = new Reference(path, "0", "1", "0", "10", "Value");
@@ -197,7 +214,7 @@ namespace EcoStruxureConfigurator.XML
             return Ref;
         }
 
-        private void addModbusTag(List<OI> root, TagModbus tag)
+        private void AddModbusTag(List<OI> root, TagModbus tag)
         {
             root.Add(new OI(tag.Name, tag.TagInfo.XML_Type, tag.Description));
             List<PI> PIlist = new List<PI>();
@@ -205,7 +222,7 @@ namespace EcoStruxureConfigurator.XML
             PIlist.Add(registerNumber);
 
             if (tag.TagReference != null)
-                PIlist.Add(addReference(tag.TagReference.Path));
+                PIlist.Add(AddReference(tag.TagReference.Path));
 
             if (tag.TagInfo.XML_RegisterType != TagInfoModbus.RegType.DEFAULT)
             {
@@ -213,7 +230,27 @@ namespace EcoStruxureConfigurator.XML
                 PIlist.Add(registerType);
             }
 
+            string name = tag.Name;
+            int startIndex = name.IndexOf('[');
+            int endIndex = name.IndexOf(']');
+            if (!(startIndex == -1 || endIndex == -1))
+            {
+                int lenght = endIndex - startIndex;
+                string g = name.Substring(startIndex + 1, lenght - 1);
+                AddGain(PIlist, g);
+            }
+            /*if ()
+                addGain();
+*/
             root[root.Count - 1].PIList = PIlist;
+        }
+
+        private void AddGain(List<PI> pIlist, string k)
+        {
+            double v = Double.Parse(k);
+            string gain = v.ToString().Replace(",", ".");
+            PI Gain = new PI("Gain", gain);
+            pIlist.Add(Gain);
         }
 
     }

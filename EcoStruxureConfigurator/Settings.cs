@@ -247,7 +247,7 @@ namespace EcoStruxureConfigurator
         private Dictionary<string, ModuleInfo> SetDefaultTypesModules()
         {
             return new Dictionary<string, ModuleInfo>() { { "AO-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.REAL)},
-                                                          { "AO-V-8", new ModuleInfo("io.AO8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.REAL) },
+                                                          { "AO-V-8", new ModuleInfo("io.AOV8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.REAL) },
                                                           { "DI-16", new ModuleInfo("io.DI16", 16, 0, ModuleInfo.TypeChannels.ALL, ModuleInfo.TypeChannels.NONE) },
                                                           { "DO-FA-12", new ModuleInfo("io.DOFA12", 0, 12, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.BOOL) },
                                                           { "DO-FC-8", new ModuleInfo("io.DOFC8", 0, 8, ModuleInfo.TypeChannels.NONE, ModuleInfo.TypeChannels.BOOL) },
@@ -338,11 +338,11 @@ namespace EcoStruxureConfigurator
             MODBUS_ENABLE_LIGHT_REZERV = true;
             CREATE_NEW_EXCEL_FILE = false;
 
-            SEPPrefix = "Prefix.";
+            SEPPrefix = "Ventilation.";
 
             MODBUS_ADDR_BLOCK_IO = 0;
             MODBUS_ADDR_BLOCK_ST = 500;
-            MODBUS_ADDR_BLOCK_SP = 1000;
+            MODBUS_ADDR_BLOCK_SP = 2000;
         }
 
     }

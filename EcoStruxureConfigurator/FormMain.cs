@@ -270,7 +270,7 @@ namespace EcoStruxureConfigurator
             string dir = Path.GetDirectoryName(PathIOFile);
             string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
 
-            XML_generator generator = new XML_generator(Settings);
+            XML_generator generator = new XML_generator();
             generator.CreateIO(dir + @"\" + fileName + @"---IO.xml", TagsIO, Modules);
             //generator.CreateModbusIO(dir + @"\" + fileName + @"---ModbusIO.xml", TagsModbusIO);
 
@@ -333,15 +333,16 @@ namespace EcoStruxureConfigurator
             string fileName = Path.GetFileNameWithoutExtension(PathIOFile);
             List<TagModbus> tagsModbus = new List<TagModbus>();
             tagsModbus.AddRange(TagsAllModbusObjects);
-            SepGen.WriteNewExcel(Settings, dir + @"\" + fileName + @"---SepTags.xlsx", tagsModbus);
+            SepGen.WriteNewExcel(Settings, dir + @"\" + fileName + @"---SepTagsEng.xlsx", tagsModbus, SepGen.Language.ENG);
+            SepGen.WriteNewExcel(Settings, dir + @"\" + fileName + @"---SepTagsRus.xlsx", tagsModbus, SepGen.Language.RUS);
         }
 
-        private void textBox_SEPPrefix_TextChanged(object sender, EventArgs e)
+        private void TextBox_SEPPrefix_TextChanged(object sender, EventArgs e)
         {
             Settings.SetSEPPrefix(textBox_SEPPrefix.Text);
         }
 
-        private void btnParseIO_Click(object sender, EventArgs e)
+        private void BtnParseIO_Click(object sender, EventArgs e)
         {
             bool fileExist = File.Exists(PathIOFile);
             if (fileExist)

@@ -362,3 +362,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /EcoStruxureConfigurator/_Res/IO---IO.xml
+
+
+
+# Excel
+/EcoStruxureConfigurator/_Res/*.xls
+/EcoStruxureConfigurator/_Res/*.xlsx
+/EcoStruxureConfigurator/_Res/*.xlsm

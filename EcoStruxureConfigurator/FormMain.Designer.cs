@@ -165,7 +165,7 @@
             this.textBox_SEPPrefix.Name = "textBox_SEPPrefix";
             this.textBox_SEPPrefix.Size = new System.Drawing.Size(166, 20);
             this.textBox_SEPPrefix.TabIndex = 13;
-            this.textBox_SEPPrefix.TextChanged += new System.EventHandler(this.textBox_SEPPrefix_TextChanged);
+            this.textBox_SEPPrefix.TextChanged += new System.EventHandler(this.TextBox_SEPPrefix_TextChanged);
             // 
             // label3
             // 
@@ -194,7 +194,7 @@
             this.btnParseIO.TabIndex = 13;
             this.btnParseIO.Text = "Parse IO";
             this.btnParseIO.UseVisualStyleBackColor = true;
-            this.btnParseIO.Click += new System.EventHandler(this.btnParseIO_Click);
+            this.btnParseIO.Click += new System.EventHandler(this.BtnParseIO_Click);
             // 
             // FormMain
             // 

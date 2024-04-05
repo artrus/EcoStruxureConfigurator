@@ -37,10 +37,11 @@ namespace EcoStruxureConfigurator
 
         public void AddAlarm(string descr, string color)
         {
-            
-            TagAlarm = new TagAlarm(color);
 
-            TagAlarm.Description = descr;
+            TagAlarm = new TagAlarm(color)
+            {
+                Description = descr
+            };
         }
 
     }

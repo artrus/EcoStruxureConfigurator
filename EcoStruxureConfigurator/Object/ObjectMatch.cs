@@ -20,8 +20,11 @@ namespace EcoStruxureConfigurator.Object
 
         public void AddObject(string descrEng, string descrRus, ObjectBase obj)
         {
-            obj.RussianName = descrRus;
-            objects.Add(descrEng, obj);
+            /* obj.RussianName = descrRus;
+             objects.Add(descrEng, obj);*/
+            ObjectBase objCopy = (ObjectBase)obj.Clone();
+            objCopy.RussianName = descrRus;
+            objects.Add(descrEng, objCopy);
         }
     }
 }

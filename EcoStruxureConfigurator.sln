@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoStruxureConfigurator", "EcoStruxureConfigurator\EcoStruxureConfigurator.csproj", "{0BF76349-AE65-440A-95DD-43A86632F9E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{7302D10C-D098-4B39-A2AD-D013F24D3D93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValdayHelper", "ValdayHelper\ValdayHelper.csproj", "{3FE5428B-1922-4636-B0E7-B1A0FF763466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{0BF76349-AE65-440A-95DD-43A86632F9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BF76349-AE65-440A-95DD-43A86632F9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BF76349-AE65-440A-95DD-43A86632F9E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7302D10C-D098-4B39-A2AD-D013F24D3D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7302D10C-D098-4B39-A2AD-D013F24D3D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7302D10C-D098-4B39-A2AD-D013F24D3D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7302D10C-D098-4B39-A2AD-D013F24D3D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FE5428B-1922-4636-B0E7-B1A0FF763466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE5428B-1922-4636-B0E7-B1A0FF763466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE5428B-1922-4636-B0E7-B1A0FF763466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE5428B-1922-4636-B0E7-B1A0FF763466}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

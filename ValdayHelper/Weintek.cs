@@ -202,7 +202,11 @@ namespace ValdayHelper
         {
             int i = CreateConstVarsInAlarms(ws);
             string[] s = { "0: Category 0", "Low", "Bit", "MODBUS TCP/IP", "!TagName!", "False", "True", "", "null", " ", "False", "False", "", "", "False", "False", "", "null", "bt: 1", "0", "!Descr!", "False", "Режимы", "Droid Sans Fallback", "!Color!", "11", "False", "", "0", "0", "", "", "False", "False", "", "null", "", "", "", "", "False", "False", "", "null", "", "", "", "", "False", "False", "", "null", "", "", "", "", "False", "False", "", "null", "", "", "", "", "False", "False", "", "null", "", "", "", "", "False", "False", "", "null", "", "", "", "", "False", "False", "", "null", "", "", "", "", "False", "False", "", "null", "", "", "False", "10", "False", "False", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "5", "0", "", "", "False", "True", "", "null", "True", "False", "Local HMI", "LW", "False", "False", "0", "null", "16-bit Unsigned", "", "", "False", "False", "", "", "", "", "False", "False", "", "null", "", "", "False", "False", "", "", "False", "False", "", "null", "", "False", "" };
+            string[] rlbEnums = { "Короткое замыкание", "Обрыв цепи", "Ниже нормы", "Выше нормы" };
             int indxTagName = 5;
+            int indxType = 3;
+            int indxUnsingned = 10;
+            int indxTriger = 19;
             int indxDescr = 21;
             int indxColor = 25;
             i += 1;
@@ -215,20 +219,46 @@ namespace ValdayHelper
 
                     foreach (var subTag in tagInValdayClass)
                     {
-                        if (!(subTag.Name.Contains("Dstb"))
-                                && !(subTag.Name.Contains("Rlb"))
-                                && !(subTag.Name.Contains("Jammed")) && !(subTag.Name.Contains("FaultOpened")) && !(subTag.Name.Contains("FaultClosed")))
+                        if (subTag.Name.Contains("Dstb") && tagInValdayClass.Exists(x => x.Name.Contains("Rlb")))
                             continue;
-                        for (int j = 0; j < 167; j++)
-                            ws.Cells[i, j + 1].Value = s[j];
 
-                        ws.Cells[i, indxTagName].Value = tag.Name;
-                        ws.Cells[i, indxDescr].Value = tag.Description;
-                        ws.Cells[i, indxColor].Value = "255:0:0";
-                        i++;
+                        if (subTag.Name.Contains("Rlb"))
+                        {
+                            for (int j = 0; j < 4; j++)
+                            {
+                                CreateConstRowAlarms(ws, i, s);
+
+                                ws.Cells[i, indxTagName].Value = tag.Name + "_" + subTag.Name;
+                                ws.Cells[i, indxDescr].Value = tag.Description + ". " + rlbEnums[j];
+                                ws.Cells[i, indxType].Value = "Word";
+                                ws.Cells[i, indxUnsingned].Value = "16-bit Unsigned";
+                                ws.Cells[i, indxTriger].Value = "wd: ==";
+                                ws.Cells[i, indxTriger + 1].Value = j + 1;
+                                ws.Cells[i, indxColor].Value = "255:0:0";   
+                                ws.Cells[i, 143].Value = "0";
+                                ws.Cells[i, 144].Value = "0";
+                                i++;
+                            }
+                            break;
+                        }
+                        else if (subTag.Name.Contains("Dstb") || (subTag.Name.Contains("Jammed")) || (subTag.Name.Contains("FaultOpened")) || (subTag.Name.Contains("FaultClosed")))
+                        {
+                            CreateConstRowAlarms(ws, i, s);
+
+                            ws.Cells[i, indxTagName].Value = tag.Name + "_" + subTag.Name;
+                            ws.Cells[i, indxDescr].Value = tag.Description;
+                            ws.Cells[i, indxColor].Value = "255:0:0";
+                            i++;
+                        }
                     }
                 }
             }
+        }
+
+        private static void CreateConstRowAlarms(ExcelWorksheet ws, int i, string[] s)
+        {
+            for (int c = 0; c < 167; c++)
+                ws.Cells[i, c + 1].Value = s[c];
         }
 
         private static int CreateConstVarsInAlarms(ExcelWorksheet ws)

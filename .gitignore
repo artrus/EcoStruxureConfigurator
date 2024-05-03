@@ -369,3 +369,8 @@ FodyWeavers.xsd
 /EcoStruxureConfigurator/_Res/*.xls
 /EcoStruxureConfigurator/_Res/*.xlsx
 /EcoStruxureConfigurator/_Res/*.xlsm
+
+# Archives
+
+*.zip
+*.7z

@@ -193,12 +193,12 @@ namespace ValdayHelper
                     ws.Cells[i, 2].Value = settings.Station;
                     if (tag.Addr3X >= 0)
                     {
-                        ws.Cells[i, 3].Value = "3X:" + tag.Addr3X + 1;
+                        ws.Cells[i, 3].Value = "3X:" + (tag.Addr3X + 1);
                         ws.Cells[i, 4].Value = "Чтение";
                     }
                     else if (tag.Addr4X >= 0)
                     {
-                        ws.Cells[i, 3].Value = "4X:" + tag.Addr4X + 1;
+                        ws.Cells[i, 3].Value = "4X:" + (tag.Addr4X + 1);
                         ws.Cells[i, 4].Value = "Чтение+Запись";
                     }
                     i++;

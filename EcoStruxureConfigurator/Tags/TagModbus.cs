@@ -27,7 +27,8 @@ namespace EcoStruxureConfigurator
 
         public void AddPath(string path)
         {
-            Path.Add(path);
+            if (path.Length > 0)
+                Path.Add(path);
         }
 
         public void AddPsevdoName(string name)

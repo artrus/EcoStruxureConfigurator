@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoStruxureConfigurator", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValdayHelper", "ValdayHelper\ValdayHelper.csproj", "{3FE5428B-1922-4636-B0E7-B1A0FF763466}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO List Scripts", "IO List Scripts\IO List Scripts.csproj", "{8FC38FC1-7A6D-4556-98D5-FC008F7F84BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinderModbusRegs", "FinderModbusRegs\FinderModbusRegs.csproj", "{5A2BE5B7-492D-4C15-B964-26B3B5D7B0DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{3FE5428B-1922-4636-B0E7-B1A0FF763466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FE5428B-1922-4636-B0E7-B1A0FF763466}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FE5428B-1922-4636-B0E7-B1A0FF763466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC38FC1-7A6D-4556-98D5-FC008F7F84BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC38FC1-7A6D-4556-98D5-FC008F7F84BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC38FC1-7A6D-4556-98D5-FC008F7F84BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC38FC1-7A6D-4556-98D5-FC008F7F84BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2BE5B7-492D-4C15-B964-26B3B5D7B0DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2BE5B7-492D-4C15-B964-26B3B5D7B0DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2BE5B7-492D-4C15-B964-26B3B5D7B0DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2BE5B7-492D-4C15-B964-26B3B5D7B0DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

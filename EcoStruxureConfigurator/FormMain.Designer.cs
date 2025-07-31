@@ -49,18 +49,20 @@
             // 
             // log
             // 
-            this.log.Location = new System.Drawing.Point(12, 386);
+            this.log.Location = new System.Drawing.Point(16, 475);
+            this.log.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.log.Name = "log";
             this.log.ReadOnly = true;
-            this.log.Size = new System.Drawing.Size(1102, 218);
+            this.log.Size = new System.Drawing.Size(1468, 267);
             this.log.TabIndex = 0;
             this.log.Text = "";
             // 
             // BtnGenXML
             // 
-            this.BtnGenXML.Location = new System.Drawing.Point(3, 26);
+            this.BtnGenXML.Location = new System.Drawing.Point(4, 32);
+            this.BtnGenXML.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnGenXML.Name = "BtnGenXML";
-            this.BtnGenXML.Size = new System.Drawing.Size(129, 23);
+            this.BtnGenXML.Size = new System.Drawing.Size(172, 28);
             this.BtnGenXML.TabIndex = 1;
             this.BtnGenXML.Text = "PLC";
             this.BtnGenXML.UseVisualStyleBackColor = true;
@@ -68,9 +70,10 @@
             // 
             // BtnGenExcel
             // 
-            this.BtnGenExcel.Location = new System.Drawing.Point(3, 55);
+            this.BtnGenExcel.Location = new System.Drawing.Point(4, 68);
+            this.BtnGenExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnGenExcel.Name = "BtnGenExcel";
-            this.BtnGenExcel.Size = new System.Drawing.Size(129, 23);
+            this.BtnGenExcel.Size = new System.Drawing.Size(172, 28);
             this.BtnGenExcel.TabIndex = 3;
             this.BtnGenExcel.Text = "Table regs";
             this.BtnGenExcel.UseVisualStyleBackColor = true;
@@ -79,9 +82,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(69, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "Object file:";
             // 
@@ -89,17 +93,19 @@
             // 
             this.LblObjectFile.AutoSize = true;
             this.LblObjectFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LblObjectFile.Location = new System.Drawing.Point(62, 7);
+            this.LblObjectFile.Location = new System.Drawing.Point(83, 9);
+            this.LblObjectFile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblObjectFile.Name = "LblObjectFile";
-            this.LblObjectFile.Size = new System.Drawing.Size(65, 13);
+            this.LblObjectFile.Size = new System.Drawing.Size(82, 17);
             this.LblObjectFile.TabIndex = 5;
             this.LblObjectFile.Text = "Object file";
             // 
             // BtnGenWeintek
             // 
-            this.BtnGenWeintek.Location = new System.Drawing.Point(3, 84);
+            this.BtnGenWeintek.Location = new System.Drawing.Point(4, 104);
+            this.BtnGenWeintek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnGenWeintek.Name = "BtnGenWeintek";
-            this.BtnGenWeintek.Size = new System.Drawing.Size(129, 23);
+            this.BtnGenWeintek.Size = new System.Drawing.Size(172, 28);
             this.BtnGenWeintek.TabIndex = 6;
             this.BtnGenWeintek.Text = "Weintek tags";
             this.BtnGenWeintek.UseVisualStyleBackColor = true;
@@ -109,16 +115,18 @@
             // 
             this.chListSysGen.CheckOnClick = true;
             this.chListSysGen.FormattingEnabled = true;
-            this.chListSysGen.Location = new System.Drawing.Point(12, 31);
+            this.chListSysGen.Location = new System.Drawing.Point(16, 38);
+            this.chListSysGen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chListSysGen.Name = "chListSysGen";
-            this.chListSysGen.Size = new System.Drawing.Size(266, 349);
+            this.chListSysGen.Size = new System.Drawing.Size(353, 429);
             this.chListSysGen.TabIndex = 7;
             // 
             // BtnGenSEP
             // 
-            this.BtnGenSEP.Location = new System.Drawing.Point(3, 142);
+            this.BtnGenSEP.Location = new System.Drawing.Point(4, 176);
+            this.BtnGenSEP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnGenSEP.Name = "BtnGenSEP";
-            this.BtnGenSEP.Size = new System.Drawing.Size(129, 23);
+            this.BtnGenSEP.Size = new System.Drawing.Size(172, 28);
             this.BtnGenSEP.TabIndex = 10;
             this.BtnGenSEP.Text = "SEP";
             this.BtnGenSEP.UseVisualStyleBackColor = true;
@@ -134,26 +142,29 @@
             this.flowLayoutPanel1.Controls.Add(this.BtnGenWeintekAlarms);
             this.flowLayoutPanel1.Controls.Add(this.BtnGenSEP);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(299, 31);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(399, 38);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(137, 175);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(182, 215);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 10);
+            this.label2.Location = new System.Drawing.Point(4, 12);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.Size = new System.Drawing.Size(63, 16);
             this.label2.TabIndex = 11;
             this.label2.Text = "Generate";
             // 
             // BtnGenWeintekAlarms
             // 
-            this.BtnGenWeintekAlarms.Location = new System.Drawing.Point(3, 113);
+            this.BtnGenWeintekAlarms.Location = new System.Drawing.Point(4, 140);
+            this.BtnGenWeintekAlarms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnGenWeintekAlarms.Name = "BtnGenWeintekAlarms";
-            this.BtnGenWeintekAlarms.Size = new System.Drawing.Size(129, 23);
+            this.BtnGenWeintekAlarms.Size = new System.Drawing.Size(172, 28);
             this.BtnGenWeintekAlarms.TabIndex = 12;
             this.BtnGenWeintekAlarms.Text = "Weintek alarms";
             this.BtnGenWeintekAlarms.UseVisualStyleBackColor = true;
@@ -161,18 +172,20 @@
             // 
             // textBox_SEPPrefix
             // 
-            this.textBox_SEPPrefix.Location = new System.Drawing.Point(3, 16);
+            this.textBox_SEPPrefix.Location = new System.Drawing.Point(4, 20);
+            this.textBox_SEPPrefix.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_SEPPrefix.Name = "textBox_SEPPrefix";
-            this.textBox_SEPPrefix.Size = new System.Drawing.Size(166, 20);
+            this.textBox_SEPPrefix.Size = new System.Drawing.Size(220, 22);
             this.textBox_SEPPrefix.TabIndex = 13;
             this.textBox_SEPPrefix.TextChanged += new System.EventHandler(this.TextBox_SEPPrefix_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Location = new System.Drawing.Point(4, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.Size = new System.Drawing.Size(40, 16);
             this.label3.TabIndex = 14;
             this.label3.Text = "Prefix";
             // 
@@ -181,16 +194,18 @@
             this.flowLayoutPanel2.Controls.Add(this.label3);
             this.flowLayoutPanel2.Controls.Add(this.textBox_SEPPrefix);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(442, 160);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(589, 197);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(173, 46);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(231, 57);
             this.flowLayoutPanel2.TabIndex = 15;
             // 
             // btnParseIO
             // 
-            this.btnParseIO.Location = new System.Drawing.Point(448, 58);
+            this.btnParseIO.Location = new System.Drawing.Point(597, 71);
+            this.btnParseIO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnParseIO.Name = "btnParseIO";
-            this.btnParseIO.Size = new System.Drawing.Size(129, 23);
+            this.btnParseIO.Size = new System.Drawing.Size(172, 28);
             this.btnParseIO.TabIndex = 13;
             this.btnParseIO.Text = "Parse IO";
             this.btnParseIO.UseVisualStyleBackColor = true;
@@ -198,9 +213,9 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 638);
+            this.ClientSize = new System.Drawing.Size(1519, 785);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.chListSysGen);
@@ -208,6 +223,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.log);
             this.Controls.Add(this.btnParseIO);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormMain";
             this.Text = "Configurator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
